@@ -1,0 +1,40 @@
+name: Gerador Diario do Site
+
+on:
+  schedule:
+    # Roda todo dia as 11:00 UTC (08:00 Brasilia)
+    - cron: '0 11 * * *'
+  
+  # Botão para rodar manual se você quiser testar
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Baixar codigo
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar dependencias
+        run: |
+          pip install jinja2
+
+      - name: Rodar o Gerador
+        run: python gerador_site.py
+
+      - name: Salvar e Publicar
+        run: |
+          git config --global user.name 'Robo Dicas da Ely'
+          git config --global user.email 'actions@github.com'
+          git add site_publico/
+          # Só commita se houver mudança (novos preços ou data)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Atualização automática diária" && git push)
