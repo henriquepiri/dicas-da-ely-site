@@ -9,6 +9,8 @@ import re
 import os
 import glob
 import logging
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from banco_de_dados import salvar_oferta, iniciar_banco
 
@@ -19,6 +21,7 @@ MAX_PRODUTOS_POR_CATEGORIA = 12
 MAX_TENTATIVAS_POR_CATEGORIA = 2
 PASTA_DEBUG = "debug"
 MAX_DEBUG_POR_CATEGORIA = 5  # evita acumular lixo no disco
+MAX_CATEGORIAS_EM_PARALELO = 3  # cada uma abre seu próprio Chrome; 3 é um bom equilíbrio
 
 LISTA_CATEGORIAS = {
     "Mundo do Bebê": "https://www.amazon.com.br/s?k=roupas+brinquedos+seguranca+bebe&i=baby-products",
@@ -46,12 +49,14 @@ logging.basicConfig(
 log = logging.getLogger("robo_dicas")
 
 
-def configurar_navegador():
+def configurar_navegador(driver_path):
+    """Cria uma instância de Chrome isolada. Cada thread/categoria usa a sua própria,
+    reaproveitando o mesmo driver_path (já baixado uma única vez antes de paralelizar)."""
     chrome_options = Options()
     chrome_options.add_argument("--window-size=1920,1080")
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
     chrome_options.add_argument(f"--user-agent={random.choice(USER_AGENTS)}")
-    servico = Service(ChromeDriverManager().install())
+    servico = Service(driver_path)
     return webdriver.Chrome(service=servico, options=chrome_options)
 
 
@@ -189,22 +194,45 @@ def coletar_categoria(driver, nome_categoria, url_alvo):
     return 0
 
 
-def rodar_coleta():
-    iniciar_banco()
-    driver = configurar_navegador()
-    log.info("🤖 Robô Dicas da Ely iniciado.")
-
-    resumo = {}
+def _coletar_categoria_isolada(nome_categoria, url_alvo, driver_path):
+    """Abre um Chrome próprio para essa categoria, coleta e fecha. Usado por cada worker
+    da thread pool — cada categoria roda isolada, sem compartilhar navegador com as outras."""
+    driver = configurar_navegador(driver_path)
     try:
-        for nome_categoria, url_alvo in LISTA_CATEGORIAS.items():
-            qtd = coletar_categoria(driver, nome_categoria, url_alvo)
-            resumo[nome_categoria] = qtd
-            time.sleep(random.uniform(1, 2))
+        return coletar_categoria(driver, nome_categoria, url_alvo)
+    except Exception as e:
+        log.error(f"Falha não tratada em {nome_categoria}: {e}")
+        return 0
     finally:
         driver.quit()
 
+
+def rodar_coleta():
+    iniciar_banco()
+    log.info("🤖 Robô Dicas da Ely iniciado.")
+
+    # Baixa/valida o chromedriver uma única vez antes de abrir os navegadores em paralelo,
+    # evitando que várias threads tentem baixar o mesmo driver ao mesmo tempo.
+    driver_path = ChromeDriverManager().install()
+
+    resumo = {}
+    resumo_lock = threading.Lock()
+
+    with ThreadPoolExecutor(max_workers=MAX_CATEGORIAS_EM_PARALELO) as executor:
+        futuros = {
+            executor.submit(_coletar_categoria_isolada, nome, url, driver_path): nome
+            for nome, url in LISTA_CATEGORIAS.items()
+        }
+        for futuro in as_completed(futuros):
+            nome_categoria = futuros[futuro]
+            qtd = futuro.result()
+            with resumo_lock:
+                resumo[nome_categoria] = qtd
+
     log.info("✅ Coleta finalizada.")
-    for cat, qtd in resumo.items():
+    # Mantém a ordem original de LISTA_CATEGORIAS no resumo, mesmo com execução paralela
+    for cat in LISTA_CATEGORIAS:
+        qtd = resumo.get(cat, 0)
         status = "⚠️ ZERO ITENS" if qtd == 0 else f"{qtd} itens"
         log.info(f"   - {cat}: {status}")
 

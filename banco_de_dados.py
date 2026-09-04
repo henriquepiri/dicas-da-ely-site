@@ -3,7 +3,12 @@ import sqlite3
 NOME_BANCO = "estoque_ofertas.db"
 
 def conectar():
-    return sqlite3.connect(NOME_BANCO)
+    # timeout maior + modo WAL: com o robô rodando categorias em paralelo,
+    # várias threads podem tentar escrever ao mesmo tempo. Isso evita erros
+    # de "database is locked" fazendo a conexão esperar a vez em vez de falhar.
+    conn = sqlite3.connect(NOME_BANCO, timeout=30)
+    conn.execute("PRAGMA journal_mode=WAL;")
+    return conn
 
 def iniciar_banco():
     conn = conectar()

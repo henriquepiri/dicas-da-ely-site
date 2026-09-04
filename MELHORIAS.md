@@ -30,6 +30,14 @@
 - Paginação de categorias (24 produtos por página) — evita páginas gigantes conforme o catálogo cresce.
 - Sitemap.xml agora inclui automaticamente todas as páginas paginadas.
 
+## 5. Rodada seguinte: paralelização + robots.txt
+- `robo_coletor.py` agora coleta as 5 categorias **em paralelo** (até 3 ao mesmo tempo,
+  ajustável em `MAX_CATEGORIAS_EM_PARALELO`), cada uma com seu próprio Chrome — a coleta
+  fica bem mais rápida. O chromedriver é baixado uma única vez antes de abrir os navegadores.
+- `banco_de_dados.py` passou a usar `PRAGMA journal_mode=WAL` e `timeout=30` na conexão,
+  pra aguentar várias threads gravando no SQLite ao mesmo tempo sem erro de "database is locked".
+- Novo `site_publico/robots.txt`, liberando indexação e apontando pro sitemap.
+
 ## O que NÃO foi mexido
 - Estrutura do banco de dados (banco_de_dados.py) — mantida como estava, só validada.
 - Workflow do GitHub Actions — já estava correto (só gera e publica; a coleta continua rodando local via Task Scheduler).
