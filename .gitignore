@@ -1,5 +1,8 @@
 venv/
 __pycache__/
+*.pyc
 *.db
 erro_*.png
+erro_*.html
+debug/
 *.log

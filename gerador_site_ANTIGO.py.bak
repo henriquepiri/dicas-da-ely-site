@@ -2,8 +2,6 @@ import sqlite3
 import os
 import shutil
 import re
-import json
-import math
 from datetime import datetime
 from jinja2 import Template
 
@@ -11,21 +9,20 @@ from jinja2 import Template
 PASTA_SAIDA = "site_publico"
 NOME_BANCO = "estoque_ofertas.db"
 ARQUIVO_LOGO = "logo_dicas.png"
-URL_SITE = "https://dicasdaely.com.br"
-PRODUTOS_POR_PAGINA = 24
+URL_SITE = "https://dicasdaely.com.br" # Endereço oficial para o Google
 
-# --- 1. CABEÇALHO COM SEO, PERFORMANCE E DADOS ESTRUTURADOS ---
+# --- 1. CABEÇALHO COM SEO E GOOGLE VERIFICATION ---
 HEAD_COMUM = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
-
+    
     <title>{{ titulo_seo }}</title>
     <meta name="description" content="{{ descricao_seo }}">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ url_atual }}" />
-
+    
     <meta name="google-site-verification" content="XZ1fEqRKrUn7oM1wvqd1fdZylMvsWTCqToSgrvMv4j0" />
 
     <meta property="og:title" content="{{ titulo_seo }}">
@@ -34,20 +31,9 @@ HEAD_COMUM = """
     <meta property="og:url" content="{{ url_atual }}">
     <meta property="og:type" content="website">
 
-    <link rel="icon" type="image/png" href="logo_dicas.png">
-
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    {% if json_ld %}
-    <script type="application/ld+json">{{ json_ld }}</script>
-    {% endif %}
-
     <style>
         :root {
             --cor-fundo: #fdfbf7;
@@ -55,27 +41,21 @@ HEAD_COMUM = """
             --cor-primaria: #8c5e4a;
             --cor-destaque: #d35400;
             --cor-card-border: #eee5e0;
-            --cor-selo: #2e9e5b;
         }
         body { background-color: var(--cor-fundo); font-family: 'Nunito', sans-serif; color: var(--cor-texto); }
-        h1, h2, h3, .navbar-brand-text { font-family: 'Baloo 2', 'Nunito', sans-serif; }
-
         .navbar { background: white; box-shadow: 0 4px 15px rgba(92, 64, 51, 0.05); padding: 15px 0; }
         .logo-img { max-height: 85px; transition: 0.3s; }
         .nav-link { color: var(--cor-texto) !important; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; margin: 0 12px; letter-spacing: 0.5px; }
         .nav-link:hover { color: var(--cor-destaque) !important; }
-
-        .hero { background: linear-gradient(180deg, #fff 0%, var(--cor-fundo) 100%); padding: 48px 0; text-align: center; border-bottom: 1px solid var(--cor-card-border); margin-bottom: 40px; }
-        .hero h1 { color: var(--cor-primaria); }
-
-        .card-produto { position: relative; border: 1px solid var(--cor-card-border); border-radius: 14px; background: white; height: 100%; transition: 0.25s ease; overflow: hidden; display: flex; flex-direction: column; }
-        .card-produto:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(140, 94, 74, 0.18); border-color: var(--cor-primaria); }
-
-        .badge-desconto { position: absolute; top: 10px; left: 10px; z-index: 2; background: var(--cor-selo); color: white; font-weight: 800; font-size: 0.75rem; padding: 4px 9px; border-radius: 30px; box-shadow: 0 3px 8px rgba(0,0,0,0.15); }
-
+        
+        .hero { background: white; padding: 40px 0; text-align: center; border-bottom: 1px solid var(--cor-card-border); margin-bottom: 40px; }
+        
+        .card-produto { border: 1px solid var(--cor-card-border); border-radius: 12px; background: white; height: 100%; transition: 0.3s; overflow: hidden; display: flex; flex-direction: column; }
+        .card-produto:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(140, 94, 74, 0.15); border-color: var(--cor-primaria); }
+        
         .img-wrap { height: 200px; width: 100%; display: flex; align-items: center; justify-content: center; padding: 15px; background-color: white; border-bottom: 1px solid #fafafa; }
         .img-wrap img { max-height: 100%; max-width: 100%; object-fit: contain; }
-
+        
         .card-body { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
         .categoria-tag { font-size: 0.7rem; background: #f4ece8; color: var(--cor-primaria); padding: 4px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; font-weight: 700; text-transform: uppercase; }
         .titulo-prod { font-size: 1rem; font-weight: 700; color: var(--cor-texto); line-height: 1.3; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -83,14 +63,9 @@ HEAD_COMUM = """
         .preco-antigo { text-decoration: line-through; color: #aab; font-size: 0.85rem; margin-right: 6px; }
         .preco-atual { color: var(--cor-destaque); font-weight: 800; font-size: 1.5rem; }
         .parcelamento { font-size: 0.8rem; color: #888; margin-bottom: 15px; font-weight: 600; }
-
+        
         .btn-comprar { background: var(--cor-primaria); color: white; border: none; border-radius: 50px; padding: 10px; width: 100%; font-weight: 800; margin-top: auto; transition: 0.3s; text-decoration: none; display: block; text-align: center; }
         .btn-comprar:hover { background: var(--cor-destaque); color: white; }
-
-        .paginacao .page-link { color: var(--cor-primaria); border-color: var(--cor-card-border); font-weight: 700; }
-        .paginacao .page-item.active .page-link { background-color: var(--cor-primaria); border-color: var(--cor-primaria); }
-
-        .empty-state { text-align: center; padding: 60px 20px; color: #a89a90; }
     </style>
 </head>
 """
@@ -126,7 +101,7 @@ TEMPLATE_VITRINE = """
     {% if is_home %}
     <div class="hero">
         <div class="container">
-            <h1 class="display-6 fw-bold mb-3">Seleção Especial</h1>
+            <h1 class="display-6 fw-bold mb-3" style="color: var(--cor-primaria);">Seleção Especial</h1>
             <p class="text-muted" style="max-width: 600px; margin: auto; font-size: 1.1rem;">
                 Ofertas verificadas e seguras da Amazon para o seu Lar e para o Mundo do Bebê.
                 Curadoria feita com amor por Elyad & Henrique.
@@ -142,48 +117,25 @@ TEMPLATE_VITRINE = """
              <div class="d-flex align-items-center mb-4 mt-2 pb-2 border-bottom border-2" style="border-color: #f0e6e0 !important;">
                 <h3 class="fw-bold m-0" style="color: var(--cor-texto);">🧸 Mundo do Bebê</h3>
              </div>
-             {% if destaques_bebe %}
              <div class="row g-4 mb-5">
                 {% for p in destaques_bebe %}
                     {{ render_card(p) }}
                 {% endfor %}
              </div>
-             {% else %}
-             <div class="empty-state mb-5"><i class="fas fa-box-open fa-2x mb-2"></i><p>Novidades chegando em breve por aqui.</p></div>
-             {% endif %}
-
+             
              <h3 class="fw-bold mb-4 mt-5" style="color: var(--cor-texto);">✨ Mais Achadinhos</h3>
-             {% if outros_produtos %}
              <div class="row g-4">
                 {% for p in outros_produtos %}
                     {{ render_card(p) }}
                 {% endfor %}
              </div>
-             {% else %}
-             <div class="empty-state"><i class="fas fa-box-open fa-2x mb-2"></i><p>Novidades chegando em breve por aqui.</p></div>
-             {% endif %}
         {% else %}
              <h2 class="fw-bold mb-4 border-bottom pb-2" style="color: var(--cor-primaria);">{{ titulo_secao }}</h2>
-             {% if produtos %}
              <div class="row g-4">
                 {% for p in produtos %}
                     {{ render_card(p) }}
                 {% endfor %}
              </div>
-             {% if total_paginas > 1 %}
-             <nav class="mt-5" aria-label="Paginação">
-                <ul class="pagination justify-content-center paginacao">
-                    {% for n in range(1, total_paginas + 1) %}
-                    <li class="page-item {% if n == pagina_atual %}active{% endif %}">
-                        <a class="page-link" href="{{ 'cat-' + slug + '.html' if n == 1 else 'cat-' + slug + '-' + n|string + '.html' }}">{{ n }}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-             </nav>
-             {% endif %}
-             {% else %}
-             <div class="empty-state"><i class="fas fa-box-open fa-2x mb-2"></i><p>Nenhuma oferta encontrada nesta categoria no momento.</p></div>
-             {% endif %}
         {% endif %}
     </div>
 
@@ -195,7 +147,7 @@ TEMPLATE_VITRINE = """
             <p class="mt-2 text-muted" style="font-size: 0.75rem">Última atualização: {{ data_atual }}</p>
         </div>
     </footer>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
@@ -205,35 +157,32 @@ MACRO_CARD = """
 {% macro render_card(p) %}
 <div class="col-6 col-md-4 col-lg-3">
     <div class="card card-produto">
-        {% if p.desconto_pct > 0 %}
-        <span class="badge-desconto">-{{ p.desconto_pct }}%</span>
-        {% endif %}
         <div class="img-wrap">
             <img src="{{ p.imagem }}" loading="lazy" alt="{{ p.titulo }}">
         </div>
         <div class="card-body">
             <span class="categoria-tag">{{ p.categoria }}</span>
             <div class="titulo-prod" title="{{ p.titulo }}">{{ p.titulo }}</div>
-
+            
             <div class="estrelas">
                 {% for i in range(p.estrelas_int) %} <i class="fas fa-star"></i> {% endfor %}
                 <span class="text-muted ms-1 small">({{ p.nota }})</span>
             </div>
-
+            
             <div class="mt-auto">
                 {% if p.preco_original_float > p.preco_atual_float %}
                     <span class="preco-antigo">R$ {{ p.preco_original }}</span>
                 {% endif %}
-
+                
                 <div class="preco-atual">R$ {{ p.preco_atual }}</div>
-
+                
                 {% if p.parcelas > 1 %}
                     <div class="parcelamento">Em até {{ p.parcelas }}x sem juros</div>
                 {% else %}
                     <div class="parcelamento">À vista</div>
                 {% endif %}
-
-                <a href="{{ p.link }}" target="_blank" rel="nofollow sponsored noopener" class="btn btn-comprar">
+                
+                <a href="{{ p.link }}" target="_blank" class="btn btn-comprar">
                     Ver na Amazon
                 </a>
             </div>
@@ -255,25 +204,19 @@ def formatar_moeda(valor):
 
 def processar_produto(row):
     try:
-        preco_atual_f = float(row[1])
-        preco_original_f = float(row[2])
-        desconto_pct = 0
-        if preco_original_f > preco_atual_f > 0:
-            desconto_pct = round((1 - (preco_atual_f / preco_original_f)) * 100)
-
         p = {
             'titulo': row[0],
             'preco_atual': formatar_moeda(row[1]),
-            'preco_atual_float': preco_atual_f,
+            'preco_atual_float': float(row[1]),
             'preco_original': formatar_moeda(row[2]),
-            'preco_original_float': preco_original_f,
+            'preco_original_float': float(row[2]),
             'imagem': row[3],
             'link': row[4],
             'categoria': row[5],
             'nota': row[6],
-            'parcelas': row[7],
-            'desconto_pct': desconto_pct,
+            'parcelas': row[7]
         }
+        # Tratamento de estrelas
         try: p['estrelas_int'] = int(float(row[6]))
         except: p['estrelas_int'] = 5
         return p
@@ -281,70 +224,37 @@ def processar_produto(row):
         print(f"Erro ao processar linha: {e}")
         return None
 
-def gerar_json_ld(produtos, nome_pagina, url_pagina):
-    """Gera dados estruturados schema.org (ItemList de Products) para rich snippets no Google."""
-    if not produtos:
-        return None
-    itens = []
-    for i, p in enumerate(produtos, start=1):
-        itens.append({
-            "@type": "ListItem",
-            "position": i,
-            "item": {
-                "@type": "Product",
-                "name": p['titulo'],
-                "image": p['imagem'],
-                "url": p['link'],
-                "aggregateRating": {
-                    "@type": "AggregateRating",
-                    "ratingValue": p['nota'],
-                    "bestRating": "5",
-                    "reviewCount": "1"
-                },
-                "offers": {
-                    "@type": "Offer",
-                    "priceCurrency": "BRL",
-                    "price": f"{p['preco_atual_float']:.2f}",
-                    "availability": "https://schema.org/InStock",
-                    "url": p['link']
-                }
-            }
-        })
-    schema = {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": nome_pagina,
-        "url": url_pagina,
-        "itemListElement": itens
-    }
-    return json.dumps(schema, ensure_ascii=False)
-
-def gerar_sitemap(categorias, paginas_por_categoria):
-    """Gera o arquivo sitemap.xml, incluindo todas as páginas de cada categoria paginada."""
+def gerar_sitemap(categorias):
+    """Gera o arquivo sitemap.xml para o Google encontrar as páginas"""
     print("🗺️  Gerando Sitemap...")
     data_hoje = datetime.now().strftime('%Y-%m-%d')
-
-    urls = [
-        (f"{URL_SITE}/", "daily", "1.0"),
-        (f"{URL_SITE}/index.html", "daily", "0.8"),
-    ]
+    
+    xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>{URL_SITE}/</loc>
+      <lastmod>{data_hoje}</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+   </url>
+   <url>
+      <loc>{URL_SITE}/index.html</loc>
+      <lastmod>{data_hoje}</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.8</priority>
+   </url>"""
+    
     for cat in categorias:
-        total_paginas = paginas_por_categoria.get(cat['slug'], 1)
-        for n in range(1, total_paginas + 1):
-            sufixo = "" if n == 1 else f"-{n}"
-            urls.append((f"{URL_SITE}/cat-{cat['slug']}{sufixo}.html", "weekly", "0.8"))
-
-    xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-    for loc, freq, prio in urls:
         xml += f"""
    <url>
-      <loc>{loc}</loc>
+      <loc>{URL_SITE}/cat-{cat['slug']}.html</loc>
       <lastmod>{data_hoje}</lastmod>
-      <changefreq>{freq}</changefreq>
-      <priority>{prio}</priority>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
    </url>"""
+        
     xml += "\n</urlset>"
-
+    
     with open(f"{PASTA_SAIDA}/sitemap.xml", "w", encoding="utf-8") as f:
         f.write(xml)
 
@@ -356,7 +266,7 @@ def main():
 
     conn = sqlite3.connect(NOME_BANCO)
     cursor = conn.cursor()
-
+    
     # 2. Pegar categorias
     cursor.execute("SELECT DISTINCT categoria FROM produtos WHERE categoria IS NOT NULL")
     cats_db = sorted([r[0] for r in cursor.fetchall() if r[0]])
@@ -369,77 +279,59 @@ def main():
     data_atual_str = datetime.now().strftime('%d/%m/%Y')
 
     # 4. GERAÇÃO DA HOME (index.html)
+    # Busca produtos de bebê
     cursor.execute("SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria = 'Mundo do Bebê' ORDER BY id DESC LIMIT 8")
     destaques_bebe = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
-
+    
+    # Busca outros produtos
     cursor.execute("SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria != 'Mundo do Bebê' ORDER BY id DESC LIMIT 40")
     outros_produtos = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
 
-    json_ld_home = gerar_json_ld(destaques_bebe + outros_produtos, "Dicas da Ely - Ofertas em Destaque", f"{URL_SITE}/")
-
+    # Renderiza Home
     html_home = tpl.render(
-        navbar=navbar_html,
-        is_home=True,
-        json_ld=json_ld_home,
+        navbar=navbar_html, 
+        is_home=True, 
+        # SEO da Home
         titulo_seo="Dicas da Ely | Achadinhos e Ofertas Amazon para Bebê e Casa",
         descricao_seo="Confira nossa seleção de fraldas, itens para enxoval e utilidades domésticas com os melhores preços. Verificado por Elyad & Henrique.",
         imagem_og=f"{URL_SITE}/{ARQUIVO_LOGO}",
         url_atual=f"{URL_SITE}/",
-        titulo_pag="Início",
-        destaques_bebe=destaques_bebe,
+        titulo_pag="Início", 
+        destaques_bebe=destaques_bebe, 
         outros_produtos=outros_produtos,
         data_atual=data_atual_str
     )
     with open(f"{PASTA_SAIDA}/index.html", "w", encoding="utf-8") as f: f.write(html_home)
 
-    # 5. GERAÇÃO DAS CATEGORIAS (com paginação)
-    paginas_por_categoria = {}
+    # 5. GERAÇÃO DAS CATEGORIAS
     for cat in menu_categorias:
-        cursor.execute("SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria = ? ORDER BY id DESC", (cat['nome'],))
+        cursor.execute("SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria = ?", (cat['nome'],))
         prods_cat = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
-
+        
         slug = cat['slug']
-        total_paginas = max(1, math.ceil(len(prods_cat) / PRODUTOS_POR_PAGINA))
-        paginas_por_categoria[slug] = total_paginas
-
-        for pagina in range(1, total_paginas + 1):
-            inicio = (pagina - 1) * PRODUTOS_POR_PAGINA
-            fim = inicio + PRODUTOS_POR_PAGINA
-            prods_pagina = prods_cat[inicio:fim]
-
-            sufixo_arquivo = "" if pagina == 1 else f"-{pagina}"
-            nome_arquivo = f"cat-{slug}{sufixo_arquivo}.html"
-            url_pagina = f"{URL_SITE}/{nome_arquivo}"
-
-            json_ld_cat = gerar_json_ld(prods_pagina, f"Ofertas de {cat['nome']}", url_pagina)
-
-            titulo_seo_pag = f"Ofertas de {cat['nome']}" + (f" - Página {pagina}" if pagina > 1 else "") + " | Dicas da Ely"
-
-            html_cat = tpl.render(
-                navbar=navbar_html,
-                is_home=False,
-                json_ld=json_ld_cat,
-                titulo_seo=titulo_seo_pag,
-                descricao_seo=f"Encontre as melhores promoções de {cat['nome']} selecionadas a dedo na Amazon.",
-                imagem_og=f"{URL_SITE}/{ARQUIVO_LOGO}",
-                url_atual=url_pagina,
-                titulo_secao=cat['nome'],
-                produtos=prods_pagina,
-                slug=slug,
-                pagina_atual=pagina,
-                total_paginas=total_paginas,
-                data_atual=data_atual_str
-            )
-            with open(f"{PASTA_SAIDA}/{nome_arquivo}", "w", encoding="utf-8") as f: f.write(html_cat)
+        # Renderiza Categoria
+        html_cat = tpl.render(
+            navbar=navbar_html, 
+            is_home=False, 
+            # SEO da Categoria
+            titulo_seo=f"Ofertas de {cat['nome']} | Dicas da Ely",
+            descricao_seo=f"Encontre as melhores promoções de {cat['nome']} selecionadas a dedo na Amazon.",
+            imagem_og=f"{URL_SITE}/{ARQUIVO_LOGO}",
+            url_atual=f"{URL_SITE}/cat-{slug}.html",
+            titulo_secao=cat['nome'], 
+            produtos=prods_cat,
+            data_atual=data_atual_str
+        )
+        with open(f"{PASTA_SAIDA}/cat-{slug}.html", "w", encoding="utf-8") as f: f.write(html_cat)
 
     # 6. Gerar o Sitemap
-    gerar_sitemap(menu_categorias, paginas_por_categoria)
+    gerar_sitemap(menu_categorias)
 
     conn.close()
     print("✅ SITE GERADO COM SUCESSO!")
     print("   - index.html criado")
-    print("   - sitemap.xml criado (com todas as páginas de categoria)")
-    print("   - Páginas de categoria criadas (com paginação e dados estruturados)")
+    print("   - sitemap.xml criado (Google vai amar)")
+    print("   - Páginas de categoria criadas")
 
 if __name__ == "__main__":
     main()
