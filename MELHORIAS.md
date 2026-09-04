@@ -38,6 +38,12 @@
   pra aguentar várias threads gravando no SQLite ao mesmo tempo sem erro de "database is locked".
 - Novo `site_publico/robots.txt`, liberando indexação e apontando pro sitemap.
 
+## 6. Google Analytics 4
+- Propriedade GA4 "Dicas da Ely" criada, ID `G-JDYT3SLVZJ`.
+- Tag do gtag.js integrada direto no `HEAD_COMUM` do `gerador_site.py` (constante `GA_MEASUREMENT_ID`),
+  então toda página gerada (home e categorias) já sai com o rastreamento ativo.
+- Leva até 48h pros primeiros dados aparecerem no relatório em tempo real do Analytics.
+
 ## O que NÃO foi mexido
 - Estrutura do banco de dados (banco_de_dados.py) — mantida como estava, só validada.
 - Workflow do GitHub Actions — já estava correto (só gera e publica; a coleta continua rodando local via Task Scheduler).
