@@ -1,6 +1,8 @@
 
 
 
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -66,6 +68,17 @@
 
         .hero { background: linear-gradient(180deg, #fff 0%, var(--cor-fundo) 100%); padding: 48px 0; text-align: center; border-bottom: 1px solid var(--cor-card-border); margin-bottom: 40px; }
         .hero h1 { color: var(--cor-primaria); }
+        .selo-confianca { max-width: 720px; margin: 32px auto 0; }
+        .selo-confianca .item-selo i { color: var(--cor-primaria); }
+        .selo-confianca .item-selo .titulo-selo { font-weight: 800; font-size: 0.85rem; color: var(--cor-texto); }
+        .selo-confianca .item-selo .desc-selo { font-size: 0.78rem; color: #a89a90; }
+
+        .card-dica { background: linear-gradient(135deg, #fff7f0, #fdf1e8); border: 1.5px dashed var(--cor-primaria); border-radius: 14px; padding: 20px 22px; height: 100%; display: flex; align-items: flex-start; gap: 14px; }
+        .card-dica .icone-dica { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
+        .card-dica .rotulo-dica { font-weight: 800; color: var(--cor-primaria); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
+        .card-dica p { margin: 0; font-size: 0.88rem; line-height: 1.5; color: var(--cor-texto); }
+
+        .intro-categoria { max-width: 780px; color: #8a7a70; font-size: 0.98rem; margin-bottom: 28px; line-height: 1.55; }
 
         .card-produto { position: relative; border: 1px solid var(--cor-card-border); border-radius: 14px; background: white; height: 100%; transition: 0.25s ease; overflow: hidden; display: flex; flex-direction: column; }
         .card-produto:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(140, 94, 74, 0.18); border-color: var(--cor-primaria); }
@@ -128,7 +141,10 @@
 
     <div class="container pb-5">
         
-             <h2 class="fw-bold mb-4 border-bottom pb-2" style="color: var(--cor-primaria);">Mundo do Bebê</h2>
+             <h2 class="fw-bold mb-3 border-bottom pb-2" style="color: var(--cor-primaria);">Mundo do Bebê</h2>
+             
+             <p class="intro-categoria">Selecionamos itens para bebê pensando em segurança e custo-benefício. Na hora de escolher, fique de olho na faixa etária recomendada pelo fabricante e prefira sempre materiais atóxicos e certificados pelo Inmetro.</p>
+             
              
              <div class="row g-4">
                 
@@ -403,6 +419,18 @@
                     Ver na Amazon
                 </a>
             </div>
+        </div>
+    </div>
+</div>
+
+                
+                    
+<div class="col-12">
+    <div class="card-dica">
+        <span class="icone-dica">💡</span>
+        <div>
+            <span class="rotulo-dica">Dica da Ely</span>
+            <p>Antes de comprar roupinhas de bebê, confira a tabela de medidas do vendedor — o tamanho "RN" varia bastante entre marcas.</p>
         </div>
     </div>
 </div>
@@ -685,6 +713,18 @@
 
                 
                     
+<div class="col-12">
+    <div class="card-dica">
+        <span class="icone-dica">💡</span>
+        <div>
+            <span class="rotulo-dica">Dica da Ely</span>
+            <p>Brinquedos com peças pequenas só são seguros a partir dos 3 anos. Pra bebês menores, prefira sempre itens maiores que a boca da criança.</p>
+        </div>
+    </div>
+</div>
+
+                
+                    
 <div class="col-6 col-md-4 col-lg-3">
     <div class="card card-produto">
         
@@ -955,6 +995,18 @@
                     Ver na Amazon
                 </a>
             </div>
+        </div>
+    </div>
+</div>
+
+                
+                    
+<div class="col-12">
+    <div class="card-dica">
+        <span class="icone-dica">💡</span>
+        <div>
+            <span class="rotulo-dica">Dica da Ely</span>
+            <p>Berços, cadeirinhas e carrinhos devem ter selo do Inmetro — é a garantia mínima de segurança exigida no Brasil.</p>
         </div>
     </div>
 </div>

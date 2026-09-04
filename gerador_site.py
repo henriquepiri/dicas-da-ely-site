@@ -14,6 +14,84 @@ ARQUIVO_LOGO = "logo_dicas.png"
 URL_SITE = "https://dicasdaely.com.br"
 PRODUTOS_POR_PAGINA = 24
 GA_MEASUREMENT_ID = "G-JDYT3SLVZJ"  # Propriedade GA4 "Dicas da Ely"
+PRODUTOS_ENTRE_DICAS = 8  # a cada N produtos, intercala uma caixinha de dica no grid
+
+# --- CONTEÚDO EDITORIAL POR CATEGORIA ---
+# Dicas genéricas de compra (não são resenha de produto específico — é orientação
+# de como escolher bem dentro daquela categoria). É isso que dá o tom de "site de
+# dicas" em vez de só uma lista de links de afiliado.
+CATEGORIA_INFO = {
+    "Mundo do Bebê": {
+        "intro": "Selecionamos itens para bebê pensando em segurança e custo-benefício. "
+                 "Na hora de escolher, fique de olho na faixa etária recomendada pelo fabricante "
+                 "e prefira sempre materiais atóxicos e certificados pelo Inmetro.",
+        "dicas": [
+            "Antes de comprar roupinhas de bebê, confira a tabela de medidas do vendedor — o "
+            "tamanho \"RN\" varia bastante entre marcas.",
+            "Brinquedos com peças pequenas só são seguros a partir dos 3 anos. Pra bebês menores, "
+            "prefira sempre itens maiores que a boca da criança.",
+            "Berços, cadeirinhas e carrinhos devem ter selo do Inmetro — é a garantia mínima de "
+            "segurança exigida no Brasil.",
+        ],
+    },
+    "Cozinha": {
+        "intro": "Aqui reunimos organizadores e utensílios que realmente fazem diferença no dia a "
+                 "dia da cozinha — sem gastar mais do que precisa.",
+        "dicas": [
+            "Potes herméticos de vidro custam mais, mas não mancham nem retêm cheiro como os de "
+            "plástico — vale o investimento pra quem guarda tempero e óleo.",
+            "Organizadores empilháveis rendem muito mais espaço de armário do que parecem na foto — "
+            "meça a prateleira antes de comprar.",
+            "Utensílios de silicone aguentam mais calor que os de plástico comum e não risham "
+            "panela antiaderente.",
+        ],
+    },
+    "Tecnologia": {
+        "intro": "Gadgets pra casa inteligente que valem o preço — testamos a categoria pensando em "
+                 "praticidade real, não só em novidade.",
+        "dicas": [
+            "Antes de comprar qualquer gadget \"inteligente\", confira se ele funciona com o "
+            "assistente de voz que você já usa (Alexa, Google Assistente) — nem todos são compatíveis.",
+            "Tomadas e lâmpadas inteligentes que usam Wi-Fi direto (sem hub) são mais fáceis de "
+            "instalar, mas costumam pesar mais na sua rede — bom pra quem tem poucos dispositivos.",
+            "Fios organizadores e réguas com USB parecem bobos, mas resolvem 90% da bagunça de mesa "
+            "por menos de R$ 30.",
+        ],
+    },
+    "Casa & Decor": {
+        "intro": "Organização e decoração com foco em coisas que resolvem um problema real da casa, "
+                 "não só enfeite.",
+        "dicas": [
+            "Prateleiras e organizadores multiuso costumam caber em mais lugares do que os "
+            "específicos pra um cômodo só — pense na flexibilidade antes de comprar.",
+            "Fitas dupla-face de montagem removível seguram bem em superfície lisa, mas soltam em "
+            "parede com textura ou tinta velha — teste num cantinho antes.",
+            "Itens de decoração com tons neutros (bege, terracota, verde-oliva) combinam com mais "
+            "ambientes e não saem de moda tão rápido.",
+        ],
+    },
+    "Cuidados Pessoais": {
+        "intro": "Achadinhos de skincare e beleza com bom custo-benefício — sempre vale conferir a "
+                 "lista de ingredientes se você tem pele sensível.",
+        "dicas": [
+            "Protetor solar é o item de skincare com melhor custo-benefício a longo prazo — vale "
+            "priorizar mesmo com orçamento apertado.",
+            "Produtos com ácidos (retinol, vitamina C) devem entrar aos poucos na rotina — comece "
+            "usando 2-3x por semana antes de usar todo dia.",
+            "Pele oleosa também precisa de hidratante — pular essa etapa costuma piorar a oleosidade, "
+            "não melhorar.",
+        ],
+    },
+    "GERAL": {
+        "dicas": [
+            "Todos os preços aqui são coletados diretamente da Amazon todos os dias — o valor pode "
+            "mudar entre nossa última atualização e o momento da sua compra, então confira o preço "
+            "final na página do produto.",
+            "Somos participantes do Programa de Associados da Amazon: se você compra por um dos "
+            "nossos links, a gente recebe uma pequena comissão, sem custo extra pra você.",
+        ],
+    },
+}
 
 # --- 1. CABEÇALHO COM SEO, PERFORMANCE E DADOS ESTRUTURADOS ---
 HEAD_COMUM = """
@@ -79,6 +157,17 @@ HEAD_COMUM = """
 
         .hero { background: linear-gradient(180deg, #fff 0%, var(--cor-fundo) 100%); padding: 48px 0; text-align: center; border-bottom: 1px solid var(--cor-card-border); margin-bottom: 40px; }
         .hero h1 { color: var(--cor-primaria); }
+        .selo-confianca { max-width: 720px; margin: 32px auto 0; }
+        .selo-confianca .item-selo i { color: var(--cor-primaria); }
+        .selo-confianca .item-selo .titulo-selo { font-weight: 800; font-size: 0.85rem; color: var(--cor-texto); }
+        .selo-confianca .item-selo .desc-selo { font-size: 0.78rem; color: #a89a90; }
+
+        .card-dica { background: linear-gradient(135deg, #fff7f0, #fdf1e8); border: 1.5px dashed var(--cor-primaria); border-radius: 14px; padding: 20px 22px; height: 100%; display: flex; align-items: flex-start; gap: 14px; }
+        .card-dica .icone-dica { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
+        .card-dica .rotulo-dica { font-weight: 800; color: var(--cor-primaria); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
+        .card-dica p { margin: 0; font-size: 0.88rem; line-height: 1.5; color: var(--cor-texto); }
+
+        .intro-categoria { max-width: 780px; color: #8a7a70; font-size: 0.98rem; margin-bottom: 28px; line-height: 1.55; }
 
         .card-produto { position: relative; border: 1px solid var(--cor-card-border); border-radius: 14px; background: white; height: 100%; transition: 0.25s ease; overflow: hidden; display: flex; flex-direction: column; }
         .card-produto:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(140, 94, 74, 0.18); border-color: var(--cor-primaria); }
@@ -138,11 +227,29 @@ TEMPLATE_VITRINE = """
     {% if is_home %}
     <div class="hero">
         <div class="container">
-            <h1 class="display-6 fw-bold mb-3">Seleção Especial</h1>
-            <p class="text-muted" style="max-width: 600px; margin: auto; font-size: 1.1rem;">
-                Ofertas verificadas e seguras da Amazon para o seu Lar e para o Mundo do Bebê.
-                Curadoria feita com amor por Elyad & Henrique.
+            <h1 class="display-6 fw-bold mb-3">Dicas e Achadinhos da Ely</h1>
+            <p class="text-muted" style="max-width: 620px; margin: auto; font-size: 1.1rem;">
+                Mais do que uma lista de ofertas: aqui a gente testa, compara e dá a dica de como
+                escolher bem em cada categoria, além de garimpar os melhores preços da Amazon
+                pro seu Lar e pro Mundo do Bebê. Curadoria feita com carinho por Elyad & Henrique.
             </p>
+            <div class="row selo-confianca g-3">
+                <div class="col-4 item-selo">
+                    <i class="fas fa-magnifying-glass fa-lg mb-2"></i>
+                    <div class="titulo-selo">Curadoria manual</div>
+                    <div class="desc-selo">Cada oferta é escolhida à mão</div>
+                </div>
+                <div class="col-4 item-selo">
+                    <i class="fas fa-rotate fa-lg mb-2"></i>
+                    <div class="titulo-selo">Preços atualizados</div>
+                    <div class="desc-selo">Revisados todos os dias</div>
+                </div>
+                <div class="col-4 item-selo">
+                    <i class="fas fa-lightbulb fa-lg mb-2"></i>
+                    <div class="titulo-selo">Dicas de verdade</div>
+                    <div class="desc-selo">Não é só link, é orientação</div>
+                </div>
+            </div>
         </div>
     </div>
     {% else %}
@@ -156,8 +263,8 @@ TEMPLATE_VITRINE = """
              </div>
              {% if destaques_bebe %}
              <div class="row g-4 mb-5">
-                {% for p in destaques_bebe %}
-                    {{ render_card(p) }}
+                {% for item in destaques_bebe %}
+                    {% if item.tipo == 'dica' %}{{ render_dica(item.texto) }}{% else %}{{ render_card(item.dado) }}{% endif %}
                 {% endfor %}
              </div>
              {% else %}
@@ -167,19 +274,22 @@ TEMPLATE_VITRINE = """
              <h3 class="fw-bold mb-4 mt-5" style="color: var(--cor-texto);">✨ Mais Achadinhos</h3>
              {% if outros_produtos %}
              <div class="row g-4">
-                {% for p in outros_produtos %}
-                    {{ render_card(p) }}
+                {% for item in outros_produtos %}
+                    {% if item.tipo == 'dica' %}{{ render_dica(item.texto) }}{% else %}{{ render_card(item.dado) }}{% endif %}
                 {% endfor %}
              </div>
              {% else %}
              <div class="empty-state"><i class="fas fa-box-open fa-2x mb-2"></i><p>Novidades chegando em breve por aqui.</p></div>
              {% endif %}
         {% else %}
-             <h2 class="fw-bold mb-4 border-bottom pb-2" style="color: var(--cor-primaria);">{{ titulo_secao }}</h2>
+             <h2 class="fw-bold mb-3 border-bottom pb-2" style="color: var(--cor-primaria);">{{ titulo_secao }}</h2>
+             {% if intro_categoria %}
+             <p class="intro-categoria">{{ intro_categoria }}</p>
+             {% endif %}
              {% if produtos %}
              <div class="row g-4">
-                {% for p in produtos %}
-                    {{ render_card(p) }}
+                {% for item in produtos %}
+                    {% if item.tipo == 'dica' %}{{ render_dica(item.texto) }}{% else %}{{ render_card(item.dado) }}{% endif %}
                 {% endfor %}
              </div>
              {% if total_paginas > 1 %}
@@ -253,6 +363,18 @@ MACRO_CARD = """
     </div>
 </div>
 {% endmacro %}
+
+{% macro render_dica(texto) %}
+<div class="col-12">
+    <div class="card-dica">
+        <span class="icone-dica">💡</span>
+        <div>
+            <span class="rotulo-dica">Dica da Ely</span>
+            <p>{{ texto }}</p>
+        </div>
+    </div>
+</div>
+{% endmacro %}
 """
 
 # --- FUNÇÕES AUXILIARES ---
@@ -292,6 +414,20 @@ def processar_produto(row):
     except Exception as e:
         print(f"Erro ao processar linha: {e}")
         return None
+
+def intercalar_dicas(produtos, categoria):
+    """Transforma a lista de produtos numa lista mista de itens {'tipo': 'produto'|'dica'},
+    inserindo uma caixinha de dica a cada N produtos. Isso é o que dá o tom editorial ao
+    grid, em vez de só uma parede de cards de compra."""
+    dicas = CATEGORIA_INFO.get(categoria, {}).get("dicas", [])
+    resultado = []
+    dica_idx = 0
+    for i, p in enumerate(produtos, start=1):
+        resultado.append({"tipo": "produto", "dado": p})
+        if dicas and i % PRODUTOS_ENTRE_DICAS == 0 and dica_idx < len(dicas):
+            resultado.append({"tipo": "dica", "texto": dicas[dica_idx]})
+            dica_idx += 1
+    return resultado
 
 def gerar_json_ld(produtos, nome_pagina, url_pagina):
     """Gera dados estruturados schema.org (ItemList de Products) para rich snippets no Google."""
@@ -409,8 +545,8 @@ def main():
         imagem_og=f"{URL_SITE}/{ARQUIVO_LOGO}",
         url_atual=f"{URL_SITE}/",
         titulo_pag="Início",
-        destaques_bebe=destaques_bebe,
-        outros_produtos=outros_produtos,
+        destaques_bebe=intercalar_dicas(destaques_bebe, "Mundo do Bebê"),
+        outros_produtos=intercalar_dicas(outros_produtos, "GERAL"),
         data_atual=data_atual_str
     )
     with open(f"{PASTA_SAIDA}/index.html", "w", encoding="utf-8") as f: f.write(html_home)
@@ -448,7 +584,8 @@ def main():
                 imagem_og=f"{URL_SITE}/{ARQUIVO_LOGO}",
                 url_atual=url_pagina,
                 titulo_secao=cat['nome'],
-                produtos=prods_pagina,
+                intro_categoria=CATEGORIA_INFO.get(cat['nome'], {}).get("intro"),
+                produtos=intercalar_dicas(prods_pagina, cat['nome']),
                 slug=slug,
                 pagina_atual=pagina,
                 total_paginas=total_paginas,

@@ -44,6 +44,17 @@
   então toda página gerada (home e categorias) já sai com o rastreamento ativo.
 - Leva até 48h pros primeiros dados aparecerem no relatório em tempo real do Analytics.
 
+## 7. Layout com cara de site de dicas (não só links)
+- Hero da home reescrito com uma proposta editorial clara ("mais do que uma lista de ofertas")
+  e uma faixa de confiança com 3 selos: curadoria manual, preços atualizados, dicas de verdade.
+- Cada página de categoria ganhou um parágrafo de introdução (`intro_categoria`) explicando o
+  que considerar na hora de escolher naquele tipo de produto.
+- Caixinhas "💡 Dica da Ely" intercaladas no meio do grid de produtos (a cada 8 itens), com
+  orientações genuínas de compra por categoria — não é resenha inventada de produto específico,
+  é o tipo de dica que qualquer comprador deveria saber antes de escolher.
+- Conteúdo das dicas fica centralizado em `CATEGORIA_INFO` no `gerador_site.py`, fácil de editar
+  ou ampliar (é só editar o dicionário e rodar o gerador de novo).
+
 ## O que NÃO foi mexido
 - Estrutura do banco de dados (banco_de_dados.py) — mantida como estava, só validada.
 - Workflow do GitHub Actions — já estava correto (só gera e publica; a coleta continua rodando local via Task Scheduler).
