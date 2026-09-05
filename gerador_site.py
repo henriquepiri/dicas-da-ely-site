@@ -19,6 +19,17 @@ PRODUTOS_POR_PAGINA = 24
 GA_MEASUREMENT_ID = "G-JDYT3SLVZJ"  # Propriedade GA4 "Dicas da Ely"
 PRODUTOS_ENTRE_DICAS = 8  # a cada N produtos, intercala uma caixinha de dica no grid
 
+# Ofertas param de aparecer no site depois deste prazo sem serem revistas pela coleta.
+# Motivo: o banco só cresce, e cada execução do robô revisita apenas parte dos produtos.
+# Sem isso, item coletado há semanas fica no ar com preço antigo, e o visitante clica
+# esperando um valor e encontra outro na Amazon.
+DIAS_VALIDADE_OFERTA = 10
+
+# Proteção: se o filtro acima deixar menos que isto, ele é ignorado e o site mostra tudo.
+# Evita que uma falha na coleta (robô quebrado, Amazon mudando layout) esvazie o site
+# silenciosamente — melhor preço velho do que página em branco.
+MIN_PRODUTOS_PARA_FILTRAR = 20
+
 # --- CONTEÚDO EDITORIAL POR CATEGORIA ---
 # Dicas genéricas de compra (não são resenha de produto específico — é orientação
 # de como escolher bem dentro daquela categoria). É isso que dá o tom de "site de
@@ -642,6 +653,35 @@ def processar_produto(row):
         print(f"Erro ao processar linha: {e}")
         return None
 
+def definir_filtro_frescor(cursor):
+    """Decide se o corte por idade deve ser aplicado e devolve o trecho SQL.
+
+    Devolve string vazia (sem filtro) quando aplicá-lo deixaria o site quase vazio —
+    situação típica de coleta quebrada, em que sumir com tudo seria pior do que mostrar
+    ofertas antigas."""
+    cursor.execute("SELECT COUNT(*) FROM produtos")
+    total = cursor.fetchone()[0]
+
+    cursor.execute(
+        "SELECT COUNT(*) FROM produtos WHERE julianday('now') - julianday(data_atualizacao) <= ?",
+        (DIAS_VALIDADE_OFERTA,)
+    )
+    frescos = cursor.fetchone()[0]
+
+    if frescos < MIN_PRODUTOS_PARA_FILTRAR:
+        print(f"⚠️  Só {frescos} de {total} ofertas foram revistas nos últimos "
+              f"{DIAS_VALIDADE_OFERTA} dias.")
+        print("    O filtro de validade foi IGNORADO para o site não ficar vazio.")
+        print("    Verifique se o robo_coletor.py está rodando (veja o coleta.log).")
+        return ""
+
+    if frescos < total:
+        print(f"🕒 {total - frescos} ofertas antigas ocultadas "
+              f"(sem revisão há mais de {DIAS_VALIDADE_OFERTA} dias). "
+              f"{frescos} no ar.")
+
+    return f" AND julianday('now') - julianday(data_atualizacao) <= {DIAS_VALIDADE_OFERTA}"
+
 def preparar_guias():
     """Ordena os guias por data (mais recente primeiro) e formata a data para exibição.
     Separa o guia em destaque dos demais."""
@@ -800,6 +840,9 @@ def main():
     conn = sqlite3.connect(NOME_BANCO)
     cursor = conn.cursor()
 
+    # 1b. Decidir o corte por idade das ofertas
+    filtro_frescor = definir_filtro_frescor(cursor)
+
     # 2. Pegar categorias
     cursor.execute("SELECT DISTINCT categoria FROM produtos WHERE categoria IS NOT NULL")
     cats_db = sorted([r[0] for r in cursor.fetchall() if r[0]])
@@ -818,10 +861,10 @@ def main():
     todos_guias, guia_destaque, outros_guias = preparar_guias()
 
     # 4. GERAÇÃO DA HOME (index.html)
-    cursor.execute("SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria = 'Mundo do Bebê' ORDER BY id DESC LIMIT 8")
+    cursor.execute(f"SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria = 'Mundo do Bebê'{filtro_frescor} ORDER BY id DESC LIMIT 8")
     destaques_bebe = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
 
-    cursor.execute("SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria != 'Mundo do Bebê' ORDER BY id DESC LIMIT 40")
+    cursor.execute(f"SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria != 'Mundo do Bebê'{filtro_frescor} ORDER BY id DESC LIMIT 40")
     outros_produtos = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
 
     json_ld_home = gerar_json_ld(destaques_bebe + outros_produtos, "Dicas da Ely - Ofertas em Destaque", f"{URL_SITE}/")
@@ -848,7 +891,7 @@ def main():
     # 5. GERAÇÃO DAS CATEGORIAS (com paginação)
     paginas_por_categoria = {}
     for cat in menu_categorias:
-        cursor.execute("SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria = ? ORDER BY id DESC", (cat['nome'],))
+        cursor.execute(f"SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria = ?{filtro_frescor} ORDER BY id DESC", (cat['nome'],))
         prods_cat = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
 
         slug = cat['slug']
@@ -899,7 +942,7 @@ def main():
         # entre o conteúdo e a oferta
         cursor.execute(
             "SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas "
-            "FROM produtos WHERE categoria = ? ORDER BY id DESC LIMIT 4",
+            f"FROM produtos WHERE categoria = ?{filtro_frescor} ORDER BY id DESC LIMIT 4",
             (guia['categoria'],)
         )
         relacionados = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]

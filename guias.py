@@ -354,4 +354,123 @@ qualquer desconforto, choro ao ser colocado, ou tiver dúvida sobre o quadril do
 converse com quem acompanha ele.</p>
 """
     },
+    {
+        "slug": "fralda-como-escolher-e-quanto-comprar",
+        "titulo": "Fralda: como escolher o tamanho e quanto comprar",
+        "resumo": "A conta que quase todo mundo erra no começo, e por que estocar "
+                  "tamanho pequeno costuma dar prejuízo.",
+        "categoria": "Mundo do Bebê",
+        "data": "2026-09-06",
+        "destaque": False,
+        "conteudo": """
+<p>Fralda é o item que mais consome dinheiro no primeiro ano, e também é onde a gente
+mais errou a conta. Vale escrever sobre isso.</p>
+
+<h2>O erro de estocar tamanho pequeno</h2>
+
+<p>Parece lógico: fralda é consumo garantido, então comprar pacote grande sai mais barato.
+O problema é que o bebê muda de tamanho rápido, e principalmente nos primeiros meses.</p>
+
+<p>Compramos pacotes grandes de tamanho pequeno e sobrou fralda que não servia mais. O
+dinheiro que a gente "economizou" no preço por unidade virou fralda encostada.</p>
+
+<p>A regra que funcionou depois: <strong>pacote pequeno nos tamanhos iniciais, pacote
+grande só a partir do momento em que o bebê estabiliza num tamanho</strong> — o que
+costuma acontecer alguns meses depois.</p>
+
+<h2>Tamanho não é idade, é peso</h2>
+
+<p>As embalagens trazem faixa de peso, e é isso que vale. Dois bebês da mesma idade podem
+usar tamanhos diferentes. Se a fralda está marcando a perna ou vazando com frequência,
+provavelmente já passou da hora de subir.</p>
+
+<p>Um detalhe: dentro da mesma faixa de peso, a modelagem muda de marca para marca. Uma
+que veste bem no seu bebê pode ser justamente a que vaza no do vizinho.</p>
+
+<h2>Testar antes de decidir</h2>
+
+<p>Como acontece com lenço e pomada, fralda também é item de tentativa e erro. Vale
+comprar embalagens pequenas de duas ou três marcas antes de fechar com uma.</p>
+
+<p>O que observar em cada teste:</p>
+
+<ul>
+<li><strong>Vazamento</strong>, principalmente à noite e em fralda de cocô</li>
+<li><strong>Marca na pele</strong> na cintura e nas pernas</li>
+<li><strong>Absorção</strong> — se fica pesada e mole rápido demais</li>
+<li><strong>Reação na pele</strong>, que varia bastante entre marcas</li>
+</ul>
+
+<h2>Sobre a fralda noturna</h2>
+
+<p>Algumas marcas têm linha específica para a noite, com mais absorção. Costuma custar
+mais caro por unidade, e uma estratégia razoável é usar a comum de dia e a reforçada só
+à noite, em vez de pagar o preço maior o tempo todo.</p>
+
+<h2>Quanto comprar por mês</h2>
+
+<p>O consumo cai bastante ao longo do primeiro ano — recém-nascido troca muito mais vezes
+por dia do que um bebê de oito meses. Então não use o consumo do primeiro mês como base
+para estocar.</p>
+
+<p>Na prática: acompanhe seu próprio consumo por duas semanas antes de comprar em
+quantidade. É mais confiável que qualquer tabela genérica.</p>
+"""
+    },
+    {
+        "slug": "quarto-de-bebe-pequeno",
+        "titulo": "Quarto de bebê pequeno: o que cabe e o que não precisa",
+        "resumo": "Dá pra montar um quarto funcional em pouco espaço. O truque é saber "
+                  "o que dos móveis tradicionais realmente faz falta.",
+        "categoria": "Casa & Decor",
+        "data": "2026-09-07",
+        "destaque": False,
+        "conteudo": """
+<p>As fotos de quarto de bebê que circulam mostram berço grande, cômoda, poltrona de
+amamentação, tapete, prateleiras. Em quarto pequeno — ou em quarto compartilhado com os
+pais — nada disso cabe junto.</p>
+
+<p>A boa notícia é que boa parte desses móveis não é essencial.</p>
+
+<h2>O que realmente faz falta</h2>
+
+<p><strong>Um lugar seguro pra dormir.</strong> Berço, mini-berço ou berço de canto.
+Modelos menores existem e cumprem a mesma função nos primeiros meses. O que não muda é a
+exigência de segurança: certificação, distância entre grades, estrado firme.</p>
+
+<p><strong>Uma superfície pra trocar fralda.</strong> Não precisa ser trocador móvel. Um
+colchonete de troca sobre a cômoda que você já tem, ou sobre a cama, resolve. O que
+importa é ter tudo à mão — nunca dá pra soltar o bebê pra pegar algo.</p>
+
+<p><strong>Onde guardar roupa.</strong> Roupa de bebê é pequena e cabe em pouco espaço.
+Gaveteiro estreito ou até caixas organizadoras numa prateleira dão conta.</p>
+
+<h2>O que costuma ser dispensável</h2>
+
+<p><strong>Poltrona de amamentação.</strong> É confortável, ocupa muito espaço e custa
+caro. Muita gente acaba amamentando na cama mesmo. Se o quarto é apertado, essa é a
+primeira coisa a cortar.</p>
+
+<p><strong>Trocador com móvel próprio.</strong> Vira mesa de bagunça em poucos meses e
+perde a função quando o bebê começa a rolar.</p>
+
+<p><strong>Cômoda grande.</strong> Enxoval de bebê ocupa menos do que parece, ainda mais
+se você seguir a lógica de comprar pouco dos tamanhos iniciais.</p>
+
+<h2>Aproveitar altura em vez de área</h2>
+
+<p>Em quarto pequeno, o espaço que sobra é vertical. Prateleiras acima do trocador ou da
+cômoda deixam à mão o que você usa todo dia, sem ocupar chão.</p>
+
+<p>Um cuidado importante: nada pesado ou de vidro em prateleira acima de onde o bebê fica.
+E fixação bem feita na parede, não em fita adesiva — a mesma prateleira que hoje segura
+fralda pode virar apoio de criança que aprendeu a subir.</p>
+
+<h2>Deixe espaço vazio</h2>
+
+<p>Parece contraintuitivo, mas vale planejar chão livre. Em poucos meses o bebê vai
+querer rolar, engatinhar e brincar no chão, e aí um tapete e espaço aberto valem mais que
+qualquer móvel decorativo.</p>
+"""
+    },
 ]

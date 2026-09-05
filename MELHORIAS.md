@@ -149,3 +149,15 @@ passam na ferramenta oficial de verificação.
   como uma tag válida".
 - `limpar_links.py`: script de execução única para converter os links já gravados.
   Depois de rodar, pode ser apagado — o coletor já grava no formato certo.
+
+## 15. Validade das ofertas, mais guias e material de revisão
+- `DIAS_VALIDADE_OFERTA` (10 dias): ofertas sem revisão há mais tempo somem do site.
+  Motivo: o banco só cresce e cada coleta revisita apenas parte dos produtos, então item
+  antigo ficava no ar com preço defasado — o visitante clicava esperando um valor e
+  encontrava outro na Amazon.
+- Proteção `MIN_PRODUTOS_PARA_FILTRAR` (20): se o corte deixar menos que isso, ele é
+  ignorado e o gerador avisa no console. Evita que uma coleta quebrada esvazie o site
+  silenciosamente.
+- Dois guias novos: fralda (tamanho e quantidade) e quarto de bebê pequeno. Total: 7.
+- `COMO-EDITAR-GUIAS.md`: instruções em linguagem comum para Henrique e Elyad revisarem
+  os textos, criarem guias novos e publicarem, sem precisar entender o gerador.
