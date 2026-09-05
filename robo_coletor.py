@@ -112,6 +112,44 @@ def salvar_artefatos_debug(driver, nome_categoria):
         log.error(f"Falha ao salvar artefatos de debug para {nome_categoria}: {e}")
 
 
+def _texto_para_float(texto):
+    """Converte 'R$ 1.299,90' -> 1299.90"""
+    limpo = texto.replace("R$", "").replace("\xa0", "").strip()
+    limpo = limpo.replace(".", "").replace(",", ".")
+    return float(limpo)
+
+
+def extrair_preco_atual(p):
+    """Lê o preço COM centavos.
+
+    Cuidado: a classe 'a-price-whole' contém apenas a parte inteira ('89,'), e os
+    centavos ficam em 'a-price-fraction'. Usar só a primeira descarta os centavos e
+    faz todo preço virar redondo. A fonte confiável é o span 'a-offscreen' dentro de
+    'a-price', que traz o valor completo ('R$ 89,90'); as outras duas classes servem
+    de reserva caso a Amazon mude o layout."""
+    container = p.find("span", class_="a-price")
+    if container:
+        offscreen = container.find("span", class_="a-offscreen")
+        if offscreen and offscreen.text.strip():
+            try:
+                return _texto_para_float(offscreen.text)
+            except Exception:
+                pass
+
+    inteiro_tag = p.find("span", class_="a-price-whole")
+    if not inteiro_tag:
+        return None
+    texto_inteiro = inteiro_tag.text.strip().rstrip(",.").replace(".", "")
+
+    fracao_tag = p.find("span", class_="a-price-fraction")
+    centavos = fracao_tag.text.strip() if fracao_tag else "00"
+
+    try:
+        return float(f"{texto_inteiro}.{centavos}")
+    except Exception:
+        return None
+
+
 def coletar_categoria(driver, nome_categoria, url_alvo):
     """Coleta uma categoria, com retry em caso de zero resultados. Retorna a quantidade salva."""
     for tentativa in range(1, MAX_TENTATIVAS_POR_CATEGORIA + 1):
@@ -143,18 +181,16 @@ def coletar_categoria(driver, nome_categoria, url_alvo):
                     h2 = p.find("h2")
                     titulo = h2.text.strip()
 
-                    preco_atual_tag = p.find("span", class_="a-price-whole")
-                    if not preco_atual_tag:
+                    preco_atual = extrair_preco_atual(p)
+                    if preco_atual is None:
                         continue
-                    preco_atual = float(preco_atual_tag.text.replace(".", "").replace(",", "."))
 
                     preco_original = 0.0
                     preco_antigo_container = p.find("span", class_="a-text-price")
                     if preco_antigo_container:
                         texto_offscreen = preco_antigo_container.find("span", class_="a-offscreen")
                         if texto_offscreen:
-                            valor_limpo = texto_offscreen.text.replace("R$", "").replace(".", "").replace(",", ".").strip()
-                            preco_temp = float(valor_limpo)
+                            preco_temp = _texto_para_float(texto_offscreen.text)
                             if preco_temp > preco_atual:
                                 preco_original = preco_temp
 

@@ -61,10 +61,16 @@
         body { background-color: var(--cor-fundo); font-family: 'Nunito', sans-serif; color: var(--cor-texto); }
         h1, h2, h3, .navbar-brand-text { font-family: 'Baloo 2', 'Nunito', sans-serif; }
 
-        .navbar { background: white; box-shadow: 0 4px 15px rgba(92, 64, 51, 0.05); padding: 15px 0; }
-        .logo-img { max-height: 85px; transition: 0.3s; }
-        .nav-link { color: var(--cor-texto) !important; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; margin: 0 12px; letter-spacing: 0.5px; }
-        .nav-link:hover { color: var(--cor-destaque) !important; }
+        .navbar { background: white; border-bottom: 1px solid var(--cor-card-border); box-shadow: none; padding: 0; }
+        .navbar > .container { max-width: 1140px; }
+        .logo-img { height: 46px; width: auto; display: block; }
+        .navbar-brand { padding: 14px 0; margin-right: 40px; }
+        .nav-link { color: var(--cor-texto) !important; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.4px; padding: 22px 0 !important; margin: 0 14px; border-bottom: 2px solid transparent; }
+        .nav-link:hover { color: var(--cor-destaque) !important; border-bottom-color: var(--cor-destaque); }
+        @media (max-width: 991px) {
+            .nav-link { padding: 10px 0 !important; margin: 0; border-bottom: none; }
+            .navbar-brand { margin-right: 0; }
+        }
 
         .hero { background: linear-gradient(180deg, #fff 0%, var(--cor-fundo) 100%); padding: 48px 0; text-align: center; border-bottom: 1px solid var(--cor-card-border); margin-bottom: 40px; }
         .hero h1 { color: var(--cor-primaria); }
@@ -271,7 +277,7 @@ o que vai usar nas primeiras semanas.</p>
             <div class="mt-auto">
                 
 
-                <div class="preco-atual">R$ 82,00</div>
+                <div class="preco-atual">R$ 82,10</div>
 
                 
                     <div class="parcelamento">Em até 2x sem juros</div>
@@ -373,7 +379,7 @@ o que vai usar nas primeiras semanas.</p>
             <div class="mt-auto">
                 
 
-                <div class="preco-atual">R$ 173,00</div>
+                <div class="preco-atual">R$ 173,74</div>
 
                 
                     <div class="parcelamento">Em até 5x sem juros</div>
@@ -421,7 +427,7 @@ o que vai usar nas primeiras semanas.</p>
 
     <footer class="bg-white py-4 mt-5 border-top text-center small">
         <div class="container">
-            <img src="logo_dicas.png" style="height: 40px; opacity: 0.6; margin-bottom: 10px;">
+            <img src="logo_dicas.png" style="height: 34px; opacity: 0.55; margin-bottom: 10px;">
             <p class="mb-1 fw-bold text-muted">© 2026 Dicas da Ely | Todos os direitos reservados</p>
             <small class="text-muted d-block">Participante do Programa de Associados da Amazon.</small>
             <p class="mt-2 text-muted" style="font-size: 0.75rem">Última atualização: 04/09/2026</p>

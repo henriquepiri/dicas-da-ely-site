@@ -85,3 +85,29 @@ virou consequência.
 - Cada guia puxa 4 produtos da sua categoria no final, fechando o ciclo conteúdo -> oferta.
 - Dados estruturados `Article` (schema.org) nas páginas de guia — sinaliza ao Google que é
   conteúdo editorial, não página de produto. Guias entram no sitemap com prioridade 0.9.
+
+## 10. Cabeçalho e logo
+- A logo era um PNG 1024x1024 totalmente opaco, com fundo creme (#FDF6F0) e uma margem
+  vazia gigante — por isso aparecia como um "quadrado colado" sobre a barra branca.
+  Removido o fundo (flood fill a partir das bordas, para não comer o bege da prancheta
+  do desenho), recortada para o conteúdo e redimensionada. De 219KB para ~67KB.
+  Ressalva: os miolos fechados das letras seguem cor creme; imperceptível sobre fundo
+  claro, mas a logo não deve ser usada sobre fundo escuro.
+- Barra mais baixa e enxuta, sombra trocada por hairline; menu com itens menores e mais
+  próximos, sublinhado no hover; container limitado a 1140px para a logo não ficar
+  isolada em telas largas.
+
+## 11. Correção: preços vinham sem centavos (bug)
+Sintoma: todo preço no site aparecia redondo (R$ 369,00) enquanto na Amazon tinha
+centavos. 100% dos 60 produtos do banco estavam assim.
+
+Causa: o scraper lia a classe `a-price-whole`, que contém APENAS a parte inteira do
+preço ("89,"). Os centavos ficam numa classe separada, `a-price-fraction`. O
+`.replace(",", ".")` transformava "89," em "89." -> 89.0, descartando os centavos.
+
+Correção: nova função `extrair_preco_atual()` que lê o span `a-offscreen` dentro de
+`a-price` (onde a Amazon coloca o preço completo, "R$ 89,90"), com `a-price-whole` +
+`a-price-fraction` como reserva caso o layout mude. Adicionado `_texto_para_float()`
+para centralizar a conversão e tratar separador de milhar (R$ 1.299,99 -> 1299.99).
+
+Os preços antigos do banco só são corrigidos na próxima coleta.
