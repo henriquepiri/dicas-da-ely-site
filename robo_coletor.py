@@ -14,7 +14,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from banco_de_dados import salvar_oferta, iniciar_banco
 
-TAG_AFILIADO = "elyad96-20"
+TAG_AFILIADO = "dicasdaely05-20"
 
 # --- CONFIGURAÇÕES ---
 MAX_PRODUTOS_POR_CATEGORIA = 12

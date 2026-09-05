@@ -123,3 +123,13 @@ Os preços antigos do banco só são corrigidos na próxima coleta.
 - Bloco `@media (max-width: 767px)` ajustando hero, cards de produto, tipografia dos guias
   e a caixa de autoria para telas pequenas — onde vem a maior parte do tráfego.
 - Páginas institucionais incluídas no sitemap com prioridade baixa (0.3).
+
+## 13. Nova tag de afiliado + bug do link que não atualizava
+- `TAG_AFILIADO` mudou de `elyad96-20` para `dicasdaely05-20`.
+- BUG encontrado ao fazer essa troca: o `ON CONFLICT(asin) DO UPDATE` do salvar_oferta
+  NÃO atualizava o campo `link_afiliado`. Como o link carrega a tag, trocar a tag no
+  scraper só valeria para ASINs novos — os produtos já existentes continuariam
+  apontando para a tag antiga indefinidamente, mandando comissão para a conta errada.
+  Corrigido: o upsert agora atualiza também `link_afiliado`, `titulo` e `imagem_url`
+  (estes dois também ficavam congelados na primeira coleta).
+- Para os links antigos serem regravados, basta rodar o robo_coletor.py uma vez.

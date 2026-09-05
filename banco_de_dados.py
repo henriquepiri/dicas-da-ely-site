@@ -44,8 +44,14 @@ def salvar_oferta(asin, titulo, preco_atual, preco_original, link, imagem, categ
         INSERT INTO produtos (asin, titulo, preco_atual, preco_original, link_afiliado, imagem_url, categoria, nota, parcelas)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(asin) DO UPDATE SET
+            titulo = excluded.titulo,
             preco_atual = excluded.preco_atual,
             preco_original = excluded.preco_original,
+            -- O link PRECISA ser atualizado: ele carrega a tag de afiliado. Sem esta
+            -- linha, trocar a tag no robo_coletor.py só valeria para produtos novos, e
+            -- os antigos continuariam mandando comissão para a tag antiga.
+            link_afiliado = excluded.link_afiliado,
+            imagem_url = excluded.imagem_url,
             categoria = excluded.categoria,
             nota = excluded.nota,
             parcelas = excluded.parcelas,
