@@ -8,10 +8,11 @@ from datetime import datetime
 from jinja2 import Template
 
 # --- CONFIGURAÇÕES ---
-PASTA_SAIDA = "site_publico"
+PASTA_SAIDA = "docs"  # GitHub Pages só publica da raiz ou de uma pasta chamada "docs"
 NOME_BANCO = "estoque_ofertas.db"
 ARQUIVO_LOGO = "logo_dicas.png"
 URL_SITE = "https://dicasdaely.com.br"
+DOMINIO_CUSTOMIZADO = "dicasdaely.com.br"  # vira o arquivo CNAME do GitHub Pages
 PRODUTOS_POR_PAGINA = 24
 GA_MEASUREMENT_ID = "G-JDYT3SLVZJ"  # Propriedade GA4 "Dicas da Ely"
 PRODUTOS_ENTRE_DICAS = 8  # a cada N produtos, intercala uma caixinha de dica no grid
@@ -506,6 +507,17 @@ Sitemap: {URL_SITE}/sitemap.xml
     with open(f"{PASTA_SAIDA}/robots.txt", "w", encoding="utf-8") as f:
         f.write(conteudo)
 
+def gerar_arquivos_github_pages():
+    """Recria os arquivos que o GitHub Pages precisa. Isso roda a cada geração porque
+    o main() apaga a pasta de saída inteira antes de regerar — sem isso, o domínio
+    customizado se perderia a cada atualização do site.
+      - CNAME: diz ao GitHub Pages qual domínio serve este site
+      - .nojekyll: desliga o processamento Jekyll (desnecessário aqui e mais lento)"""
+    with open(f"{PASTA_SAIDA}/CNAME", "w", encoding="utf-8") as f:
+        f.write(DOMINIO_CUSTOMIZADO + "\n")
+    with open(f"{PASTA_SAIDA}/.nojekyll", "w", encoding="utf-8") as f:
+        f.write("")
+
 def main():
     # 1. Preparar pastas
     if os.path.exists(PASTA_SAIDA): shutil.rmtree(PASTA_SAIDA)
@@ -593,14 +605,16 @@ def main():
             )
             with open(f"{PASTA_SAIDA}/{nome_arquivo}", "w", encoding="utf-8") as f: f.write(html_cat)
 
-    # 6. Gerar o Sitemap e o robots.txt
+    # 6. Gerar o Sitemap, robots.txt e arquivos do GitHub Pages
     gerar_sitemap(menu_categorias, paginas_por_categoria)
     gerar_robots_txt()
+    gerar_arquivos_github_pages()
 
     conn.close()
     print("✅ SITE GERADO COM SUCESSO!")
+    print(f"   - Pasta de saída: {PASTA_SAIDA}/")
     print("   - index.html criado")
-    print("   - sitemap.xml e robots.txt criados")
+    print("   - sitemap.xml, robots.txt, CNAME e .nojekyll criados")
     print("   - Páginas de categoria criadas (com paginação e dados estruturados)")
 
 if __name__ == "__main__":

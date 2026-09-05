@@ -58,3 +58,15 @@
 ## O que NÃO foi mexido
 - Estrutura do banco de dados (banco_de_dados.py) — mantida como estava, só validada.
 - Workflow do GitHub Actions — já estava correto (só gera e publica; a coleta continua rodando local via Task Scheduler).
+
+## 8. Migração Netlify -> GitHub Pages
+Motivo: os builds da Netlify pausaram por falta de créditos no plano free. O site é 100%
+estático (o HTML já vai pronto pro repositório), então pagar minutos de build era desperdício.
+O GitHub Pages serve arquivos commitados direto, sem build e sem limite em repo público.
+
+- `PASTA_SAIDA` mudou de `site_publico` para `docs` (o GitHub Pages só publica da raiz ou de `docs/`).
+- Nova função `gerar_arquivos_github_pages()` recria a cada execução:
+  - `CNAME` com o domínio customizado — essencial, porque o main() apaga a pasta de saída
+    inteira antes de regerar, e sem isso o domínio se perderia a cada atualização.
+  - `.nojekyll` para desligar o processamento Jekyll (desnecessário e mais lento).
+- Workflow do Actions ajustado para commitar `docs/` em vez de `site_publico/`.
