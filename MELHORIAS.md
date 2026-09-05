@@ -70,3 +70,18 @@ O GitHub Pages serve arquivos commitados direto, sem build e sem limite em repo 
     inteira antes de regerar, e sem isso o domínio se perderia a cada atualização.
   - `.nojekyll` para desligar o processamento Jekyll (desnecessário e mais lento).
 - Workflow do Actions ajustado para commitar `docs/` em vez de `site_publico/`.
+
+## 9. Guias: o site vira conteúdo, não só vitrine
+Mudança de estrutura, não de enfeite: o texto passou a ser o produto principal e a oferta
+virou consequência.
+
+- Novo arquivo `guias.py` com o CONTEÚDO dos guias, separado da lógica. Para escrever ou
+  editar um guia, mexe-se só nesse arquivo — o gerador_site.py nunca precisa ser tocado.
+- Cada guia vira uma página própria (`guia-<slug>.html`) com layout de artigo:
+  tipografia de leitura, largura confortável, caixa de autoria e aviso de afiliado no topo.
+- Home reordenada: guia em destaque -> grade de guias -> quem escreve -> ofertas do dia.
+  Os produtos continuam lá, mas embaixo, como apoio.
+- Páginas de categoria mostram os guias daquele tema antes da lista de produtos.
+- Cada guia puxa 4 produtos da sua categoria no final, fechando o ciclo conteúdo -> oferta.
+- Dados estruturados `Article` (schema.org) nas páginas de guia — sinaliza ao Google que é
+  conteúdo editorial, não página de produto. Guias entram no sitemap com prioridade 0.9.

@@ -6,6 +6,7 @@ import json
 import math
 from datetime import datetime
 from jinja2 import Template
+from guias import GUIAS
 
 # --- CONFIGURAÇÕES ---
 PASTA_SAIDA = "docs"  # GitHub Pages só publica da raiz ou de uma pasta chamada "docs"
@@ -170,6 +171,40 @@ HEAD_COMUM = """
 
         .intro-categoria { max-width: 780px; color: #8a7a70; font-size: 0.98rem; margin-bottom: 28px; line-height: 1.55; }
 
+        /* --- GUIAS (conteúdo editorial) --- */
+        .guia-destaque { background: white; border: 1px solid var(--cor-card-border); border-radius: 16px; overflow: hidden; margin-bottom: 40px; transition: 0.25s; }
+        .guia-destaque:hover { box-shadow: 0 16px 32px rgba(140, 94, 74, 0.14); }
+        .guia-destaque .corpo { padding: 32px; }
+        .guia-destaque .etiqueta { display: inline-block; background: var(--cor-destaque); color: white; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; padding: 5px 12px; border-radius: 30px; margin-bottom: 14px; }
+        .guia-destaque h2 { font-size: 1.9rem; color: var(--cor-primaria); margin-bottom: 12px; line-height: 1.2; }
+        .guia-destaque p { color: #8a7a70; font-size: 1.05rem; line-height: 1.6; margin-bottom: 18px; }
+
+        .card-guia { display: block; background: white; border: 1px solid var(--cor-card-border); border-radius: 14px; padding: 22px; height: 100%; text-decoration: none; transition: 0.25s; }
+        .card-guia:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(140, 94, 74, 0.14); border-color: var(--cor-primaria); }
+        .card-guia .cat { font-size: 0.68rem; color: var(--cor-primaria); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+        .card-guia h3 { font-size: 1.15rem; color: var(--cor-texto); margin: 8px 0 10px; line-height: 1.3; }
+        .card-guia p { font-size: 0.88rem; color: #9a8a80; line-height: 1.5; margin: 0; }
+        .card-guia .ler { color: var(--cor-destaque); font-weight: 800; font-size: 0.85rem; margin-top: 14px; display: block; }
+
+        .link-simples { color: var(--cor-destaque); font-weight: 800; text-decoration: none; }
+        .link-simples:hover { text-decoration: underline; }
+
+        /* --- PÁGINA DO GUIA --- */
+        .artigo { max-width: 720px; margin: 0 auto; }
+        .artigo h1 { font-size: 2.3rem; color: var(--cor-primaria); line-height: 1.15; margin-bottom: 14px; }
+        .artigo .meta { color: #a89a90; font-size: 0.85rem; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--cor-card-border); }
+        .artigo h2 { font-size: 1.45rem; color: var(--cor-texto); margin: 34px 0 14px; }
+        .artigo p { font-size: 1.08rem; line-height: 1.75; margin-bottom: 18px; color: #6b5546; }
+        .artigo ul { margin-bottom: 20px; }
+        .artigo li { font-size: 1.05rem; line-height: 1.7; margin-bottom: 10px; color: #6b5546; }
+        .artigo strong { color: var(--cor-texto); }
+
+        .caixa-autor { background: #fff7f0; border-radius: 14px; padding: 24px; margin: 40px 0; display: flex; gap: 18px; align-items: center; }
+        .caixa-autor .iniciais { width: 56px; height: 56px; border-radius: 50%; background: var(--cor-primaria); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0; }
+        .caixa-autor p { margin: 0; font-size: 0.92rem; color: #8a7a70; line-height: 1.55; }
+
+        .aviso-afiliado { background: #f7f3ef; border-radius: 10px; padding: 14px 18px; font-size: 0.82rem; color: #9a8a80; margin-bottom: 32px; line-height: 1.5; }
+
         .card-produto { position: relative; border: 1px solid var(--cor-card-border); border-radius: 14px; background: white; height: 100%; transition: 0.25s ease; overflow: hidden; display: flex; flex-direction: column; }
         .card-produto:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(140, 94, 74, 0.18); border-color: var(--cor-primaria); }
 
@@ -211,8 +246,7 @@ NAVBAR = """
                 <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
                 {% for cat in categorias %}
                 <li class="nav-item"><a class="nav-link" href="cat-{{ cat.slug }}.html">{{ cat.nome }}</a></li>
-                {% endfor %}
-            </ul>
+                {% endfor %}            </ul>
         </div>
     </div>
 </nav>
@@ -259,8 +293,46 @@ TEMPLATE_VITRINE = """
 
     <div class="container pb-5">
         {% if is_home %}
-             <div class="d-flex align-items-center mb-4 mt-2 pb-2 border-bottom border-2" style="border-color: #f0e6e0 !important;">
-                <h3 class="fw-bold m-0" style="color: var(--cor-texto);">🧸 Mundo do Bebê</h3>
+             {% if guia_destaque %}
+             <div class="guia-destaque">
+                <div class="corpo">
+                    <span class="etiqueta">Guia da semana</span>
+                    <h2>{{ guia_destaque.titulo }}</h2>
+                    <p>{{ guia_destaque.resumo }}</p>
+                    <a href="guia-{{ guia_destaque.slug }}.html" class="btn btn-comprar" style="width: auto; padding: 10px 28px; display: inline-block;">Ler o guia completo</a>
+                </div>
+             </div>
+             {% endif %}
+
+             {% if outros_guias %}
+             <div class="d-flex align-items-center justify-content-between mb-4 mt-5 pb-2 border-bottom border-2" style="border-color: #f0e6e0 !important;">
+                <h3 class="fw-bold m-0" style="color: var(--cor-texto);">Nossos guias</h3>
+             </div>
+             <div class="row g-4 mb-5">
+                {% for g in outros_guias %}
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="guia-{{ g.slug }}.html" class="card-guia">
+                        <span class="cat">{{ g.categoria }}</span>
+                        <h3>{{ g.titulo }}</h3>
+                        <p>{{ g.resumo }}</p>
+                        <span class="ler">Ler o guia &rarr;</span>
+                    </a>
+                </div>
+                {% endfor %}
+             </div>
+             {% endif %}
+
+             <div class="caixa-autor">
+                <div class="iniciais">EH</div>
+                <p><strong style="color: var(--cor-texto);">Elyad &amp; Henrique.</strong>
+                Somos pais de uma criança pequena e escrevemos aqui o que aprendemos na
+                prática — o que funcionou, o que foi dinheiro jogado fora e o que a gente
+                queria ter sabido antes.</p>
+             </div>
+
+             <div class="d-flex align-items-center justify-content-between mb-4 mt-5 pb-2 border-bottom border-2" style="border-color: #f0e6e0 !important;">
+                <h3 class="fw-bold m-0" style="color: var(--cor-texto);">Ofertas de hoje</h3>
+                <span class="text-muted small">Atualizado em {{ data_atual }}</span>
              </div>
              {% if destaques_bebe %}
              <div class="row g-4 mb-5">
@@ -268,24 +340,35 @@ TEMPLATE_VITRINE = """
                     {% if item.tipo == 'dica' %}{{ render_dica(item.texto) }}{% else %}{{ render_card(item.dado) }}{% endif %}
                 {% endfor %}
              </div>
-             {% else %}
-             <div class="empty-state mb-5"><i class="fas fa-box-open fa-2x mb-2"></i><p>Novidades chegando em breve por aqui.</p></div>
              {% endif %}
-
-             <h3 class="fw-bold mb-4 mt-5" style="color: var(--cor-texto);">✨ Mais Achadinhos</h3>
              {% if outros_produtos %}
              <div class="row g-4">
                 {% for item in outros_produtos %}
                     {% if item.tipo == 'dica' %}{{ render_dica(item.texto) }}{% else %}{{ render_card(item.dado) }}{% endif %}
                 {% endfor %}
              </div>
-             {% else %}
+             {% endif %}
+             {% if not destaques_bebe and not outros_produtos %}
              <div class="empty-state"><i class="fas fa-box-open fa-2x mb-2"></i><p>Novidades chegando em breve por aqui.</p></div>
              {% endif %}
         {% else %}
              <h2 class="fw-bold mb-3 border-bottom pb-2" style="color: var(--cor-primaria);">{{ titulo_secao }}</h2>
              {% if intro_categoria %}
              <p class="intro-categoria">{{ intro_categoria }}</p>
+             {% endif %}
+             {% if guias_da_categoria %}
+             <div class="row g-3 mb-5">
+                {% for g in guias_da_categoria %}
+                <div class="col-12 col-md-6">
+                    <a href="guia-{{ g.slug }}.html" class="card-guia">
+                        <span class="cat">Guia</span>
+                        <h3>{{ g.titulo }}</h3>
+                        <p>{{ g.resumo }}</p>
+                        <span class="ler">Ler o guia &rarr;</span>
+                    </a>
+                </div>
+                {% endfor %}
+             </div>
              {% endif %}
              {% if produtos %}
              <div class="row g-4">
@@ -308,6 +391,79 @@ TEMPLATE_VITRINE = """
              <div class="empty-state"><i class="fas fa-box-open fa-2x mb-2"></i><p>Nenhuma oferta encontrada nesta categoria no momento.</p></div>
              {% endif %}
         {% endif %}
+    </div>
+
+    <footer class="bg-white py-4 mt-5 border-top text-center small">
+        <div class="container">
+            <img src="logo_dicas.png" style="height: 40px; opacity: 0.6; margin-bottom: 10px;">
+            <p class="mb-1 fw-bold text-muted">© 2026 Dicas da Ely | Todos os direitos reservados</p>
+            <small class="text-muted d-block">Participante do Programa de Associados da Amazon.</small>
+            <p class="mt-2 text-muted" style="font-size: 0.75rem">Última atualização: {{ data_atual }}</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+"""
+
+TEMPLATE_GUIA = """
+<!DOCTYPE html>
+<html lang="pt-br">
+{{ head }}
+<body>
+    {{ navbar }}
+
+    <div class="container py-5">
+        <article class="artigo">
+            <a href="index.html" class="link-simples" style="font-size: 0.85rem;">&larr; Voltar para a home</a>
+            <h1 class="mt-3">{{ guia.titulo }}</h1>
+            <div class="meta">
+                {{ guia.categoria }} &middot; Publicado em {{ guia.data_br }} &middot; por Elyad &amp; Henrique
+            </div>
+
+            <div class="aviso-afiliado">
+                Este guia tem links de afiliado da Amazon. Se você comprar por um deles, a gente
+                recebe uma pequena comissão sem custo extra pra você — é o que mantém o site no ar.
+                As recomendações são as mesmas que daríamos sem isso.
+            </div>
+
+            {{ guia.conteudo }}
+
+            <div class="caixa-autor">
+                <div class="iniciais">EH</div>
+                <p><strong style="color: var(--cor-texto);">Elyad &amp; Henrique.</strong>
+                Somos pais de uma criança pequena e escrevemos aqui o que aprendemos na prática.
+                Se tiver dúvida ou quiser sugerir um tema, é só falar com a gente.</p>
+            </div>
+
+            {% if produtos_relacionados %}
+            <h2 class="mt-5 mb-4" style="color: var(--cor-primaria);">Ofertas de {{ guia.categoria }}</h2>
+            <div class="row g-4">
+                {% for p in produtos_relacionados %}
+                    {{ render_card(p) }}
+                {% endfor %}
+            </div>
+            <p class="mt-4">
+                <a href="cat-{{ slug_categoria }}.html" class="link-simples">Ver todas as ofertas de {{ guia.categoria }} &rarr;</a>
+            </p>
+            {% endif %}
+
+            {% if outros_guias %}
+            <h2 class="mt-5 mb-4" style="color: var(--cor-primaria);">Leia também</h2>
+            <div class="row g-3">
+                {% for g in outros_guias %}
+                <div class="col-12 col-md-6">
+                    <a href="guia-{{ g.slug }}.html" class="card-guia">
+                        <span class="cat">{{ g.categoria }}</span>
+                        <h3>{{ g.titulo }}</h3>
+                        <p>{{ g.resumo }}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </article>
     </div>
 
     <footer class="bg-white py-4 mt-5 border-top text-center small">
@@ -416,6 +572,43 @@ def processar_produto(row):
         print(f"Erro ao processar linha: {e}")
         return None
 
+def preparar_guias():
+    """Ordena os guias por data (mais recente primeiro) e formata a data para exibição.
+    Separa o guia em destaque dos demais."""
+    guias = []
+    for g in GUIAS:
+        g2 = dict(g)
+        try:
+            g2['data_br'] = datetime.strptime(g['data'], '%Y-%m-%d').strftime('%d/%m/%Y')
+        except Exception:
+            g2['data_br'] = g.get('data', '')
+        guias.append(g2)
+
+    guias.sort(key=lambda x: x.get('data', ''), reverse=True)
+
+    destaque = next((g for g in guias if g.get('destaque')), guias[0] if guias else None)
+    outros = [g for g in guias if g is not destaque]
+    return guias, destaque, outros
+
+def gerar_json_ld_artigo(guia, url_pagina):
+    """Dados estruturados do tipo Article — ajuda o Google a entender que é conteúdo
+    editorial, não uma página de produto."""
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": guia['titulo'],
+        "description": guia['resumo'],
+        "datePublished": guia['data'],
+        "author": {"@type": "Person", "name": "Elyad & Henrique"},
+        "publisher": {
+            "@type": "Organization",
+            "name": "Dicas da Ely",
+            "logo": {"@type": "ImageObject", "url": f"{URL_SITE}/{ARQUIVO_LOGO}"}
+        },
+        "mainEntityOfPage": {"@type": "WebPage", "@id": url_pagina}
+    }
+    return json.dumps(schema, ensure_ascii=False)
+
 def intercalar_dicas(produtos, categoria):
     """Transforma a lista de produtos numa lista mista de itens {'tipo': 'produto'|'dica'},
     inserindo uma caixinha de dica a cada N produtos. Isso é o que dá o tom editorial ao
@@ -468,8 +661,9 @@ def gerar_json_ld(produtos, nome_pagina, url_pagina):
     }
     return json.dumps(schema, ensure_ascii=False)
 
-def gerar_sitemap(categorias, paginas_por_categoria):
-    """Gera o arquivo sitemap.xml, incluindo todas as páginas de cada categoria paginada."""
+def gerar_sitemap(categorias, paginas_por_categoria, guias=None):
+    """Gera o arquivo sitemap.xml, incluindo todas as páginas de cada categoria paginada
+    e as páginas de guia."""
     print("🗺️  Gerando Sitemap...")
     data_hoje = datetime.now().strftime('%Y-%m-%d')
 
@@ -477,6 +671,10 @@ def gerar_sitemap(categorias, paginas_por_categoria):
         (f"{URL_SITE}/", "daily", "1.0"),
         (f"{URL_SITE}/index.html", "daily", "0.8"),
     ]
+    # Guias têm prioridade alta: é o conteúdo original do site
+    for g in (guias or []):
+        urls.append((f"{URL_SITE}/guia-{g['slug']}.html", "monthly", "0.9"))
+
     for cat in categorias:
         total_paginas = paginas_por_categoria.get(cat['slug'], 1)
         for n in range(1, total_paginas + 1):
@@ -535,8 +733,12 @@ def main():
     # 3. Preparar templates
     full_template_str = MACRO_CARD + TEMPLATE_VITRINE.replace("{{ head }}", HEAD_COMUM)
     tpl = Template(full_template_str)
+    tpl_guia = Template(MACRO_CARD + TEMPLATE_GUIA.replace("{{ head }}", HEAD_COMUM))
     navbar_html = Template(NAVBAR).render(categorias=menu_categorias)
     data_atual_str = datetime.now().strftime('%d/%m/%Y')
+
+    # 3b. Preparar os guias (conteúdo editorial vindo de guias.py)
+    todos_guias, guia_destaque, outros_guias = preparar_guias()
 
     # 4. GERAÇÃO DA HOME (index.html)
     cursor.execute("SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria = 'Mundo do Bebê' ORDER BY id DESC LIMIT 8")
@@ -552,11 +754,13 @@ def main():
         is_home=True,
         json_ld=json_ld_home,
         ga_id=GA_MEASUREMENT_ID,
-        titulo_seo="Dicas da Ely | Achadinhos e Ofertas Amazon para Bebê e Casa",
-        descricao_seo="Confira nossa seleção de fraldas, itens para enxoval e utilidades domésticas com os melhores preços. Verificado por Elyad & Henrique.",
+        titulo_seo="Dicas da Ely | Guias e Achadinhos para Bebê, Casa e Cozinha",
+        descricao_seo="Guias práticos escritos por quem testou: enxoval de bebê, brinquedo seguro, organização de cozinha. Mais ofertas selecionadas da Amazon, atualizadas todo dia.",
         imagem_og=f"{URL_SITE}/{ARQUIVO_LOGO}",
         url_atual=f"{URL_SITE}/",
         titulo_pag="Início",
+        guia_destaque=guia_destaque,
+        outros_guias=outros_guias,
         destaques_bebe=intercalar_dicas(destaques_bebe, "Mundo do Bebê"),
         outros_produtos=intercalar_dicas(outros_produtos, "GERAL"),
         data_atual=data_atual_str
@@ -597,6 +801,7 @@ def main():
                 url_atual=url_pagina,
                 titulo_secao=cat['nome'],
                 intro_categoria=CATEGORIA_INFO.get(cat['nome'], {}).get("intro"),
+                guias_da_categoria=[g for g in todos_guias if g['categoria'] == cat['nome']] if pagina == 1 else [],
                 produtos=intercalar_dicas(prods_pagina, cat['nome']),
                 slug=slug,
                 pagina_atual=pagina,
@@ -605,14 +810,47 @@ def main():
             )
             with open(f"{PASTA_SAIDA}/{nome_arquivo}", "w", encoding="utf-8") as f: f.write(html_cat)
 
+    # 5b. GERAÇÃO DAS PÁGINAS DE GUIA
+    for guia in todos_guias:
+        nome_arquivo = f"guia-{guia['slug']}.html"
+        url_pagina = f"{URL_SITE}/{nome_arquivo}"
+        slug_cat = criar_slug(guia['categoria'])
+
+        # Puxa alguns produtos da mesma categoria do guia, pra fechar o ciclo
+        # entre o conteúdo e a oferta
+        cursor.execute(
+            "SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas "
+            "FROM produtos WHERE categoria = ? ORDER BY id DESC LIMIT 4",
+            (guia['categoria'],)
+        )
+        relacionados = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
+
+        html_guia = tpl_guia.render(
+            navbar=navbar_html,
+            ga_id=GA_MEASUREMENT_ID,
+            json_ld=gerar_json_ld_artigo(guia, url_pagina),
+            titulo_seo=f"{guia['titulo']} | Dicas da Ely",
+            descricao_seo=guia['resumo'],
+            imagem_og=f"{URL_SITE}/{ARQUIVO_LOGO}",
+            url_atual=url_pagina,
+            guia=guia,
+            slug_categoria=slug_cat,
+            produtos_relacionados=relacionados,
+            outros_guias=[g for g in todos_guias if g['slug'] != guia['slug']][:2],
+            data_atual=data_atual_str
+        )
+        with open(f"{PASTA_SAIDA}/{nome_arquivo}", "w", encoding="utf-8") as f:
+            f.write(html_guia)
+
     # 6. Gerar o Sitemap, robots.txt e arquivos do GitHub Pages
-    gerar_sitemap(menu_categorias, paginas_por_categoria)
+    gerar_sitemap(menu_categorias, paginas_por_categoria, todos_guias)
     gerar_robots_txt()
     gerar_arquivos_github_pages()
 
     conn.close()
     print("✅ SITE GERADO COM SUCESSO!")
     print(f"   - Pasta de saída: {PASTA_SAIDA}/")
+    print(f"   - {len(todos_guias)} páginas de guia criadas")
     print("   - index.html criado")
     print("   - sitemap.xml, robots.txt, CNAME e .nojekyll criados")
     print("   - Páginas de categoria criadas (com paginação e dados estruturados)")
