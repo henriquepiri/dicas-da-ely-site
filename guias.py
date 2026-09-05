@@ -22,68 +22,84 @@ GUIAS = [
     {
         "slug": "enxoval-de-bebe-o-que-vale-comprar",
         "titulo": "Enxoval de bebê: o que realmente vale comprar",
-        "resumo": "A lista de enxoval que circula por aí é enorme e boa parte não se usa. "
-                  "Separamos o que sai da gaveta todo dia do que fica encostado.",
+        "resumo": "Compramos roupa RN demais e sobrou fralda pequena. O que a gente aprendeu "
+                  "na prática sobre o que vale comprar antes do bebê nascer.",
         "categoria": "Mundo do Bebê",
         "data": "2026-09-04",
         "destaque": True,
         "conteudo": """
 <p>Toda lista de enxoval que a gente recebe na gravidez vem com umas 80 linhas. Depois que
-o bebê nasce, você descobre que usa umas 20 de verdade — e que faltou coisa que ninguém
-tinha avisado.</p>
+nossa filha nasceu, descobrimos que usávamos umas 20 de verdade — e que tinha coisa
+faltando que ninguém tinha avisado.</p>
 
-<p>A ideia deste guia é simples: separar o que realmente entra na rotina do que só ocupa
-espaço no armário. Nada aqui é regra, cada bebê é de um jeito, mas serve pra você não
-gastar antes de saber se vai precisar.</p>
+<p>Este guia é o que a gente gostaria de ter lido antes. Não é regra, cada bebê é de um
+jeito. É o que aconteceu na nossa casa.</p>
 
-<h2>O que vale comprar antes do nascimento</h2>
+<h2>O erro que a gente cometeu (e quase todo mundo comete)</h2>
 
-<p><strong>Bodies de manga curta e comprida.</strong> É a peça que mais roda. Vale ter
-bastante, porque troca de roupa é várias vezes por dia. Prefira os que abrem na frente
-ou têm gola envelope — vestir pela cabeça de um recém-nascido é mais difícil do que parece.</p>
+<p><strong>Compramos roupa RN demais.</strong> Muita. E o bebê passa desse tamanho rápido
+demais — algumas peças a gente usou duas, três vezes. Outras nem chegaram a sair da
+gaveta com etiqueta.</p>
 
-<p><strong>Macacões (mijões) de algodão.</strong> Confortáveis, fáceis de trocar fralda e
-servem pra dormir e passear. Os de pezinho embutido evitam a meia que vive caindo.</p>
+<p>A mesma coisa aconteceu com <strong>fralda de tamanho pequeno</strong>. Compramos
+pacotes grandes achando que estávamos economizando, e sobrou fralda que não servia mais.</p>
 
-<p><strong>Panos de boca / fraldinhas de pano.</strong> Você vai usar pra tudo: proteger o
-ombro, limpar, forrar. Parece exagero comprar uma dúzia, não é.</p>
+<p>Se for pra levar uma coisa só deste guia, leve esta: <strong>compre pouco dos tamanhos
+iniciais</strong>. Poucas peças RN, um pacote pequeno de fralda P. Você reabastece em dois
+dias se precisar — e não fica com armário cheio de coisa que não serve.</p>
 
-<p><strong>Toalha com capuz.</strong> Duas ou três resolvem. O capuz não é enfeite: ajuda
-a segurar o calor logo depois do banho.</p>
+<h2>Não abra tudo de uma vez</h2>
 
-<h2>O que dá pra deixar pra depois</h2>
+<p>Ligado ao ponto acima: deixe boa parte do enxoval com etiqueta e o pacote de fralda
+fechado. Se o bebê pular de tamanho, se você ganhar peça repetida de presente, ou se a
+marca de fralda não servir bem no corpo dele, dá pra trocar. Depois de lavado ou aberto,
+não dá.</p>
 
-<p><strong>Sapatinhos.</strong> Recém-nascido não anda e não precisa de sapato. Meia
-quentinha resolve o mesmo problema por bem menos.</p>
+<h2>O que realmente rodou na nossa rotina</h2>
 
-<p><strong>Roupa de tamanho RN em quantidade.</strong> Muitos bebês nascem já saindo do
-RN, ou passam dele em três semanas. Compre poucas peças e reforce no tamanho P.</p>
+<p><strong>Bodies.</strong> É a peça que mais gira, disparado. Troca de roupa acontece
+várias vezes por dia. Prefira os que abrem na frente ou de gola envelope — vestir pela
+cabeça de um recém-nascido é mais difícil do que parece.</p>
 
-<p><strong>Kit de higiene completo.</strong> Aqueles kits com dez itens costumam ter três
-que você usa. Vale montar aos poucos.</p>
+<p><strong>Macacões de algodão.</strong> Servem pra dormir e pra sair. Os de pezinho
+embutido evitam a meia que vive caindo.</p>
 
-<p><strong>Berço com muitos acessórios.</strong> Protetores acolchoados, almofadas e
-travesseiros dentro do berço não são recomendados para o sono do bebê — o berço deve ser
-o mais livre possível.</p>
+<p><strong>Panos de boca.</strong> A gente usou pra tudo: proteger o ombro, limpar, forrar,
+cobrir. Uma dúzia não é exagero.</p>
 
-<h2>Onde vale gastar um pouco mais</h2>
+<p><strong>Toalha com capuz.</strong> Duas ou três resolvem. O capuz não é enfeite, ajuda
+a segurar o calor na saída do banho.</p>
 
-<p>Duas categorias merecem atenção porque envolvem segurança e não dá pra economizar:</p>
+<h2>As coisas que a gente testou até achar</h2>
+
+<p>Tem uma categoria de item que você não consegue acertar de primeira, por mais que
+pesquise. Com a gente foi assim:</p>
+
+<p><strong>Lenço umedecido.</strong> Testamos vários. Muda muito de marca pra marca —
+espessura, quantidade de umidade, cheiro. Alguns esfarelam, outros vêm secos demais.</p>
+
+<p><strong>Pomada de assadura.</strong> Também testamos várias até achar a que funcionava
+bem na pele dela.</p>
+
+<p>A dica prática aqui: <strong>compre a menor embalagem primeiro</strong>. Não caia na
+tentação do pacote gigante "que sai mais barato" antes de saber se serve. Sai caro
+descobrir que não deu certo com um estoque de seis meses em casa.</p>
+
+<h2>Onde não dá pra economizar</h2>
+
+<p>Duas coisas envolvem segurança e merecem atenção diferente:</p>
 
 <ul>
-<li><strong>Cadeirinha para o carro.</strong> É obrigatória por lei e precisa ser adequada
-ao peso e à altura da criança. Confira sempre a certificação do Inmetro e evite comprar
-usada — não dá pra saber se já sofreu impacto.</li>
+<li><strong>Cadeirinha para o carro.</strong> É obrigatória por lei, precisa ser adequada
+ao peso e à altura, e deve ter certificação do Inmetro. Evite comprar usada — não dá pra
+saber se já sofreu impacto.</li>
 <li><strong>Berço.</strong> A distância entre as grades e a altura do estrado seguem norma
-técnica. Berço certificado custa mais, mas é o lugar onde o bebê passa a maior parte do
-tempo sozinho.</li>
+técnica. É onde o bebê passa mais tempo sozinho.</li>
 </ul>
 
-<h2>Uma dica que ninguém dá</h2>
-
-<p>Não lave todo o enxoval de uma vez antes do parto. Deixe boa parte com etiqueta: se o
-bebê pular de tamanho ou você ganhar peças repetidas de presente, dá pra trocar. Lave só
-o que vai usar nas primeiras semanas.</p>
+<p>Sobre o berço, vale um lembrete: protetores acolchoados, almofadas e travesseiros
+soltos lá dentro não são recomendados para o sono do bebê. O berço deve ficar o mais
+livre possível.</p>
 """
     },
     {
@@ -98,6 +114,20 @@ o que vai usar nas primeiras semanas.</p>
 <p>Tem uma confusão comum na hora de comprar brinquedo: os pais olham o "3+" na caixa e
 pensam "mas meu filho é esperto, dá conta". O problema é que essa marcação quase nunca
 fala de inteligência — ela fala de <strong>risco físico</strong>.</p>
+
+<h2>O que prendeu atenção de verdade na nossa casa</h2>
+
+<p>Vale contar antes: o brinquedo que mais chamou a atenção da nossa filha foi um
+<strong>pato cheio de luzes que toca música alta</strong>. Nada sofisticado, nada
+educativo-com-selo. Luz piscando e som.</p>
+
+<p>Isso diz uma coisa útil sobre bebê: nessa fase, o que engaja é estímulo sensorial
+direto — luz, som, textura, contraste. Brinquedo caro de madeira com proposta pedagógica
+tem seu valor, mas costuma render mais alguns meses depois.</p>
+
+<p>O contraponto honesto: som alto perto do ouvido de bebê incomoda e, em volume muito
+alto, não faz bem. Vale checar se o brinquedo tem controle de volume antes de comprar —
+muitos não têm.</p>
 
 <h2>O que a faixa etária realmente indica</h2>
 
@@ -256,6 +286,72 @@ funciona bem com assinatura.</p>
 
 <p>Régua de tomadas com portas USB e organizador de fios. Não tem nada de inteligente,
 custa pouco e resolve mais bagunça do dia a dia do que boa parte dos gadgets caros.</p>
+"""
+    },
+    {
+        "slug": "canguru-como-escolher-posicao-correta",
+        "titulo": "Canguru e sling: como saber se a posição está certa",
+        "resumo": "Testamos alguns que deixavam a bebê numa posição ruim. O que olhar "
+                  "antes de comprar e como conferir depois que já está no corpo.",
+        "categoria": "Mundo do Bebê",
+        "data": "2026-09-05",
+        "destaque": False,
+        "conteudo": """
+<p>Essa foi uma das nossas frustrações: compramos canguru achando que era só vestir e
+pronto, e testamos mais de um que deixava a bebê numa posição claramente ruim — pernas
+penduradas, corpo curvado, peso mal distribuído.</p>
+
+<p>Demorou pra gente entender que existe diferença técnica real entre modelos, e que a
+maioria dos cangurus baratos de loja tem o mesmo problema.</p>
+
+<h2>O problema dos modelos mais simples</h2>
+
+<p>Muito canguru barato sustenta o bebê só pela virilha, deixando as pernas caídas para
+baixo, como se ele estivesse pendurado. Todo o peso fica concentrado num ponto pequeno.</p>
+
+<p>A recomendação de fisioterapeutas e pediatras vai no sentido oposto: o ideal é que a
+coxa fique apoiada até a dobra do joelho, com os joelhos mais altos que o bumbum — o
+formato que costumam chamar de <strong>posição em M</strong> ou "posição de sapinho".
+Nessa posição o peso se distribui pelo quadril inteiro em vez de ficar todo na virilha.</p>
+
+<h2>Como conferir na prática</h2>
+
+<p>Depois de colocar, olhe estes pontos:</p>
+
+<ul>
+<li><strong>Joelhos mais altos que o bumbum</strong>, formando um M. Se as pernas estão
+retas pra baixo, o modelo não está apoiando direito.</li>
+<li><strong>Coxa apoiada até o joelho</strong>, não só a virilha.</li>
+<li><strong>Costas levemente arredondadas</strong>, respeitando a curva natural — não
+esticadas à força nem dobradas demais.</li>
+<li><strong>Queixo longe do peito.</strong> Deve caber pelo menos um dedo entre o queixo
+e o peitoral do bebê. Queixo colado dificulta a respiração, e esse é o ponto mais
+importante da lista.</li>
+<li><strong>Rosto visível.</strong> Você deve conseguir ver o rosto sem afastar tecido.</li>
+<li><strong>Perto o suficiente pra beijar</strong> a cabeça do bebê sem se esticar. Se
+está mais baixo que isso, está frouxo demais.</li>
+<li><strong>Ajustado, não folgado.</strong> Bebê solto dentro do canguru escorrega e
+curva o corpo.</li>
+</ul>
+
+<h2>Antes de comprar</h2>
+
+<p>Confira a <strong>faixa de peso</strong> indicada pelo fabricante e se o modelo tem
+apoio de cabeça — nos primeiros meses, quando o bebê ainda não sustenta o pescoço, isso
+não é opcional.</p>
+
+<p>Verifique também se dá pra ajustar em quem vai usar. Cangurus de tamanho único
+costumam ficar bem em uma pessoa da casa e mal na outra.</p>
+
+<p>Se puder, experimente antes ou compre de lugar com política de troca clara. É um item
+que só dá pra avaliar de verdade com o bebê dentro.</p>
+
+<h2>Um aviso</h2>
+
+<p>Este guia é a nossa experiência somada ao que se recomenda de forma geral sobre
+posicionamento. Não substitui orientação de pediatra ou fisioterapeuta — se você notar
+qualquer desconforto, choro ao ser colocado, ou tiver dúvida sobre o quadril do seu bebê,
+converse com quem acompanha ele.</p>
 """
     },
 ]
