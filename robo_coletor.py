@@ -112,6 +112,21 @@ def salvar_artefatos_debug(driver, nome_categoria):
         log.error(f"Falha ao salvar artefatos de debug para {nome_categoria}: {e}")
 
 
+def montar_link_afiliado(url_bruta):
+    """Monta um link curto e estável a partir do ASIN.
+
+    O link que a Amazon usa na página de busca vem carregado de parâmetros de sessão
+    (dib=..., qid=..., sr=..., ufe=..., th=...). Eles funcionam, mas são frágeis: expiram,
+    são feios de compartilhar, o `th=1` pode fixar uma variação indesejada do produto, e
+    o próprio verificador de links da Amazon rejeita URLs nesse formato.
+
+    O formato canônico /dp/<ASIN>?tag=<tag> é o recomendado e passa na verificação."""
+    asin = extrair_asin(url_bruta)
+    if not asin:
+        return None
+    return f"https://www.amazon.com.br/dp/{asin}?tag={TAG_AFILIADO}"
+
+
 def _texto_para_float(texto):
     """Converte 'R$ 1.299,90' -> 1299.90"""
     limpo = texto.replace("R$", "").replace("\xa0", "").strip()
@@ -205,10 +220,11 @@ def coletar_categoria(driver, nome_categoria, url_alvo):
                     imagem = img_tag['src']
 
                     link_tag = p.find("a", class_="a-link-normal s-no-outline")
-                    link_completo = f"https://amazon.com.br{link_tag['href']}&tag={TAG_AFILIADO}"
+                    url_bruta = f"https://amazon.com.br{link_tag['href']}"
 
-                    asin = extrair_asin(link_completo)
+                    asin = extrair_asin(url_bruta)
                     if asin:
+                        link_completo = montar_link_afiliado(url_bruta)
                         salvar_oferta(asin, titulo, preco_atual, preco_original, link_completo, imagem, nome_categoria, nota, parcelas)
                         count += 1
                 except Exception as e:

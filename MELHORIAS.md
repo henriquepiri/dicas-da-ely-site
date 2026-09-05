@@ -133,3 +133,19 @@ Os preços antigos do banco só são corrigidos na próxima coleta.
   Corrigido: o upsert agora atualiza também `link_afiliado`, `titulo` e `imagem_url`
   (estes dois também ficavam congelados na primeira coleta).
 - Para os links antigos serem regravados, basta rodar o robo_coletor.py uma vez.
+
+## 14. Links de afiliado no formato canônico
+Descoberto ao testar o Verificador de Links da Central de Associados: ele REJEITA
+("Insira uma URL válida") as URLs que o site vinha gerando, e aceita a versão curta.
+
+Causa: o scraper usava o href exatamente como aparece na página de busca, carregado de
+parâmetros de sessão (dib=, qid=, sr=, ref=, ufe=, th=). Funcionam para comissão, mas
+expiram, são enormes, o `th=1` pode fixar uma variação indesejada do produto, e não
+passam na ferramenta oficial de verificação.
+
+- Nova função `montar_link_afiliado()` no robo_coletor.py, que monta a URL a partir do
+  ASIN já extraído: `https://www.amazon.com.br/dp/<ASIN>?tag=<TAG>`.
+  Esse formato foi testado no Verificador e retornou "Bem-sucedido: o link está marcado
+  como uma tag válida".
+- `limpar_links.py`: script de execução única para converter os links já gravados.
+  Depois de rodar, pode ser apagado — o coletor já grava no formato certo.
