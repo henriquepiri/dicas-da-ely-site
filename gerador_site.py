@@ -7,6 +7,7 @@ import math
 from datetime import datetime
 from jinja2 import Template
 from guias import GUIAS
+from paginas import PAGINAS
 
 # --- CONFIGURAÇÕES ---
 PASTA_SAIDA = "docs"  # GitHub Pages só publica da raiz ou de uma pasta chamada "docs"
@@ -211,6 +212,40 @@ HEAD_COMUM = """
 
         .aviso-afiliado { background: #f7f3ef; border-radius: 10px; padding: 14px 18px; font-size: 0.82rem; color: #9a8a80; margin-bottom: 32px; line-height: 1.5; }
 
+        .rodape-link { color: var(--cor-primaria); font-weight: 700; text-decoration: none; font-size: 0.85rem; }
+        .rodape-link:hover { color: var(--cor-destaque); text-decoration: underline; }
+        .rodape-sep { color: #d8ccc4; margin: 0 8px; }
+
+        /* --- AJUSTES PARA CELULAR --- */
+        @media (max-width: 767px) {
+            .hero { padding: 30px 0; margin-bottom: 26px; }
+            .hero h1 { font-size: 1.75rem; }
+            .hero p { font-size: 0.98rem !important; }
+            .selo-confianca { margin-top: 22px; }
+            .selo-confianca .item-selo .titulo-selo { font-size: 0.75rem; }
+            .selo-confianca .item-selo .desc-selo { font-size: 0.7rem; }
+
+            .guia-destaque .corpo { padding: 22px; }
+            .guia-destaque h2 { font-size: 1.4rem; }
+            .guia-destaque p { font-size: 0.95rem; }
+
+            .artigo h1 { font-size: 1.65rem; }
+            .artigo h2 { font-size: 1.2rem; margin-top: 26px; }
+            .artigo p, .artigo li { font-size: 1rem; }
+
+            .caixa-autor { flex-direction: column; text-align: center; gap: 12px; padding: 20px; }
+
+            /* cards em duas colunas no celular: imagem e texto menores para caber */
+            .img-wrap { height: 140px; padding: 10px; }
+            .titulo-prod { font-size: 0.85rem; }
+            .preco-atual { font-size: 1.2rem; }
+            .parcelamento { font-size: 0.72rem; margin-bottom: 10px; }
+            .categoria-tag { font-size: 0.6rem; }
+            .btn-comprar { font-size: 0.8rem; padding: 8px; }
+            .card-body { padding: 12px; }
+            .card-dica { padding: 16px; }
+        }
+
         .card-produto { position: relative; border: 1px solid var(--cor-card-border); border-radius: 14px; background: white; height: 100%; transition: 0.25s ease; overflow: hidden; display: flex; flex-direction: column; }
         .card-produto:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(140, 94, 74, 0.18); border-color: var(--cor-primaria); }
 
@@ -399,14 +434,7 @@ TEMPLATE_VITRINE = """
         {% endif %}
     </div>
 
-    <footer class="bg-white py-4 mt-5 border-top text-center small">
-        <div class="container">
-            <img src="logo_dicas.png" style="height: 34px; opacity: 0.55; margin-bottom: 10px;">
-            <p class="mb-1 fw-bold text-muted">© 2026 Dicas da Ely | Todos os direitos reservados</p>
-            <small class="text-muted d-block">Participante do Programa de Associados da Amazon.</small>
-            <p class="mt-2 text-muted" style="font-size: 0.75rem">Última atualização: {{ data_atual }}</p>
-        </div>
-    </footer>
+    {{ rodape }}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
@@ -472,18 +500,52 @@ TEMPLATE_GUIA = """
         </article>
     </div>
 
-    <footer class="bg-white py-4 mt-5 border-top text-center small">
-        <div class="container">
-            <img src="logo_dicas.png" style="height: 34px; opacity: 0.55; margin-bottom: 10px;">
-            <p class="mb-1 fw-bold text-muted">© 2026 Dicas da Ely | Todos os direitos reservados</p>
-            <small class="text-muted d-block">Participante do Programa de Associados da Amazon.</small>
-            <p class="mt-2 text-muted" style="font-size: 0.75rem">Última atualização: {{ data_atual }}</p>
-        </div>
-    </footer>
+    {{ rodape }}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+"""
+
+TEMPLATE_PAGINA = """
+<!DOCTYPE html>
+<html lang="pt-br">
+{{ head }}
+<body>
+    {{ navbar }}
+    <div class="container py-5">
+        <article class="artigo">
+            <a href="index.html" class="link-simples" style="font-size: 0.85rem;">&larr; Voltar para a home</a>
+            <h1 class="mt-3">{{ pagina.titulo }}</h1>
+            <div class="meta">Atualizado em {{ pagina.atualizado_br }}</div>
+            {{ pagina.conteudo }}
+        </article>
+    </div>
+    {{ rodape }}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+"""
+
+RODAPE = """
+    <footer class="bg-white py-4 mt-5 border-top text-center small">
+        <div class="container">
+            <img src="logo_dicas.png" alt="Dicas da Ely" style="height: 34px; opacity: 0.55; margin-bottom: 12px;">
+            <p class="mb-2">
+                <a href="sobre.html" class="rodape-link">Sobre</a>
+                <span class="rodape-sep">&middot;</span>
+                <a href="politica-de-privacidade.html" class="rodape-link">Privacidade</a>
+                <span class="rodape-sep">&middot;</span>
+                <a href="termos-de-uso.html" class="rodape-link">Termos de uso</a>
+            </p>
+            <p class="mb-1 fw-bold text-muted">© 2026 Dicas da Ely</p>
+            <small class="text-muted d-block" style="max-width: 520px; margin: 0 auto; line-height: 1.5;">
+                Participante do Programa de Associados da Amazon. Recebemos comissão por compras
+                qualificadas, sem custo extra para você. Preços podem mudar — confira sempre na Amazon.
+            </small>
+            <p class="mt-2 text-muted" style="font-size: 0.75rem">Ofertas atualizadas em {{ data_atual }}</p>
+        </div>
+    </footer>
 """
 
 MACRO_CARD = """
@@ -681,6 +743,11 @@ def gerar_sitemap(categorias, paginas_por_categoria, guias=None):
     for g in (guias or []):
         urls.append((f"{URL_SITE}/guia-{g['slug']}.html", "monthly", "0.9"))
 
+    # Páginas institucionais: mudam pouco e têm prioridade baixa, mas precisam ser
+    # indexáveis (a de privacidade é exigência prática de LGPD e do programa de afiliados)
+    for pag in PAGINAS:
+        urls.append((f"{URL_SITE}/{pag['slug']}.html", "yearly", "0.3"))
+
     for cat in categorias:
         total_paginas = paginas_por_categoria.get(cat['slug'], 1)
         for n in range(1, total_paginas + 1):
@@ -740,8 +807,10 @@ def main():
     full_template_str = MACRO_CARD + TEMPLATE_VITRINE.replace("{{ head }}", HEAD_COMUM)
     tpl = Template(full_template_str)
     tpl_guia = Template(MACRO_CARD + TEMPLATE_GUIA.replace("{{ head }}", HEAD_COMUM))
+    tpl_pagina = Template(TEMPLATE_PAGINA.replace("{{ head }}", HEAD_COMUM))
     navbar_html = Template(NAVBAR).render(categorias=menu_categorias)
     data_atual_str = datetime.now().strftime('%d/%m/%Y')
+    rodape_html = Template(RODAPE).render(data_atual=data_atual_str)
 
     # 3b. Preparar os guias (conteúdo editorial vindo de guias.py)
     todos_guias, guia_destaque, outros_guias = preparar_guias()
@@ -757,6 +826,7 @@ def main():
 
     html_home = tpl.render(
         navbar=navbar_html,
+        rodape=rodape_html,
         is_home=True,
         json_ld=json_ld_home,
         ga_id=GA_MEASUREMENT_ID,
@@ -798,6 +868,7 @@ def main():
 
             html_cat = tpl.render(
                 navbar=navbar_html,
+                rodape=rodape_html,
                 is_home=False,
                 json_ld=json_ld_cat,
                 ga_id=GA_MEASUREMENT_ID,
@@ -833,6 +904,7 @@ def main():
 
         html_guia = tpl_guia.render(
             navbar=navbar_html,
+            rodape=rodape_html,
             ga_id=GA_MEASUREMENT_ID,
             json_ld=gerar_json_ld_artigo(guia, url_pagina),
             titulo_seo=f"{guia['titulo']} | Dicas da Ely",
@@ -848,6 +920,30 @@ def main():
         with open(f"{PASTA_SAIDA}/{nome_arquivo}", "w", encoding="utf-8") as f:
             f.write(html_guia)
 
+    # 5c. GERAÇÃO DAS PÁGINAS INSTITUCIONAIS (sobre, privacidade, termos)
+    for pag in PAGINAS:
+        p2 = dict(pag)
+        try:
+            p2['atualizado_br'] = datetime.strptime(pag['atualizado'], '%Y-%m-%d').strftime('%d/%m/%Y')
+        except Exception:
+            p2['atualizado_br'] = pag.get('atualizado', '')
+
+        nome_arquivo = f"{pag['slug']}.html"
+        html_pag = tpl_pagina.render(
+            navbar=navbar_html,
+            rodape=rodape_html,
+            ga_id=GA_MEASUREMENT_ID,
+            json_ld=None,
+            titulo_seo=f"{pag['titulo']} | Dicas da Ely",
+            descricao_seo=pag['resumo'],
+            imagem_og=f"{URL_SITE}/{ARQUIVO_LOGO}",
+            url_atual=f"{URL_SITE}/{nome_arquivo}",
+            pagina=p2,
+            data_atual=data_atual_str
+        )
+        with open(f"{PASTA_SAIDA}/{nome_arquivo}", "w", encoding="utf-8") as f:
+            f.write(html_pag)
+
     # 6. Gerar o Sitemap, robots.txt e arquivos do GitHub Pages
     gerar_sitemap(menu_categorias, paginas_por_categoria, todos_guias)
     gerar_robots_txt()
@@ -857,6 +953,7 @@ def main():
     print("✅ SITE GERADO COM SUCESSO!")
     print(f"   - Pasta de saída: {PASTA_SAIDA}/")
     print(f"   - {len(todos_guias)} páginas de guia criadas")
+    print(f"   - {len(PAGINAS)} páginas institucionais criadas")
     print("   - index.html criado")
     print("   - sitemap.xml, robots.txt, CNAME e .nojekyll criados")
     print("   - Páginas de categoria criadas (com paginação e dados estruturados)")

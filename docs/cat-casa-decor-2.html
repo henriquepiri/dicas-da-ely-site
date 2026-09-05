@@ -120,6 +120,40 @@
 
         .aviso-afiliado { background: #f7f3ef; border-radius: 10px; padding: 14px 18px; font-size: 0.82rem; color: #9a8a80; margin-bottom: 32px; line-height: 1.5; }
 
+        .rodape-link { color: var(--cor-primaria); font-weight: 700; text-decoration: none; font-size: 0.85rem; }
+        .rodape-link:hover { color: var(--cor-destaque); text-decoration: underline; }
+        .rodape-sep { color: #d8ccc4; margin: 0 8px; }
+
+        /* --- AJUSTES PARA CELULAR --- */
+        @media (max-width: 767px) {
+            .hero { padding: 30px 0; margin-bottom: 26px; }
+            .hero h1 { font-size: 1.75rem; }
+            .hero p { font-size: 0.98rem !important; }
+            .selo-confianca { margin-top: 22px; }
+            .selo-confianca .item-selo .titulo-selo { font-size: 0.75rem; }
+            .selo-confianca .item-selo .desc-selo { font-size: 0.7rem; }
+
+            .guia-destaque .corpo { padding: 22px; }
+            .guia-destaque h2 { font-size: 1.4rem; }
+            .guia-destaque p { font-size: 0.95rem; }
+
+            .artigo h1 { font-size: 1.65rem; }
+            .artigo h2 { font-size: 1.2rem; margin-top: 26px; }
+            .artigo p, .artigo li { font-size: 1rem; }
+
+            .caixa-autor { flex-direction: column; text-align: center; gap: 12px; padding: 20px; }
+
+            /* cards em duas colunas no celular: imagem e texto menores para caber */
+            .img-wrap { height: 140px; padding: 10px; }
+            .titulo-prod { font-size: 0.85rem; }
+            .preco-atual { font-size: 1.2rem; }
+            .parcelamento { font-size: 0.72rem; margin-bottom: 10px; }
+            .categoria-tag { font-size: 0.6rem; }
+            .btn-comprar { font-size: 0.8rem; padding: 8px; }
+            .card-body { padding: 12px; }
+            .card-dica { padding: 16px; }
+        }
+
         .card-produto { position: relative; border: 1px solid var(--cor-card-border); border-radius: 14px; background: white; height: 100%; transition: 0.25s ease; overflow: hidden; display: flex; flex-direction: column; }
         .card-produto:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(140, 94, 74, 0.18); border-color: var(--cor-primaria); }
 
@@ -1104,12 +1138,23 @@
         
     </div>
 
+    
     <footer class="bg-white py-4 mt-5 border-top text-center small">
         <div class="container">
-            <img src="logo_dicas.png" style="height: 34px; opacity: 0.55; margin-bottom: 10px;">
-            <p class="mb-1 fw-bold text-muted">© 2026 Dicas da Ely | Todos os direitos reservados</p>
-            <small class="text-muted d-block">Participante do Programa de Associados da Amazon.</small>
-            <p class="mt-2 text-muted" style="font-size: 0.75rem">Última atualização: 04/09/2026</p>
+            <img src="logo_dicas.png" alt="Dicas da Ely" style="height: 34px; opacity: 0.55; margin-bottom: 12px;">
+            <p class="mb-2">
+                <a href="sobre.html" class="rodape-link">Sobre</a>
+                <span class="rodape-sep">&middot;</span>
+                <a href="politica-de-privacidade.html" class="rodape-link">Privacidade</a>
+                <span class="rodape-sep">&middot;</span>
+                <a href="termos-de-uso.html" class="rodape-link">Termos de uso</a>
+            </p>
+            <p class="mb-1 fw-bold text-muted">© 2026 Dicas da Ely</p>
+            <small class="text-muted d-block" style="max-width: 520px; margin: 0 auto; line-height: 1.5;">
+                Participante do Programa de Associados da Amazon. Recebemos comissão por compras
+                qualificadas, sem custo extra para você. Preços podem mudar — confira sempre na Amazon.
+            </small>
+            <p class="mt-2 text-muted" style="font-size: 0.75rem">Ofertas atualizadas em 04/09/2026</p>
         </div>
     </footer>
 

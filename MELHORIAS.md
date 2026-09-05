@@ -111,3 +111,15 @@ Correção: nova função `extrair_preco_atual()` que lê o span `a-offscreen` d
 para centralizar a conversão e tratar separador de milhar (R$ 1.299,99 -> 1299.99).
 
 Os preços antigos do banco só são corrigidos na próxima coleta.
+
+## 12. Páginas institucionais e ajustes de celular
+- Novo `paginas.py` (mesma ideia do guias.py: só conteúdo, sem lógica) com três páginas:
+  política de privacidade, termos de uso e sobre. Geradas como `<slug>.html`.
+  A de privacidade era uma lacuna concreta: o site usa Google Analytics (cookies), o que
+  pela LGPD exige política acessível, e o Programa de Associados da Amazon também espera isso.
+  ATENÇÃO: os textos são um ponto de partida em linguagem comum, não peça jurídica revisada.
+- Rodapé unificado numa constante `RODAPE` (antes estava duplicado em dois templates) com
+  links para as três páginas e o aviso de afiliado mais explícito.
+- Bloco `@media (max-width: 767px)` ajustando hero, cards de produto, tipografia dos guias
+  e a caixa de autoria para telas pequenas — onde vem a maior parte do tráfego.
+- Páginas institucionais incluídas no sitemap com prioridade baixa (0.3).
