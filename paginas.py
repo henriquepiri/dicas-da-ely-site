@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-PÁGINAS INSTITUCIONAIS — Dicas da Ely
+PÁGINAS INSTITUCIONAIS - Dicas da Ely
 
 Política de privacidade, termos de uso e "sobre". Mesma lógica do guias.py:
 edite só o texto aqui, nunca o gerador_site.py.
@@ -57,7 +57,7 @@ nossas.</li>
 também usa cookies para registrar que você chegou pelo nosso link.</p>
 
 <p>Você pode bloquear ou apagar cookies nas configurações do seu navegador a qualquer
-momento. O site continua funcionando normalmente sem eles — nada aqui depende de
+momento. O site continua funcionando normalmente sem eles, nada aqui depende de
 cookie para ser lido.</p>
 
 <h2>Com quem compartilhamos</h2>
@@ -71,7 +71,7 @@ política própria.</p>
 <p>Pela Lei Geral de Proteção de Dados (LGPD), você pode pedir confirmação sobre
 tratamento de dados, acesso, correção, anonimização ou exclusão dos seus dados, entre
 outros direitos. Como não mantemos base de dados própria de visitantes, na prática o
-que temos são os relatórios agregados do Analytics — mas se quiser exercer qualquer
+que temos são os relatórios agregados do Analytics, mas se quiser exercer qualquer
 direito ou tirar dúvida, escreva para
 <a href="mailto:{EMAIL_CONTATO}" class="link-simples">{EMAIL_CONTATO}</a>.</p>
 
@@ -92,7 +92,7 @@ compra. Não coletamos intencionalmente dados de menores de idade.</p>
 
 <h2>Mudanças nesta política</h2>
 
-<p>Se algo mudar — nova ferramenta, nova funcionalidade — atualizamos esta página e a
+<p>Se algo mudar (nova ferramenta, nova funcionalidade), atualizamos esta página e a
 data de revisão no topo.</p>
 """
     },
@@ -123,7 +123,7 @@ esgotados ou anúncios removidos.</p>
 <h2>Sobre nossas recomendações</h2>
 
 <p>O conteúdo dos guias reflete nossa opinião e experiência pessoal. Não é
-aconselhamento profissional — médico, jurídico, financeiro ou de segurança. Para
+aconselhamento profissional (médico, jurídico, financeiro ou de segurança). Para
 decisões que envolvam saúde ou segurança de crianças, siga sempre a orientação do
 fabricante, das normas técnicas aplicáveis e de profissionais qualificados.</p>
 
@@ -165,7 +165,7 @@ funcionamento ininterrupto nem ausência de erros.</p>
         "conteudo": f"""
 <p>Somos <strong>Elyad e Henrique</strong>, pais de uma criança pequena. O site nasceu
 de uma coisa bem simples: a gente passou meses pesquisando o que comprar, comparando
-preço, lendo avaliação, errando em várias escolhas — e percebeu que boa parte dessa
+preço, lendo avaliação, errando em várias escolhas, e percebeu que boa parte dessa
 pesquisa dava pra poupar de quem viesse depois.</p>
 
 <h2>O que a gente faz aqui</h2>
@@ -183,7 +183,7 @@ atualizados. É automático, mas as categorias e os critérios são escolha noss
 <h2>Como o site se sustenta</h2>
 
 <p>Somos participantes do Programa de Associados da Amazon. Quando alguém compra por
-um dos nossos links, recebemos uma pequena comissão — sem nenhum custo adicional para
+um dos nossos links, recebemos uma pequena comissão, sem nenhum custo adicional para
 quem compra.</p>
 
 <p>É o que paga o domínio e justifica o tempo investido. E é por isso que a gente
@@ -194,7 +194,7 @@ sinaliza isso de forma clara em toda página de guia, em vez de esconder no roda
 <p>Não recebemos produto de fabricante em troca de resenha. Não aceitamos pagamento
 para destacar marca. Se um dia isso mudar, estará escrito aqui.</p>
 
-<p>Também não testamos individualmente cada produto da lista de ofertas — são centenas,
+<p>Também não testamos individualmente cada produto da lista de ofertas. São centenas,
 atualizadas diariamente. Os guias são de experiência própria; a lista de ofertas é
 curadoria de categoria, não recomendação individual.</p>
 

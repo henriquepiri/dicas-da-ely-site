@@ -20,7 +20,7 @@ GA_MEASUREMENT_ID = "G-JDYT3SLVZJ"  # Propriedade GA4 "Dicas da Ely"
 PRODUTOS_ENTRE_DICAS = 8  # a cada N produtos, intercala uma caixinha de dica no grid
 
 # A home mostrava até 40 produtos fora de "Mundo do Bebê" só por ordem de chegada,
-# sem nenhum critério de qualidade — virava vitrine de feed, não seleção. Agora só
+# sem nenhum critério de qualidade, virava vitrine de feed, não seleção. Agora só
 # entra produto com nota mínima, e o número de itens foi reduzido pra não virar
 # lista infinita.
 NOTA_MINIMA_HOME = 4.3
@@ -34,11 +34,11 @@ DIAS_VALIDADE_OFERTA = 10
 
 # Proteção: se o filtro acima deixar menos que isto, ele é ignorado e o site mostra tudo.
 # Evita que uma falha na coleta (robô quebrado, Amazon mudando layout) esvazie o site
-# silenciosamente — melhor preço velho do que página em branco.
+# silenciosamente. Melhor preço velho do que página em branco.
 MIN_PRODUTOS_PARA_FILTRAR = 20
 
 # --- CONTEÚDO EDITORIAL POR CATEGORIA ---
-# Dicas genéricas de compra (não são resenha de produto específico — é orientação
+# Dicas genéricas de compra (não são resenha de produto específico, é orientação
 # de como escolher bem dentro daquela categoria). É isso que dá o tom de "site de
 # dicas" em vez de só uma lista de links de afiliado.
 CATEGORIA_INFO = {
@@ -47,34 +47,34 @@ CATEGORIA_INFO = {
                  "Na hora de escolher, fique de olho na faixa etária recomendada pelo fabricante "
                  "e prefira sempre materiais atóxicos e certificados pelo Inmetro.",
         "dicas": [
-            "Antes de comprar roupinhas de bebê, confira a tabela de medidas do vendedor — o "
+            "Antes de comprar roupinhas de bebê, confira a tabela de medidas do vendedor: o "
             "tamanho \"RN\" varia bastante entre marcas.",
             "Brinquedos com peças pequenas só são seguros a partir dos 3 anos. Pra bebês menores, "
             "prefira sempre itens maiores que a boca da criança.",
-            "Berços, cadeirinhas e carrinhos devem ter selo do Inmetro — é a garantia mínima de "
+            "Berços, cadeirinhas e carrinhos devem ter selo do Inmetro. É a garantia mínima de "
             "segurança exigida no Brasil.",
         ],
     },
     "Cozinha": {
         "intro": "Aqui reunimos organizadores e utensílios que realmente fazem diferença no dia a "
-                 "dia da cozinha — sem gastar mais do que precisa.",
+                 "dia da cozinha, sem gastar mais do que precisa.",
         "dicas": [
             "Potes herméticos de vidro custam mais, mas não mancham nem retêm cheiro como os de "
-            "plástico — vale o investimento pra quem guarda tempero e óleo.",
-            "Organizadores empilháveis rendem muito mais espaço de armário do que parecem na foto — "
-            "meça a prateleira antes de comprar.",
+            "plástico. Vale o investimento pra quem guarda tempero e óleo.",
+            "Organizadores empilháveis rendem muito mais espaço de armário do que parecem na foto. "
+            "Meça a prateleira antes de comprar.",
             "Utensílios de silicone aguentam mais calor que os de plástico comum e não risham "
             "panela antiaderente.",
         ],
     },
     "Tecnologia": {
-        "intro": "Gadgets pra casa inteligente que valem o preço — testamos a categoria pensando em "
+        "intro": "Gadgets pra casa inteligente que valem o preço. Testamos a categoria pensando em "
                  "praticidade real, não só em novidade.",
         "dicas": [
             "Antes de comprar qualquer gadget \"inteligente\", confira se ele funciona com o "
-            "assistente de voz que você já usa (Alexa, Google Assistente) — nem todos são compatíveis.",
+            "assistente de voz que você já usa (Alexa, Google Assistente). Nem todos são compatíveis.",
             "Tomadas e lâmpadas inteligentes que usam Wi-Fi direto (sem hub) são mais fáceis de "
-            "instalar, mas costumam pesar mais na sua rede — bom pra quem tem poucos dispositivos.",
+            "instalar, mas costumam pesar mais na sua rede. Bom pra quem tem poucos dispositivos.",
             "Fios organizadores e réguas com USB parecem bobos, mas resolvem 90% da bagunça de mesa "
             "por menos de R$ 30.",
         ],
@@ -84,28 +84,28 @@ CATEGORIA_INFO = {
                  "não só enfeite.",
         "dicas": [
             "Prateleiras e organizadores multiuso costumam caber em mais lugares do que os "
-            "específicos pra um cômodo só — pense na flexibilidade antes de comprar.",
+            "específicos pra um cômodo só. Pense na flexibilidade antes de comprar.",
             "Fitas dupla-face de montagem removível seguram bem em superfície lisa, mas soltam em "
-            "parede com textura ou tinta velha — teste num cantinho antes.",
+            "parede com textura ou tinta velha. Teste num cantinho antes.",
             "Itens de decoração com tons neutros (bege, terracota, verde-oliva) combinam com mais "
             "ambientes e não saem de moda tão rápido.",
         ],
     },
     "Cuidados Pessoais": {
-        "intro": "Achadinhos de skincare e beleza com bom custo-benefício — sempre vale conferir a "
+        "intro": "Achadinhos de skincare e beleza com bom custo-benefício. Sempre vale conferir a "
                  "lista de ingredientes se você tem pele sensível.",
         "dicas": [
-            "Protetor solar é o item de skincare com melhor custo-benefício a longo prazo — vale "
+            "Protetor solar é o item de skincare com melhor custo-benefício a longo prazo. Vale "
             "priorizar mesmo com orçamento apertado.",
-            "Produtos com ácidos (retinol, vitamina C) devem entrar aos poucos na rotina — comece "
+            "Produtos com ácidos (retinol, vitamina C) devem entrar aos poucos na rotina. Comece "
             "usando 2-3x por semana antes de usar todo dia.",
-            "Pele oleosa também precisa de hidratante — pular essa etapa costuma piorar a oleosidade, "
+            "Pele oleosa também precisa de hidratante. Pular essa etapa costuma piorar a oleosidade, "
             "não melhorar.",
         ],
     },
     "GERAL": {
         "dicas": [
-            "Todos os preços aqui são coletados diretamente da Amazon todos os dias — o valor pode "
+            "Todos os preços aqui são coletados diretamente da Amazon todos os dias. O valor pode "
             "mudar entre nossa última atualização e o momento da sua compra, então confira o preço "
             "final na página do produto.",
             "Somos participantes do Programa de Associados da Amazon: se você compra por um dos "
@@ -387,7 +387,7 @@ TEMPLATE_VITRINE = """
                 <div class="iniciais">EH</div>
                 <p><strong style="color: var(--cor-texto);">Elyad &amp; Henrique.</strong>
                 Somos pais de uma criança pequena e escrevemos aqui o que aprendemos na
-                prática — o que funcionou, o que foi dinheiro jogado fora e o que a gente
+                prática: o que funcionou, o que foi dinheiro jogado fora e o que a gente
                 queria ter sabido antes.</p>
              </div>
 
@@ -478,7 +478,7 @@ TEMPLATE_GUIA = """
 
             <div class="aviso-afiliado">
                 Este guia tem links de afiliado da Amazon. Se você comprar por um deles, a gente
-                recebe uma pequena comissão sem custo extra pra você — é o que mantém o site no ar.
+                recebe uma pequena comissão sem custo extra pra você. É o que mantém o site no ar.
                 As recomendações são as mesmas que daríamos sem isso.
             </div>
 
@@ -561,7 +561,7 @@ RODAPE = """
             <p class="mb-1 fw-bold text-muted">© 2026 Dicas da Ely</p>
             <small class="text-muted d-block" style="max-width: 520px; margin: 0 auto; line-height: 1.5;">
                 Participante do Programa de Associados da Amazon. Recebemos comissão por compras
-                qualificadas, sem custo extra para você. Preços podem mudar — confira sempre na Amazon.
+                qualificadas, sem custo extra para você. Preços podem mudar, confira sempre na Amazon.
             </small>
             <p class="mt-2 text-muted" style="font-size: 0.75rem">Ofertas atualizadas em {{ data_atual }}</p>
         </div>
@@ -663,7 +663,7 @@ def processar_produto(row):
 def definir_filtro_frescor(cursor):
     """Decide se o corte por idade deve ser aplicado e devolve o trecho SQL.
 
-    Devolve string vazia (sem filtro) quando aplicá-lo deixaria o site quase vazio —
+    Devolve string vazia (sem filtro) quando aplicá-lo deixaria o site quase vazio,
     situação típica de coleta quebrada, em que sumir com tudo seria pior do que mostrar
     ofertas antigas."""
     cursor.execute("SELECT COUNT(*) FROM produtos")
@@ -708,7 +708,7 @@ def preparar_guias():
     return guias, destaque, outros
 
 def gerar_json_ld_artigo(guia, url_pagina):
-    """Dados estruturados do tipo Article — ajuda o Google a entender que é conteúdo
+    """Dados estruturados do tipo Article. Ajuda o Google a entender que é conteúdo
     editorial, não uma página de produto."""
     schema = {
         "@context": "https://schema.org",
@@ -829,7 +829,7 @@ Sitemap: {URL_SITE}/sitemap.xml
 
 def gerar_arquivos_github_pages():
     """Recria os arquivos que o GitHub Pages precisa. Isso roda a cada geração porque
-    o main() apaga a pasta de saída inteira antes de regerar — sem isso, o domínio
+    o main() apaga a pasta de saída inteira antes de regerar. Sem isso, o domínio
     customizado se perderia a cada atualização do site.
       - CNAME: diz ao GitHub Pages qual domínio serve este site
       - .nojekyll: desliga o processamento Jekyll (desnecessário aqui e mais lento)"""
