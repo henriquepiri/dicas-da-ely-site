@@ -19,6 +19,13 @@ PRODUTOS_POR_PAGINA = 24
 GA_MEASUREMENT_ID = "G-JDYT3SLVZJ"  # Propriedade GA4 "Dicas da Ely"
 PRODUTOS_ENTRE_DICAS = 8  # a cada N produtos, intercala uma caixinha de dica no grid
 
+# A home mostrava até 40 produtos fora de "Mundo do Bebê" só por ordem de chegada,
+# sem nenhum critério de qualidade — virava vitrine de feed, não seleção. Agora só
+# entra produto com nota mínima, e o número de itens foi reduzido pra não virar
+# lista infinita.
+NOTA_MINIMA_HOME = 4.3
+LIMITE_OUTROS_HOME = 16
+
 # Ofertas param de aparecer no site depois deste prazo sem serem revistas pela coleta.
 # Motivo: o banco só cresce, e cada execução do robô revisita apenas parte dos produtos.
 # Sem isso, item coletado há semanas fica no ar com preço antigo, e o visitante clica
@@ -325,8 +332,8 @@ TEMPLATE_VITRINE = """
             <div class="row selo-confianca g-3">
                 <div class="col-4 item-selo">
                     <i class="fas fa-magnifying-glass fa-lg mb-2"></i>
-                    <div class="titulo-selo">Curadoria manual</div>
-                    <div class="desc-selo">Cada oferta é escolhida à mão</div>
+                    <div class="titulo-selo">Seleção por qualidade</div>
+                    <div class="desc-selo">Só entra oferta com nota 4,3+ na Amazon</div>
                 </div>
                 <div class="col-4 item-selo">
                     <i class="fas fa-rotate fa-lg mb-2"></i>
@@ -861,10 +868,10 @@ def main():
     todos_guias, guia_destaque, outros_guias = preparar_guias()
 
     # 4. GERAÇÃO DA HOME (index.html)
-    cursor.execute(f"SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria = 'Mundo do Bebê'{filtro_frescor} ORDER BY id DESC LIMIT 8")
+    cursor.execute(f"SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria = 'Mundo do Bebê' AND CAST(nota AS REAL) >= {NOTA_MINIMA_HOME}{filtro_frescor} ORDER BY id DESC LIMIT 8")
     destaques_bebe = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
 
-    cursor.execute(f"SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria != 'Mundo do Bebê'{filtro_frescor} ORDER BY id DESC LIMIT 40")
+    cursor.execute(f"SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria != 'Mundo do Bebê' AND CAST(nota AS REAL) >= {NOTA_MINIMA_HOME}{filtro_frescor} ORDER BY id DESC LIMIT {LIMITE_OUTROS_HOME}")
     outros_produtos = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
 
     json_ld_home = gerar_json_ld(destaques_bebe + outros_produtos, "Dicas da Ely - Ofertas em Destaque", f"{URL_SITE}/")

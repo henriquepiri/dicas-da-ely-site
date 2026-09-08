@@ -127,6 +127,14 @@ def montar_link_afiliado(url_bruta):
     return f"https://www.amazon.com.br/dp/{asin}?tag={TAG_AFILIADO}"
 
 
+def limpar_titulo(titulo):
+    """Remove a palavra solta 'durante' que aparece por erro de tradução automática
+    em alguns anúncios (vendedor estrangeiro traduzindo mal 'with'/'for'), tipo
+    'Adaptador durante zigbee' -> 'Adaptador zigbee'."""
+    limpo = re.sub(r'\bdurante\b\s*', '', titulo, flags=re.IGNORECASE)
+    return re.sub(r'\s+', ' ', limpo).strip()
+
+
 def _texto_para_float(texto):
     """Converte 'R$ 1.299,90' -> 1299.90"""
     limpo = texto.replace("R$", "").replace("\xa0", "").strip()
@@ -194,7 +202,7 @@ def coletar_categoria(driver, nome_categoria, url_alvo):
                     break
                 try:
                     h2 = p.find("h2")
-                    titulo = h2.text.strip()
+                    titulo = limpar_titulo(h2.text.strip())
 
                     # Alguns cards do resultado de busca (ex: carrossel de marca) têm um
                     # <h2> com só o nome da marca ("Genérico", "Era Uma Vez") em vez do
