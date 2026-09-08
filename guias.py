@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-CONTEÚDO DOS GUIAS — Dicas da Ely
+CONTEÚDO DOS GUIAS - Dicas da Ely
 
 Este arquivo guarda só o TEXTO dos guias. Para editar um guia, mexa aqui;
 nunca é preciso tocar no gerador_site.py.
@@ -29,7 +29,7 @@ GUIAS = [
         "destaque": True,
         "conteudo": """
 <p>Toda lista de enxoval que a gente recebe na gravidez vem com umas 80 linhas. Depois que
-nossa filha nasceu, descobrimos que usávamos umas 20 de verdade — e que tinha coisa
+nossa filha nasceu, descobrimos que usávamos umas 20 de verdade, e que tinha coisa
 faltando que ninguém tinha avisado.</p>
 
 <p>Este guia é o que a gente gostaria de ter lido antes. Não é regra, cada bebê é de um
@@ -38,7 +38,7 @@ jeito. É o que aconteceu na nossa casa.</p>
 <h2>O erro que a gente cometeu (e quase todo mundo comete)</h2>
 
 <p><strong>Compramos roupa RN demais.</strong> Muita. E o bebê passa desse tamanho rápido
-demais — algumas peças a gente usou duas, três vezes. Outras nem chegaram a sair da
+demais. Algumas peças a gente usou duas, três vezes. Outras nem chegaram a sair da
 gaveta com etiqueta.</p>
 
 <p>A mesma coisa aconteceu com <strong>fralda de tamanho pequeno</strong>. Compramos
@@ -46,7 +46,7 @@ pacotes grandes achando que estávamos economizando, e sobrou fralda que não se
 
 <p>Se for pra levar uma coisa só deste guia, leve esta: <strong>compre pouco dos tamanhos
 iniciais</strong>. Poucas peças RN, um pacote pequeno de fralda P. Você reabastece em dois
-dias se precisar — e não fica com armário cheio de coisa que não serve.</p>
+dias se precisar, e não fica com armário cheio de coisa que não serve.</p>
 
 <h2>Não abra tudo de uma vez</h2>
 
@@ -58,7 +58,7 @@ não dá.</p>
 <h2>O que realmente rodou na nossa rotina</h2>
 
 <p><strong>Bodies.</strong> É a peça que mais gira, disparado. Troca de roupa acontece
-várias vezes por dia. Prefira os que abrem na frente ou de gola envelope — vestir pela
+várias vezes por dia. Prefira os que abrem na frente ou de gola envelope. Vestir pela
 cabeça de um recém-nascido é mais difícil do que parece.</p>
 
 <p><strong>Macacões de algodão.</strong> Servem pra dormir e pra sair. Os de pezinho
@@ -75,7 +75,7 @@ a segurar o calor na saída do banho.</p>
 <p>Tem uma categoria de item que você não consegue acertar de primeira, por mais que
 pesquise. Com a gente foi assim:</p>
 
-<p><strong>Lenço umedecido.</strong> Testamos vários. Muda muito de marca pra marca —
+<p><strong>Lenço umedecido.</strong> Testamos vários. Muda muito de marca pra marca:
 espessura, quantidade de umidade, cheiro. Alguns esfarelam, outros vêm secos demais.</p>
 
 <p><strong>Pomada de assadura.</strong> Também testamos várias até achar a que funcionava
@@ -91,7 +91,7 @@ descobrir que não deu certo com um estoque de seis meses em casa.</p>
 
 <ul>
 <li><strong>Cadeirinha para o carro.</strong> É obrigatória por lei, precisa ser adequada
-ao peso e à altura, e deve ter certificação do Inmetro. Evite comprar usada — não dá pra
+ao peso e à altura, e deve ter certificação do Inmetro. Evite comprar usada: não dá pra
 saber se já sofreu impacto.</li>
 <li><strong>Berço.</strong> A distância entre as grades e a altura do estrado seguem norma
 técnica. É onde o bebê passa mais tempo sozinho.</li>
@@ -105,7 +105,7 @@ livre possível.</p>
     {
         "slug": "brinquedos-seguros-por-idade",
         "titulo": "Brinquedo seguro: como escolher pela idade certa",
-        "resumo": "A faixa etária na embalagem não é sugestão de esperteza da criança — "
+        "resumo": "A faixa etária na embalagem não é sugestão de esperteza da criança, "
                   "é indicação de segurança. Entenda o que ela quer dizer.",
         "categoria": "Mundo do Bebê",
         "data": "2026-09-03",
@@ -113,7 +113,7 @@ livre possível.</p>
         "conteudo": """
 <p>Tem uma confusão comum na hora de comprar brinquedo: os pais olham o "3+" na caixa e
 pensam "mas meu filho é esperto, dá conta". O problema é que essa marcação quase nunca
-fala de inteligência — ela fala de <strong>risco físico</strong>.</p>
+fala de inteligência, ela fala de <strong>risco físico</strong>.</p>
 
 <h2>O que prendeu atenção de verdade na nossa casa</h2>
 
@@ -122,12 +122,12 @@ fala de inteligência — ela fala de <strong>risco físico</strong>.</p>
 educativo-com-selo. Luz piscando e som.</p>
 
 <p>Isso diz uma coisa útil sobre bebê: nessa fase, o que engaja é estímulo sensorial
-direto — luz, som, textura, contraste. Brinquedo caro de madeira com proposta pedagógica
+direto: luz, som, textura, contraste. Brinquedo caro de madeira com proposta pedagógica
 tem seu valor, mas costuma render mais alguns meses depois.</p>
 
 <p>O contraponto honesto: som alto perto do ouvido de bebê incomoda e, em volume muito
-alto, não faz bem. Vale checar se o brinquedo tem controle de volume antes de comprar —
-muitos não têm.</p>
+alto, não faz bem. Vale checar se o brinquedo tem controle de volume antes de comprar.
+Muitos não têm.</p>
 
 <h2>O que a faixa etária realmente indica</h2>
 
@@ -151,7 +151,7 @@ grandes, laváveis e sem peça destacável. Livrinhos de banho e de pano funcion
 brinquedos de puxar, instrumentos musicais simples. Ainda evitando peça pequena.</p>
 
 <p><strong>A partir dos 3 anos.</strong> Aí entram os jogos com peças menores, quebra-cabeça,
-massinha e brinquedos de montar. Se tiver irmão mais novo em casa, atenção redobrada — a
+massinha e brinquedos de montar. Se tiver irmão mais novo em casa, atenção redobrada: a
 peça do mais velho vira risco pro menor.</p>
 
 <h2>O que conferir na embalagem</h2>
@@ -161,7 +161,7 @@ peça do mais velho vira risco pro menor.</p>
 Brasil. Sem selo, não compre.</li>
 <li><strong>Indicação de material atóxico</strong>, principalmente em qualquer coisa que
 vá à boca.</li>
-<li><strong>Ausência de cordas e fitas longas</strong> em brinquedos para bebês — risco
+<li><strong>Ausência de cordas e fitas longas</strong> em brinquedos para bebês: risco
 de enrolar no pescoço.</li>
 <li><strong>Pilhas com compartimento parafusado.</strong> Pilha botão é especialmente
 perigosa se engolida.</li>
@@ -178,14 +178,14 @@ Economizar aqui não compensa.</p>
         "slug": "organizar-cozinha-pequena",
         "titulo": "Cozinha pequena: por onde começar a organizar",
         "resumo": "Antes de sair comprando organizador, tem uma etapa que quase todo mundo "
-                  "pula — e é ela que faz a diferença.",
+                  "pula, e é ela que faz a diferença.",
         "categoria": "Cozinha",
         "data": "2026-09-02",
         "destaque": False,
         "conteudo": """
 <p>A tentação em cozinha apertada é comprar organizador. Você vê aquele vídeo com armário
 perfeito, compra três potes e um suporte, e duas semanas depois está tudo bagunçado de
-novo — só que agora com organizador no meio.</p>
+novo, só que agora com organizador no meio.</p>
 
 <p>O que costuma faltar é a etapa anterior.</p>
 
@@ -197,7 +197,7 @@ presente, a forma de um formato específico, os potes sem tampa: isso ocupa o es
 falta pro que você usa toda semana.</p>
 
 <p>Cozinha pequena não tem problema de organização, tem problema de volume. Organizador
-não resolve excesso — só arruma o excesso de forma mais bonita.</p>
+não resolve excesso, só arruma o excesso de forma mais bonita.</p>
 
 <h2>Depois: pensar por zona, não por categoria</h2>
 
@@ -216,7 +216,7 @@ lugar certo.</p>
 <h2>Aí sim: o que comprar</h2>
 
 <p><strong>Organizadores empilháveis</strong> aproveitam a altura do armário, que é o
-espaço mais desperdiçado. Meça a altura da prateleira antes — a foto do anúncio engana.</p>
+espaço mais desperdiçado. Meça a altura da prateleira antes: a foto do anúncio engana.</p>
 
 <p><strong>Potes herméticos</strong> valem para grão, farinha e café. Os de vidro custam
 mais, mas não retêm cheiro nem mancham com tempero, e duram muito mais que os de plástico.</p>
@@ -250,7 +250,7 @@ realmente muda a rotina.</p>
 
 <p>Confira a compatibilidade com o assistente que você já usa. Se sua casa tem Alexa, um
 dispositivo que só funciona com Google Assistente vai te obrigar a abrir um app separado
-toda vez — e é aí que você para de usar.</p>
+toda vez, e é aí que você para de usar.</p>
 
 <p>Fique atento também ao tipo de conexão. Dispositivos Wi-Fi conectam direto no roteador,
 sem precisar de central (hub), o que é ótimo pra começar. A ressalva: cada um ocupa um
@@ -260,7 +260,7 @@ com hub.</p>
 <h2>O que vale começar</h2>
 
 <p><strong>Tomada inteligente.</strong> É o melhor custo-benefício da categoria. Você
-transforma qualquer aparelho comum em programável — ventilador, luminária, cafeteira,
+transforma qualquer aparelho comum em programável: ventilador, luminária, cafeteira,
 carregador. Serve pra desligar automaticamente coisa que você esquece ligada.</p>
 
 <p><strong>Lâmpada inteligente.</strong> Funciona bem em ambiente onde você quer variar a
@@ -279,7 +279,7 @@ uma pessoa da casa não usa, você acaba mantendo a chave normal em paralelo e o
 TV ligada é o pior cenário pra reconhecimento de voz.</p>
 
 <p><strong>Câmera interna sem pensar na privacidade.</strong> Vale checar se o fabricante
-permite armazenamento local e se a gravação em nuvem é paga — muita câmera barata só
+permite armazenamento local e se a gravação em nuvem é paga. Muita câmera barata só
 funciona bem com assinatura.</p>
 
 <h2>O item mais subestimado</h2>
@@ -355,7 +355,7 @@ O problema é que o bebê muda de tamanho rápido, e principalmente nos primeiro
 dinheiro que a gente "economizou" no preço por unidade virou fralda encostada.</p>
 
 <p>A regra que funcionou depois: <strong>pacote pequeno nos tamanhos iniciais, pacote
-grande só a partir do momento em que o bebê estabiliza num tamanho</strong> — o que
+grande só a partir do momento em que o bebê estabiliza num tamanho</strong>, o que
 costuma acontecer alguns meses depois.</p>
 
 <h2>Tamanho não é idade, é peso</h2>
@@ -377,7 +377,7 @@ comprar embalagens pequenas de duas ou três marcas antes de fechar com uma.</p>
 <ul>
 <li><strong>Vazamento</strong>, principalmente à noite e em fralda de cocô</li>
 <li><strong>Marca na pele</strong> na cintura e nas pernas</li>
-<li><strong>Absorção</strong> — se fica pesada e mole rápido demais</li>
+<li><strong>Absorção</strong>: se fica pesada e mole rápido demais</li>
 <li><strong>Reação na pele</strong>, que varia bastante entre marcas</li>
 </ul>
 
@@ -389,7 +389,7 @@ mais caro por unidade, e uma estratégia razoável é usar a comum de dia e a re
 
 <h2>Quanto comprar por mês</h2>
 
-<p>O consumo cai bastante ao longo do primeiro ano — recém-nascido troca muito mais vezes
+<p>O consumo cai bastante ao longo do primeiro ano: recém-nascido troca muito mais vezes
 por dia do que um bebê de oito meses. Então não use o consumo do primeiro mês como base
 para estocar.</p>
 
@@ -407,8 +407,8 @@ quantidade. É mais confiável que qualquer tabela genérica.</p>
         "destaque": False,
         "conteudo": """
 <p>As fotos de quarto de bebê que circulam mostram berço grande, cômoda, poltrona de
-amamentação, tapete, prateleiras. Em quarto pequeno — ou em quarto compartilhado com os
-pais — nada disso cabe junto.</p>
+amamentação, tapete, prateleiras. Em quarto pequeno (ou em quarto compartilhado com os
+pais), nada disso cabe junto.</p>
 
 <p>A boa notícia é que boa parte desses móveis não é essencial.</p>
 
@@ -420,7 +420,7 @@ exigência de segurança: certificação, distância entre grades, estrado firme
 
 <p><strong>Uma superfície pra trocar fralda.</strong> Não precisa ser trocador móvel. Um
 colchonete de troca sobre a cômoda que você já tem, ou sobre a cama, resolve. O que
-importa é ter tudo à mão — nunca dá pra soltar o bebê pra pegar algo.</p>
+importa é ter tudo à mão: nunca dá pra soltar o bebê pra pegar algo.</p>
 
 <p><strong>Onde guardar roupa.</strong> Roupa de bebê é pequena e cabe em pouco espaço.
 Gaveteiro estreito ou até caixas organizadoras numa prateleira dão conta.</p>
@@ -443,7 +443,7 @@ se você seguir a lógica de comprar pouco dos tamanhos iniciais.</p>
 cômoda deixam à mão o que você usa todo dia, sem ocupar chão.</p>
 
 <p>Um cuidado importante: nada pesado ou de vidro em prateleira acima de onde o bebê fica.
-E fixação bem feita na parede, não em fita adesiva — a mesma prateleira que hoje segura
+E fixação bem feita na parede, não em fita adesiva. A mesma prateleira que hoje segura
 fralda pode virar apoio de criança que aprendeu a subir.</p>
 
 <h2>Deixe espaço vazio</h2>
