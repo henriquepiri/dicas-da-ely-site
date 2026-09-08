@@ -6,3 +6,5 @@ erro_*.png
 erro_*.html
 debug/
 *.log
+.env
+sugestoes/

@@ -95,6 +95,68 @@ aponta a linha. Se travar, é só perguntar.
 
 ---
 
+## Ferramenta de apoio: assistente de texto com IA (opcional)
+
+Criamos o `assistente_guia.py`, que usa a API da OpenAI pra ajudar a:
+- **Revisar** um guia que já existe, deixando o texto mais fluido sem mudar os fatos.
+- **Rascunhar** um guia novo a partir de tópicos reais que vocês escreverem soltos.
+
+Ele **nunca** edita `guias.py` sozinho. Sempre gera um arquivo dentro da pasta
+`sugestoes/` pra vocês lerem, conferirem se os fatos batem e colarem à mão — a
+IA melhora a forma de contar, mas quem garante que "soa como vocês" continua
+sendo vocês (ela não sabe nada que vocês não disserem a ela).
+
+### Configurar (só uma vez)
+
+Vocês precisam de uma chave da API da OpenAI (gerada em platform.openai.com).
+No PowerShell, dentro da pasta do projeto, rodem (trocando `sk-SUA-CHAVE-AQUI`
+pela chave de vocês):
+
+```
+"OPENAI_API_KEY=sk-SUA-CHAVE-AQUI" | Out-File -FilePath .env -Encoding utf8
+```
+
+Isso cria um arquivo `.env` local que **nunca vai pro GitHub** (já está no
+`.gitignore`) — a chave fica só no computador de vocês.
+
+```
+py -3 -m pip install -r requirements.txt
+```
+
+### Revisar um guia existente
+
+```
+py -3 assistente_guia.py revisar enxoval-de-bebe-o-que-vale-comprar
+```
+
+Troque o slug pelo do guia que quiser (é o mesmo campo `"slug"` do bloco em
+`guias.py`). O resultado cai em `sugestoes/revisao_<slug>_<data>.txt`.
+
+### Rascunhar um guia novo
+
+Primeiro, criem um `.txt` com o tema e os fatos reais, um por linha. Exemplo,
+`topicos-primeiro-banho.txt`:
+
+```
+Tema: primeiro banho do bebê em casa
+- Usamos banheira própria, água morna testada no pulso, não no cotovelo
+- Toalha com capuz resolveu mais que esperávamos
+- Bebê chorou nos três primeiros banhos, parou de chorar na quarta vez
+- Erro que cometemos: água esfriando rápido demais, banho muito longo
+```
+
+Depois:
+
+```
+py -3 assistente_guia.py novo topicos-primeiro-banho.txt
+```
+
+O rascunho cai em `sugestoes/novo_guia_topicos-primeiro-banho_<data>.txt`,
+com título, resumo e corpo em HTML já separados — é só revisar e copiar pro
+formato de bloco novo em `guias.py` (ver seção "Como criar um guia novo" acima).
+
+---
+
 ## Ideias de temas que ainda faltam
 
 Coisas que vocês viveram e renderiam guia bom:
