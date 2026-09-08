@@ -50,6 +50,8 @@ Regras de tom, inegociáveis:
   vez de "compramos itens em excesso".
 - HTML simples apenas: <p>, <h2>, <strong>, <ul><li>. Nada de markdown,
   <script> ou blocos de código.
+- Nunca use travessão/hífen longo (—) pra ligar frases. É um tique clássico
+  de texto gerado por IA. Troque por ponto, vírgula ou dois-pontos.
 - Nunca mencione fórmula infantil, mamadeira, bico ou chupeta, nem
   recomende marca desses itens — têm restrição legal de publicidade no
   Brasil (Lei 11.265/2006, NBCAL)."""
