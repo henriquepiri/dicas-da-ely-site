@@ -196,6 +196,13 @@ def coletar_categoria(driver, nome_categoria, url_alvo):
                     h2 = p.find("h2")
                     titulo = h2.text.strip()
 
+                    # Alguns cards do resultado de busca (ex: carrossel de marca) têm um
+                    # <h2> com só o nome da marca ("Genérico", "Era Uma Vez") em vez do
+                    # título do produto. Título de produto real na Amazon nunca é tão
+                    # curto — descarta o item em vez de publicar um título sem sentido.
+                    if len(titulo) < 20:
+                        raise ValueError(f"título suspeito/curto demais: '{titulo}'")
+
                     preco_atual = extrair_preco_atual(p)
                     if preco_atual is None:
                         continue
