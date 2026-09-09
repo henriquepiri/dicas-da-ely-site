@@ -703,6 +703,20 @@ CAPA_COR_BASE = (253, 251, 247)      # --cor-fundo
 CAPA_COR_TITULO = (92, 64, 51)       # --cor-texto
 CAPA_COR_DESTAQUE = (211, 84, 0)     # --cor-destaque
 CAPA_COR_MARCA = (140, 94, 74)       # --cor-primaria
+CAPA_COR_BOLHA = (250, 222, 200)     # blush suave, só pro fundo decorativo
+
+# Ícone (Font Awesome 6 Free Solid) representando o assunto de cada guia — dá o toque
+# visual que faltava numa capa só de texto. Guia novo sem entrada aqui cai no genérico.
+CAPA_ICONE_POR_SLUG = {
+    "enxoval-de-bebe-o-que-vale-comprar": 0xf553,       # shirt
+    "brinquedos-seguros-por-idade": 0xf12e,             # puzzle-piece
+    "organizar-cozinha-pequena": 0xf2e7,                # utensils
+    "casa-inteligente-por-onde-comecar": 0xf1e6,        # plug
+    "canguru-como-escolher-posicao-correta": 0xf77d,    # baby-carriage
+    "fralda-como-escolher-e-quanto-comprar": 0xf77c,    # baby
+    "quarto-de-bebe-pequeno": 0xf236,                   # bed
+}
+CAPA_ICONE_PADRAO = 0xf0eb  # lightbulb, mesmo ícone da "Dica da Ely" no site
 
 
 def _quebrar_linhas_capa(draw, texto, fonte, largura_max):
@@ -723,12 +737,13 @@ def _quebrar_linhas_capa(draw, texto, fonte, largura_max):
     return linhas
 
 
-def gerar_capa_guia(titulo, categoria, caminho_saida):
-    """Gera a imagem de capa de um guia (1200x630): título + selo da categoria + marca
-    do site, nas mesmas cores da página. NÃO é foto real — é uma peça gráfica gerada
-    por código, pensada pra og:image (compartilhamento social) e pra dar ao guia uma
-    imagem própria em vez da logo genérica repetida em todo guia. Trocar por foto de
-    verdade no futuro é só substituir o arquivo gerado por outro com o mesmo nome."""
+def gerar_capa_guia(titulo, categoria, slug, caminho_saida):
+    """Gera a imagem de capa de um guia (1200x630): título + selo da categoria + ícone
+    do assunto + marca do site, nas mesmas cores e fonte da página. NÃO é foto real —
+    é uma peça gráfica gerada por código, pensada pra og:image (compartilhamento
+    social) e pra dar ao guia uma imagem própria em vez da logo genérica repetida em
+    todo guia. Trocar por foto de verdade no futuro é só substituir o arquivo gerado
+    por outro com o mesmo nome."""
     img = Image.new("RGB", (CAPA_LARGURA, CAPA_ALTURA), CAPA_COR_BASE)
     draw = ImageDraw.Draw(img)
 
@@ -741,11 +756,32 @@ def gerar_capa_guia(titulo, categoria, caminho_saida):
         )
         draw.line([(0, y), (CAPA_LARGURA, y)], fill=cor)
 
+    # Bolha decorativa atrás do ícone: só pra tirar a cara de "fundo liso", sem
+    # disputar atenção com o título (fica atrás de tudo, cor bem suave)
+    draw.ellipse([760, -180, 1400, 460], fill=CAPA_COR_BOLHA)
+
     fonte_titulo = ImageFont.truetype(f"{PASTA_FONTES}/Baloo2-ExtraBold.ttf", 62)
     fonte_categoria = ImageFont.truetype(f"{PASTA_FONTES}/Nunito-Bold.ttf", 26)
     fonte_marca = ImageFont.truetype(f"{PASTA_FONTES}/Nunito-Bold.ttf", 28)
+    fonte_icone = ImageFont.truetype(f"{PASTA_FONTES}/fa-solid-900.ttf", 90)
 
     margem = 90
+
+    # Selo com ícone do assunto, no canto superior direito
+    diametro_selo = 190
+    centro_selo = (CAPA_LARGURA - margem - diametro_selo / 2, margem + diametro_selo / 2)
+    caixa_selo = [
+        centro_selo[0] - diametro_selo / 2, centro_selo[1] - diametro_selo / 2,
+        centro_selo[0] + diametro_selo / 2, centro_selo[1] + diametro_selo / 2,
+    ]
+    draw.ellipse(caixa_selo, fill=CAPA_COR_DESTAQUE)
+    icone = chr(CAPA_ICONE_POR_SLUG.get(slug, CAPA_ICONE_PADRAO))
+    bbox_icone = draw.textbbox((0, 0), icone, font=fonte_icone)
+    pos_icone = (
+        centro_selo[0] - (bbox_icone[2] - bbox_icone[0]) / 2 - bbox_icone[0],
+        centro_selo[1] - (bbox_icone[3] - bbox_icone[1]) / 2 - bbox_icone[1],
+    )
+    draw.text(pos_icone, icone, font=fonte_icone, fill=(255, 255, 255))
 
     # Selo da categoria, mesma linguagem visual da etiqueta "Guia da semana" do site
     texto_cat = categoria.upper()
@@ -759,8 +795,11 @@ def gerar_capa_guia(titulo, categoria, caminho_saida):
     draw.rounded_rectangle(caixa_cat, radius=30, fill=CAPA_COR_DESTAQUE)
     draw.text((margem + pad_x, margem + pad_y - bbox_cat[1]), texto_cat, font=fonte_categoria, fill=(255, 255, 255))
 
-    # Título, quebrado pra caber na largura disponível e centralizado verticalmente
-    largura_disponivel = CAPA_LARGURA - margem * 2
+    # Título, quebrado pra caber na largura disponível (reserva uma faixa à direita
+    # pra nunca invadir a área do selo com ícone, não importa a altura do bloco de
+    # texto) e centralizado verticalmente
+    reserva_selo = 260
+    largura_disponivel = CAPA_LARGURA - margem * 2 - reserva_selo
     linhas = _quebrar_linhas_capa(draw, titulo, fonte_titulo, largura_disponivel)
     altura_linha = fonte_titulo.size + 16
     y = (CAPA_ALTURA - altura_linha * len(linhas)) / 2
@@ -1039,7 +1078,7 @@ def main():
         )
         relacionados = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
 
-        gerar_capa_guia(guia['titulo'], guia['categoria'], f"{PASTA_SAIDA}/capas/capa-{guia['slug']}.png")
+        gerar_capa_guia(guia['titulo'], guia['categoria'], guia['slug'], f"{PASTA_SAIDA}/capas/capa-{guia['slug']}.png")
 
         html_guia = tpl_guia.render(
             navbar=navbar_html,
