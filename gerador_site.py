@@ -6,6 +6,7 @@ import json
 import math
 from datetime import datetime
 from jinja2 import Template
+from PIL import Image, ImageDraw, ImageFont
 from guias import GUIAS
 from paginas import PAGINAS
 
@@ -218,6 +219,7 @@ HEAD_COMUM = """
         .artigo { max-width: 720px; margin: 0 auto; }
         .artigo h1 { font-size: 2.3rem; color: var(--cor-primaria); line-height: 1.15; margin-bottom: 14px; }
         .artigo .meta { color: #a89a90; font-size: 0.85rem; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--cor-card-border); }
+        .capa-guia { width: 100%; height: auto; border-radius: 16px; margin-bottom: 28px; border: 1px solid var(--cor-card-border); }
         .artigo h2 { font-size: 1.45rem; color: var(--cor-texto); margin: 34px 0 14px; }
         .artigo p { font-size: 1.08rem; line-height: 1.75; margin-bottom: 18px; color: #6b5546; }
         .artigo ul { margin-bottom: 20px; }
@@ -476,6 +478,9 @@ TEMPLATE_GUIA = """
                 {{ guia.categoria }} &middot; Publicado em {{ guia.data_br }} &middot; por Elyad &amp; Henrique
             </div>
 
+            <img src="capas/capa-{{ guia.slug }}.png" alt="{{ guia.titulo }}" width="1200" height="630"
+                 class="capa-guia" loading="lazy">
+
             <div class="aviso-afiliado">
                 Este guia tem links de afiliado da Amazon. Se você comprar por um deles, a gente
                 recebe uma pequena comissão sem custo extra pra você. É o que mantém o site no ar.
@@ -689,6 +694,85 @@ def definir_filtro_frescor(cursor):
 
     return f" AND julianday('now') - julianday(data_atualizacao) <= {DIAS_VALIDADE_OFERTA}"
 
+PASTA_FONTES = "fonts"
+CAPA_LARGURA, CAPA_ALTURA = 1200, 630  # tamanho padrão de og:image
+
+# Mesma paleta de cores do site (ver CSS em HEAD_COMUM), só que como RGB pro Pillow
+CAPA_COR_TOPO = (255, 255, 255)
+CAPA_COR_BASE = (253, 251, 247)      # --cor-fundo
+CAPA_COR_TITULO = (92, 64, 51)       # --cor-texto
+CAPA_COR_DESTAQUE = (211, 84, 0)     # --cor-destaque
+CAPA_COR_MARCA = (140, 94, 74)       # --cor-primaria
+
+
+def _quebrar_linhas_capa(draw, texto, fonte, largura_max):
+    """Quebra o título em linhas que cabem em largura_max, medindo o texto de verdade
+    (fonte não é monoespaçada, contar caractere não funcionaria)."""
+    palavras = texto.split()
+    linhas, atual = [], ""
+    for palavra in palavras:
+        teste = f"{atual} {palavra}".strip()
+        largura_teste = draw.textbbox((0, 0), teste, font=fonte)[2]
+        if largura_teste <= largura_max or not atual:
+            atual = teste
+        else:
+            linhas.append(atual)
+            atual = palavra
+    if atual:
+        linhas.append(atual)
+    return linhas
+
+
+def gerar_capa_guia(titulo, categoria, caminho_saida):
+    """Gera a imagem de capa de um guia (1200x630): título + selo da categoria + marca
+    do site, nas mesmas cores da página. NÃO é foto real — é uma peça gráfica gerada
+    por código, pensada pra og:image (compartilhamento social) e pra dar ao guia uma
+    imagem própria em vez da logo genérica repetida em todo guia. Trocar por foto de
+    verdade no futuro é só substituir o arquivo gerado por outro com o mesmo nome."""
+    img = Image.new("RGB", (CAPA_LARGURA, CAPA_ALTURA), CAPA_COR_BASE)
+    draw = ImageDraw.Draw(img)
+
+    # Gradiente vertical suave (branco em cima, creme embaixo), igual ao .hero do site
+    for y in range(CAPA_ALTURA):
+        proporcao = y / CAPA_ALTURA
+        cor = tuple(
+            int(CAPA_COR_TOPO[i] + (CAPA_COR_BASE[i] - CAPA_COR_TOPO[i]) * proporcao)
+            for i in range(3)
+        )
+        draw.line([(0, y), (CAPA_LARGURA, y)], fill=cor)
+
+    fonte_titulo = ImageFont.truetype(f"{PASTA_FONTES}/Baloo2-ExtraBold.ttf", 62)
+    fonte_categoria = ImageFont.truetype(f"{PASTA_FONTES}/Nunito-Bold.ttf", 26)
+    fonte_marca = ImageFont.truetype(f"{PASTA_FONTES}/Nunito-Bold.ttf", 28)
+
+    margem = 90
+
+    # Selo da categoria, mesma linguagem visual da etiqueta "Guia da semana" do site
+    texto_cat = categoria.upper()
+    bbox_cat = draw.textbbox((0, 0), texto_cat, font=fonte_categoria)
+    pad_x, pad_y = 22, 12
+    caixa_cat = [
+        margem, margem,
+        margem + (bbox_cat[2] - bbox_cat[0]) + pad_x * 2,
+        margem + (bbox_cat[3] - bbox_cat[1]) + pad_y * 2,
+    ]
+    draw.rounded_rectangle(caixa_cat, radius=30, fill=CAPA_COR_DESTAQUE)
+    draw.text((margem + pad_x, margem + pad_y - bbox_cat[1]), texto_cat, font=fonte_categoria, fill=(255, 255, 255))
+
+    # Título, quebrado pra caber na largura disponível e centralizado verticalmente
+    largura_disponivel = CAPA_LARGURA - margem * 2
+    linhas = _quebrar_linhas_capa(draw, titulo, fonte_titulo, largura_disponivel)
+    altura_linha = fonte_titulo.size + 16
+    y = (CAPA_ALTURA - altura_linha * len(linhas)) / 2
+    for linha in linhas:
+        draw.text((margem, y), linha, font=fonte_titulo, fill=CAPA_COR_TITULO)
+        y += altura_linha
+
+    draw.text((margem, CAPA_ALTURA - margem - 30), "dicasdaely.com.br", font=fonte_marca, fill=CAPA_COR_MARCA)
+
+    img.save(caminho_saida, "PNG")
+
+
 def preparar_guias():
     """Ordena os guias por data (mais recente primeiro) e formata a data para exibição.
     Separa o guia em destaque dos demais."""
@@ -842,6 +926,7 @@ def main():
     # 1. Preparar pastas
     if os.path.exists(PASTA_SAIDA): shutil.rmtree(PASTA_SAIDA)
     os.makedirs(PASTA_SAIDA)
+    os.makedirs(os.path.join(PASTA_SAIDA, "capas"))
     if os.path.exists(ARQUIVO_LOGO): shutil.copy(ARQUIVO_LOGO, os.path.join(PASTA_SAIDA, ARQUIVO_LOGO))
 
     conn = sqlite3.connect(NOME_BANCO)
@@ -954,6 +1039,8 @@ def main():
         )
         relacionados = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
 
+        gerar_capa_guia(guia['titulo'], guia['categoria'], f"{PASTA_SAIDA}/capas/capa-{guia['slug']}.png")
+
         html_guia = tpl_guia.render(
             navbar=navbar_html,
             rodape=rodape_html,
@@ -961,7 +1048,7 @@ def main():
             json_ld=gerar_json_ld_artigo(guia, url_pagina),
             titulo_seo=f"{guia['titulo']} | Dicas da Ely",
             descricao_seo=guia['resumo'],
-            imagem_og=f"{URL_SITE}/{ARQUIVO_LOGO}",
+            imagem_og=f"{URL_SITE}/capas/capa-{guia['slug']}.png",
             url_atual=url_pagina,
             guia=guia,
             slug_categoria=slug_cat,
