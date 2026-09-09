@@ -42,7 +42,9 @@ demais. Algumas peças a gente usou duas, três vezes. Outras nem chegaram a sai
 gaveta com etiqueta.</p>
 
 <p>A mesma coisa aconteceu com <strong>fralda de tamanho pequeno</strong>. Compramos
-pacotes grandes achando que estávamos economizando, e sobrou fralda que não servia mais.</p>
+pacotes grandes achando que estávamos economizando, e sobrou fralda que não servia mais.
+Tem um guia inteiro sobre isso: <a href="guia-fralda-como-escolher-e-quanto-comprar.html"
+class="link-simples">como escolher o tamanho certo e quanto comprar</a>.</p>
 
 <p>Se for pra levar uma coisa só deste guia, leve esta: <strong>compre pouco dos tamanhos
 iniciais</strong>. Poucas peças RN, um pacote pequeno de fralda P. Você reabastece em dois
@@ -99,7 +101,8 @@ técnica. É onde o bebê passa mais tempo sozinho.</li>
 
 <p>Sobre o berço, vale um lembrete: protetores acolchoados, almofadas e travesseiros
 soltos lá dentro não são recomendados para o sono do bebê. O berço deve ficar o mais
-livre possível.</p>
+livre possível. Se o quarto for pequeno, tem mais dica sobre isso no guia de
+<a href="guia-quarto-de-bebe-pequeno.html" class="link-simples">quarto de bebê pequeno</a>.</p>
 """
     },
     {
@@ -369,7 +372,8 @@ que veste bem no seu bebê pode ser justamente a que vaza no do vizinho.</p>
 
 <h2>Testar antes de decidir</h2>
 
-<p>Como acontece com lenço e pomada, fralda também é item de tentativa e erro. Vale
+<p>Como acontece com <a href="guia-enxoval-de-bebe-o-que-vale-comprar.html"
+class="link-simples">lenço e pomada</a>, fralda também é item de tentativa e erro. Vale
 comprar embalagens pequenas de duas ou três marcas antes de fechar com uma.</p>
 
 <p>O que observar em cada teste:</p>
