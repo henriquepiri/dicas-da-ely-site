@@ -133,6 +133,13 @@ HEAD_COMUM = """
     <meta property="og:image" content="{{ imagem_og }}">
     <meta property="og:url" content="{{ url_atual }}">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Dicas da Ely">
+    <meta property="og:locale" content="pt_BR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ titulo_seo }}">
+    <meta name="twitter:description" content="{{ descricao_seo }}">
+    <meta name="twitter:image" content="{{ imagem_og }}">
 
     <link rel="icon" type="image/png" href="logo_dicas.png">
 
@@ -305,6 +312,7 @@ NAVBAR = """
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="guias.html">Guias</a></li>
                 {% for cat in categorias %}
                 <li class="nav-item"><a class="nav-link" href="cat-{{ cat.slug }}.html">{{ cat.nome }}</a></li>
                 {% endfor %}            </ul>
@@ -413,7 +421,7 @@ TEMPLATE_VITRINE = """
              <div class="empty-state"><i class="fas fa-box-open fa-2x mb-2"></i><p>Novidades chegando em breve por aqui.</p></div>
              {% endif %}
         {% else %}
-             <h2 class="fw-bold mb-3 border-bottom pb-2" style="color: var(--cor-primaria);">{{ titulo_secao }}</h2>
+             <h1 class="fw-bold mb-3 border-bottom pb-2" style="color: var(--cor-primaria); font-size: 2rem;">{{ titulo_secao }}</h1>
              {% if intro_categoria %}
              <p class="intro-categoria">{{ intro_categoria }}</p>
              {% endif %}
@@ -518,6 +526,37 @@ TEMPLATE_GUIA = """
             </div>
             {% endif %}
         </article>
+    </div>
+
+    {{ rodape }}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+"""
+
+TEMPLATE_LISTA_GUIAS = """
+<!DOCTYPE html>
+<html lang="pt-br">
+{{ head }}
+<body>
+    {{ navbar }}
+    <div class="container py-5">
+        <h1 class="fw-bold mb-2" style="color: var(--cor-primaria);">Todos os guias</h1>
+        <p class="intro-categoria">Guias escritos por Elyad &amp; Henrique a partir do que
+        viveram com a própria filha, do mais recente pro mais antigo.</p>
+        <div class="row g-3 mt-2">
+            {% for g in guias %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <a href="guia-{{ g.slug }}.html" class="card-guia">
+                    <span class="cat">{{ g.categoria }}</span>
+                    <h3>{{ g.titulo }}</h3>
+                    <p>{{ g.resumo }}</p>
+                    <span class="ler">Ler o guia &rarr;</span>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 
     {{ rodape }}
@@ -780,35 +819,42 @@ def gerar_json_ld(produtos, nome_pagina, url_pagina):
 
 def gerar_sitemap(categorias, paginas_por_categoria, guias=None):
     """Gera o arquivo sitemap.xml, incluindo todas as páginas de cada categoria paginada
-    e as páginas de guia."""
+    e as páginas de guia.
+
+    O lastmod de cada URL usa a data real daquele conteúdo (campo "data" do guia,
+    "atualizado" da página institucional) em vez da data de hoje pra tudo. Home e
+    categoria usam a data de hoje porque elas realmente mudam a cada coleta diária;
+    um lastmod idêntico em toda URL do site é um sinal que o Google associa a
+    sitemap gerado sem cuidado."""
     print("🗺️  Gerando Sitemap...")
     data_hoje = datetime.now().strftime('%Y-%m-%d')
 
     urls = [
-        (f"{URL_SITE}/", "daily", "1.0"),
-        (f"{URL_SITE}/index.html", "daily", "0.8"),
+        (f"{URL_SITE}/", data_hoje, "daily", "1.0"),
+        (f"{URL_SITE}/index.html", data_hoje, "daily", "0.8"),
+        (f"{URL_SITE}/guias.html", data_hoje, "daily", "0.8"),
     ]
     # Guias têm prioridade alta: é o conteúdo original do site
     for g in (guias or []):
-        urls.append((f"{URL_SITE}/guia-{g['slug']}.html", "monthly", "0.9"))
+        urls.append((f"{URL_SITE}/guia-{g['slug']}.html", g.get('data', data_hoje), "monthly", "0.9"))
 
     # Páginas institucionais: mudam pouco e têm prioridade baixa, mas precisam ser
     # indexáveis (a de privacidade é exigência prática de LGPD e do programa de afiliados)
     for pag in PAGINAS:
-        urls.append((f"{URL_SITE}/{pag['slug']}.html", "yearly", "0.3"))
+        urls.append((f"{URL_SITE}/{pag['slug']}.html", pag.get('atualizado', data_hoje), "yearly", "0.3"))
 
     for cat in categorias:
         total_paginas = paginas_por_categoria.get(cat['slug'], 1)
         for n in range(1, total_paginas + 1):
             sufixo = "" if n == 1 else f"-{n}"
-            urls.append((f"{URL_SITE}/cat-{cat['slug']}{sufixo}.html", "weekly", "0.8"))
+            urls.append((f"{URL_SITE}/cat-{cat['slug']}{sufixo}.html", data_hoje, "weekly", "0.8"))
 
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-    for loc, freq, prio in urls:
+    for loc, lastmod, freq, prio in urls:
         xml += f"""
    <url>
       <loc>{loc}</loc>
-      <lastmod>{data_hoje}</lastmod>
+      <lastmod>{lastmod}</lastmod>
       <changefreq>{freq}</changefreq>
       <priority>{prio}</priority>
    </url>"""
@@ -860,6 +906,7 @@ def main():
     tpl = Template(full_template_str)
     tpl_guia = Template(MACRO_CARD + TEMPLATE_GUIA.replace("{{ head }}", HEAD_COMUM))
     tpl_pagina = Template(TEMPLATE_PAGINA.replace("{{ head }}", HEAD_COMUM))
+    tpl_lista_guias = Template(TEMPLATE_LISTA_GUIAS.replace("{{ head }}", HEAD_COMUM))
     navbar_html = Template(NAVBAR).render(categorias=menu_categorias)
     data_atual_str = datetime.now().strftime('%d/%m/%Y')
     rodape_html = Template(RODAPE).render(data_atual=data_atual_str)
@@ -971,6 +1018,23 @@ def main():
         )
         with open(f"{PASTA_SAIDA}/{nome_arquivo}", "w", encoding="utf-8") as f:
             f.write(html_guia)
+
+    # 5b-bis. PÁGINA "TODOS OS GUIAS" (listagem cronológica, fora do agrupamento por
+    # categoria — ajuda o leitor e o Google a achar guia antigo que não está mais na home)
+    html_lista_guias = tpl_lista_guias.render(
+        navbar=navbar_html,
+        rodape=rodape_html,
+        ga_id=GA_MEASUREMENT_ID,
+        json_ld=None,
+        titulo_seo="Todos os guias | Dicas da Ely",
+        descricao_seo="Todos os guias escritos por Elyad e Henrique sobre bebê, casa e cozinha, do mais recente pro mais antigo.",
+        imagem_og=f"{URL_SITE}/{ARQUIVO_LOGO}",
+        url_atual=f"{URL_SITE}/guias.html",
+        guias=todos_guias,
+        data_atual=data_atual_str
+    )
+    with open(f"{PASTA_SAIDA}/guias.html", "w", encoding="utf-8") as f:
+        f.write(html_lista_guias)
 
     # 5c. GERAÇÃO DAS PÁGINAS INSTITUCIONAIS (sobre, privacidade, termos)
     for pag in PAGINAS:
