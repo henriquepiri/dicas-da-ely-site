@@ -738,6 +738,14 @@ def intercalar_dicas(produtos, categoria):
         if dicas and i % PRODUTOS_ENTRE_DICAS == 0 and dica_idx < len(dicas):
             resultado.append({"tipo": "dica", "texto": dicas[dica_idx]})
             dica_idx += 1
+
+    # Categoria com menos produtos que PRODUTOS_ENTRE_DICAS * len(dicas) nunca chega no
+    # múltiplo necessário pra mostrar todas as dicas (ex: 22 produtos só aciona 2 de 3).
+    # Mostra o que faltou no final da lista em vez de simplesmente perder a dica.
+    while dicas and dica_idx < len(dicas):
+        resultado.append({"tipo": "dica", "texto": dicas[dica_idx]})
+        dica_idx += 1
+
     return resultado
 
 def gerar_json_ld(produtos, nome_pagina, url_pagina):
