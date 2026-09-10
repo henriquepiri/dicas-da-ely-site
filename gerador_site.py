@@ -644,10 +644,17 @@ MACRO_CARD = """
                     <div class="parcelamento">À vista</div>
                 {% endif %}
 
+                {% if p.preco_original_float > p.preco_atual_float %}
+                <a href="{{ p.link }}" target="_blank" rel="nofollow sponsored noopener" class="btn btn-comprar"
+                   aria-label="Ver oferta de {{ p.titulo }} na Amazon (abre em nova aba)">
+                    Ver Oferta na Amazon
+                </a>
+                {% else %}
                 <a href="{{ p.link }}" target="_blank" rel="nofollow sponsored noopener" class="btn btn-comprar"
                    aria-label="Ver {{ p.titulo }} na Amazon (abre em nova aba)">
                     Ver na Amazon
                 </a>
+                {% endif %}
             </div>
         </div>
     </div>
