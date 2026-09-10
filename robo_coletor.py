@@ -51,8 +51,15 @@ log = logging.getLogger("robo_dicas")
 
 def configurar_navegador(driver_path):
     """Cria uma instância de Chrome isolada. Cada thread/categoria usa a sua própria,
-    reaproveitando o mesmo driver_path (já baixado uma única vez antes de paralelizar)."""
+    reaproveitando o mesmo driver_path (já baixado uma única vez antes de paralelizar).
+
+    Roda em modo headless (--headless=new): a tarefa agendada roda com a tela do
+    Windows travada boa parte do tempo, e Chrome tentando abrir janela visível numa
+    sessão travada falhava antes mesmo do robô logar a primeira linha. Headless não
+    depende de desenhar janela na tela, então sobrevive à tela travada."""
     chrome_options = Options()
+    chrome_options.add_argument("--headless=new")
+    chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--window-size=1920,1080")
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
     chrome_options.add_argument(f"--user-agent={random.choice(USER_AGENTS)}")
