@@ -23,6 +23,14 @@ PASTA_DEBUG = "debug"
 MAX_DEBUG_POR_CATEGORIA = 5  # evita acumular lixo no disco
 MAX_CATEGORIAS_EM_PARALELO = 3  # cada uma abre seu próprio Chrome; 3 é um bom equilíbrio
 
+# ASINs que não devem voltar ao site mesmo se a Amazon continuar listando nos
+# resultados de busca. Remover do banco não basta: o próximo coleta recoloca o
+# mesmo produto (upsert por ASIN), então o bloqueio precisa ficar aqui.
+ASINS_BANIDOS = {
+    "B0095YYAW6",  # Baby Merlin's Magic Sleepsuit - item de sono infantil, tirado do
+                   # ar a pedido do Henrique em 2026-09-08 (categoria sensível)
+}
+
 LISTA_CATEGORIAS = {
     "Mundo do Bebê": "https://www.amazon.com.br/s?k=roupas+brinquedos+seguranca+bebe&i=baby-products",
     "Cozinha": "https://www.amazon.com.br/s?k=organizadores+utensilios+cozinha&i=kitchen",
@@ -245,7 +253,7 @@ def coletar_categoria(driver, nome_categoria, url_alvo):
                     url_bruta = f"https://amazon.com.br{link_tag['href']}"
 
                     asin = extrair_asin(url_bruta)
-                    if asin:
+                    if asin and asin not in ASINS_BANIDOS:
                         link_completo = montar_link_afiliado(url_bruta)
                         salvar_oferta(asin, titulo, preco_atual, preco_original, link_completo, imagem, nome_categoria, nota, parcelas)
                         count += 1
