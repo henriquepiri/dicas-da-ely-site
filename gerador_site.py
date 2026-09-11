@@ -621,7 +621,7 @@ RODAPE = """
                         window.grecaptcha = window.turnstile;
                     }
                 </script>
-                <div class="cf-turnstile" data-sitekey="0x4AAAAAAEvveuYHJcbAMFNH" id="sib-captcha" data-callback="handleCaptchaResponse" data-language="pt" form="sib-form"></div>
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAAEvveuYHJcbAMFNH" id="sib-captcha" data-callback="handleCaptchaResponse" data-language="pt" data-theme="light" form="sib-form"></div>
             </div>
         </div>
     </div>
