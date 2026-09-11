@@ -5,3 +5,4 @@ python gerador_site.py
 git add -A
 git commit -m "Atualizacao automatica diaria"
 git push
+python notificar_guia_novo.py
