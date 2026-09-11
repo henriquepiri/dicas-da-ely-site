@@ -58,6 +58,7 @@ def montar_html(guia):
   </div>
   <div style="padding: 16px 24px; border-top: 1px solid #eee5e0; font-size: 12px; color: #a89a90;">
     Você recebeu este e-mail porque se inscreveu em dicasdaely.com.br.
+    <a href="{{{{ unsubscribe }}}}" style="color: #a89a90;">Cancelar inscrição</a>
   </div>
 </div>
 """
