@@ -204,4 +204,21 @@ curadoria de categoria, não recomendação individual.</p>
 <a href="mailto:{EMAIL_CONTATO}" class="link-simples">{EMAIL_CONTATO}</a>.</p>
 """
     },
+    {
+        "slug": "obrigado-newsletter",
+        "titulo": "Inscrição confirmada!",
+        "resumo": "Sua inscrição na newsletter do Dicas da Ely foi confirmada.",
+        "atualizado": "2026-09-10",
+        "conteudo": """
+<p>Prontinho! Você já está na nossa lista. A gente manda um e-mail só quando publica
+um guia novo, sem spam e sem e-mail todo dia.</p>
+
+<p>Enquanto isso, aproveita pra dar uma olhada no que já está no ar:</p>
+
+<p>
+<a href="guias.html" class="link-simples">Ver todos os guias</a><br>
+<a href="index.html" class="link-simples">Voltar para a home</a>
+</p>
+"""
+    },
 ]
