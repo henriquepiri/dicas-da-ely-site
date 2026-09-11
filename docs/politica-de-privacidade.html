@@ -134,6 +134,7 @@
         .newsletter-input { flex: 1; padding: 12px 18px; border-radius: 50px; border: 1px solid var(--cor-card-border); font-family: 'Nunito', sans-serif; font-size: 0.95rem; color: var(--cor-texto); }
         .newsletter-input:focus { outline: none; border-color: var(--cor-primaria); }
         .newsletter-btn { width: auto; padding: 12px 24px; white-space: nowrap; }
+        .newsletter-captcha { display: flex; justify-content: center; margin-top: 14px; }
 
         /* --- AJUSTES PARA CELULAR --- */
         @media (max-width: 767px) {
@@ -328,15 +329,26 @@ data de revisão no topo.</p>
         <div class="container">
             <h3>Não perca nenhum guia novo</h3>
             <p>A gente manda um e-mail só quando publica um guia novo. Sem spam, sem e-mail todo dia.</p>
-            <form method="POST" action="https://9ce68f83.sibforms.com/serve/MUIFANHCIfJGfx6xlrFlO2sDST3OEwov94JngwtAPhSNtILTzDX78JeKVERg8HgKW6xbgSj5rKCzMAZacIxrgPAwVgu4VdPc7vxe7luPAkMKp5jLKRQNmRNBAiQG7_UVrIhGBI88UO3fbG08NCaU87eis3pmj0ZRTyTJ6OLYQfpivosY9RS31tiVFGLO_bPVVsteEzWWXt_4MUX7Lw==" class="newsletter-form">
+            <form method="POST" id="sib-form" data-type="subscription" action="https://9ce68f83.sibforms.com/serve/MUIFANHCIfJGfx6xlrFlO2sDST3OEwov94JngwtAPhSNtILTzDX78JeKVERg8HgKW6xbgSj5rKCzMAZacIxrgPAwVgu4VdPc7vxe7luPAkMKp5jLKRQNmRNBAiQG7_UVrIhGBI88UO3fbG08NCaU87eis3pmj0ZRTyTJ6OLYQfpivosY9RS31tiVFGLO_bPVVsteEzWWXt_4MUX7Lw==" class="newsletter-form">
                 <input type="email" name="EMAIL" placeholder="Seu e-mail" required class="newsletter-input">
                 <button type="submit" class="btn-comprar newsletter-btn">Quero receber</button>
                 <input type="text" name="email_address_check" value="" style="display:none !important;" tabindex="-1" autocomplete="off">
                 <input type="hidden" name="locale" value="pt">
-                <input type="hidden" name="html_type" value="simple">
             </form>
+            <div class="newsletter-captcha">
+                <script>
+                    function handleCaptchaResponse() {
+                        var event = new Event('captchaChange');
+                        document.getElementById('sib-captcha').dispatchEvent(event);
+                        window.grecaptcha = window.turnstile;
+                    }
+                </script>
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAAEvveuYHJcbAMFNH" id="sib-captcha" data-callback="handleCaptchaResponse" data-language="pt" form="sib-form"></div>
+            </div>
         </div>
     </div>
+    <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <footer class="bg-white py-4 mt-5 border-top text-center small">
         <div class="container">
