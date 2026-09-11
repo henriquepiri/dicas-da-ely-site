@@ -136,9 +136,18 @@
         .newsletter-btn { width: auto; padding: 12px 24px; white-space: nowrap; }
         .newsletter-captcha { display: flex; justify-content: center; margin-top: 14px; }
 
+        /* --- AVISO DE COOKIES --- */
+        .aviso-cookies { position: fixed; bottom: 0; left: 0; right: 0; background: var(--cor-texto); color: #fdfbf7; padding: 14px 20px; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.15); }
+        .aviso-cookies .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        .aviso-cookies span { font-size: 0.85rem; line-height: 1.5; }
+        .aviso-cookies a { color: #fdfbf7; text-decoration: underline; font-weight: 700; }
+        .aviso-cookies-fechar { background: none; border: none; color: #fdfbf7; font-size: 1.4rem; cursor: pointer; line-height: 1; padding: 0 4px; flex-shrink: 0; }
+
         /* --- AJUSTES PARA CELULAR --- */
         @media (max-width: 767px) {
             .newsletter-form { flex-direction: column; }
+            .aviso-cookies .container { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .aviso-cookies-fechar { position: absolute; top: 10px; right: 14px; }
             .hero { padding: 30px 0; margin-bottom: 26px; }
             .hero h1 { font-size: 1.75rem; }
             .hero p { font-size: 0.98rem !important; }
@@ -223,6 +232,29 @@
         </div>
     </div>
 </nav>
+
+<div id="aviso-cookies" class="aviso-cookies" style="display:none;">
+    <div class="container">
+        <span>Usamos cookies para entender como o site é usado (Google Analytics). Ao
+        continuar navegando, você concorda. Saiba mais na
+        <a href="politica-de-privacidade.html">Política de Privacidade</a>.</span>
+        <button type="button" onclick="fecharAvisoCookies()" class="aviso-cookies-fechar"
+                aria-label="Fechar aviso de cookies">&times;</button>
+    </div>
+</div>
+<script>
+(function() {
+    try {
+        if (!localStorage.getItem('cookiesAvisados')) {
+            document.getElementById('aviso-cookies').style.display = 'block';
+        }
+    } catch (e) {}
+})();
+function fecharAvisoCookies() {
+    try { localStorage.setItem('cookiesAvisados', '1'); } catch (e) {}
+    document.getElementById('aviso-cookies').style.display = 'none';
+}
+</script>
     <div class="container py-5">
         <article class="artigo">
             <a href="index.html" class="link-simples" style="font-size: 0.85rem;">&larr; Voltar para a home</a>
