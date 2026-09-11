@@ -18,7 +18,7 @@ PAGINAS = [
         "slug": "politica-de-privacidade",
         "titulo": "Política de privacidade",
         "resumo": "Como o Dicas da Ely trata dados de quem visita o site.",
-        "atualizado": "2026-09-04",
+        "atualizado": "2026-09-11",
         "conteudo": f"""
 <p>Esta página explica quais dados o site <strong>Dicas da Ely</strong>
 (dicasdaely.com.br) coleta de quem o visita, para que servem e o que você pode fazer
@@ -32,10 +32,11 @@ estruturados. Para qualquer assunto relacionado a dados pessoais, o contato é
 
 <h2>Que dados coletamos</h2>
 
-<p><strong>Não pedimos nenhum dado seu.</strong> O site não tem cadastro, formulário,
-newsletter nem área de login. Você navega sem se identificar.</p>
+<p>A maior parte do site você navega sem se identificar. A única informação que
+pedimos de forma ativa é o <strong>e-mail de quem se inscreve na nossa newsletter</strong>,
+no formulário do rodapé.</p>
 
-<p>O que existe é coleta automática de dados de navegação, feita por ferramentas de
+<p>Fora isso, existe coleta automática de dados de navegação, feita por ferramentas de
 terceiros:</p>
 
 <ul>
@@ -51,6 +52,22 @@ funciona). A partir desse clique, valem as regras de privacidade da Amazon, não
 nossas.</li>
 </ul>
 
+<h2>Newsletter</h2>
+
+<p>Se você se inscreve no formulário de e-mail do rodapé, seu endereço é enviado
+diretamente para a <strong>Brevo</strong>, empresa que usamos pra guardar a lista de
+inscritos e enviar os e-mails. Não vemos nem armazenamos esse endereço em nenhum lugar
+além da conta que temos lá.</p>
+
+<p>Usamos esse e-mail só pra um motivo: avisar quando publicamos um guia novo. Não
+mandamos e-mail todo dia, não vendemos nem repassamos esse endereço pra ninguém, e não
+usamos pra nada além do que está descrito aqui.</p>
+
+<p>Todo e-mail que enviamos tem um link de <strong>cancelar inscrição</strong> no
+rodapé, que remove seu e-mail da lista na hora. Também dá pra pedir a remoção
+escrevendo pra
+<a href="mailto:{EMAIL_CONTATO}" class="link-simples">{EMAIL_CONTATO}</a>.</p>
+
 <h2>Cookies</h2>
 
 <p>O Google Analytics usa cookies para distinguir visitantes e sessões. A Amazon
@@ -64,15 +81,16 @@ cookie para ser lido.</p>
 
 <p>Não vendemos, alugamos nem repassamos dados a ninguém. Os dados de navegação ficam
 nas próprias ferramentas citadas acima (Google, GitHub, Amazon), cada uma com sua
-política própria.</p>
+política própria, e o e-mail de quem assina a newsletter fica só na nossa conta da
+Brevo, que também tem sua própria política de privacidade.</p>
 
 <h2>Seus direitos</h2>
 
 <p>Pela Lei Geral de Proteção de Dados (LGPD), você pode pedir confirmação sobre
 tratamento de dados, acesso, correção, anonimização ou exclusão dos seus dados, entre
-outros direitos. Como não mantemos base de dados própria de visitantes, na prática o
-que temos são os relatórios agregados do Analytics, mas se quiser exercer qualquer
-direito ou tirar dúvida, escreva para
+outros direitos. Da navegação em geral, o que temos são os relatórios agregados do
+Analytics; de quem assina a newsletter, temos o e-mail cadastrado na Brevo. Se quiser
+exercer qualquer direito ou tirar dúvida, escreva para
 <a href="mailto:{EMAIL_CONTATO}" class="link-simples">{EMAIL_CONTATO}</a>.</p>
 
 <p>Para desativar o Google Analytics em qualquer site, o Google oferece um complemento
