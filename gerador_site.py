@@ -258,13 +258,14 @@ HEAD_COMUM = """
         .aviso-cookies .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
         .aviso-cookies span { font-size: 0.85rem; line-height: 1.5; }
         .aviso-cookies a { color: #fdfbf7; text-decoration: underline; font-weight: 700; }
-        .aviso-cookies-fechar { background: none; border: none; color: #fdfbf7; font-size: 1.4rem; cursor: pointer; line-height: 1; padding: 0 4px; flex-shrink: 0; }
+        .aviso-cookies-fechar { background: var(--cor-destaque); color: #fff; border: none; font-weight: 800; font-size: 0.85rem; cursor: pointer; padding: 8px 20px; border-radius: 30px; flex-shrink: 0; }
+        .aviso-cookies-fechar:hover { background: #b84700; }
 
         /* --- AJUSTES PARA CELULAR --- */
         @media (max-width: 767px) {
             .newsletter-form { flex-direction: column; }
-            .aviso-cookies .container { flex-direction: column; align-items: flex-start; gap: 8px; }
-            .aviso-cookies-fechar { position: absolute; top: 10px; right: 14px; }
+            .aviso-cookies .container { flex-direction: column; align-items: stretch; gap: 10px; }
+            .aviso-cookies-fechar { width: 100%; }
             .hero { padding: 30px 0; margin-bottom: 26px; }
             .hero h1 { font-size: 1.75rem; }
             .hero p { font-size: 0.98rem !important; }
@@ -347,8 +348,7 @@ NAVBAR = """
         <span>Usamos cookies para entender como o site é usado (Google Analytics). Ao
         continuar navegando, você concorda. Saiba mais na
         <a href="politica-de-privacidade.html">Política de Privacidade</a>.</span>
-        <button type="button" onclick="fecharAvisoCookies()" class="aviso-cookies-fechar"
-                aria-label="Fechar aviso de cookies">&times;</button>
+        <button type="button" onclick="fecharAvisoCookies()" class="aviso-cookies-fechar">Entendi</button>
     </div>
 </div>
 <script>
