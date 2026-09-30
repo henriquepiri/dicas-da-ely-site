@@ -214,7 +214,7 @@ HEAD_COMUM = """
 
         .card-guia { display: block; background: white; border: 1px solid var(--cor-card-border); border-radius: 14px; padding: 22px; height: 100%; text-decoration: none; transition: 0.25s; }
         .card-guia:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(140, 94, 74, 0.14); border-color: var(--cor-primaria); }
-        .card-guia .cat { font-size: 0.68rem; color: var(--cor-primaria); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+        .card-guia .cat { font-size: 0.75rem; color: var(--cor-primaria); font-weight: 700; }
         .card-guia h3 { font-size: 1.15rem; color: var(--cor-texto); margin: 8px 0 10px; line-height: 1.3; }
         .card-guia p { font-size: 0.88rem; color: #9a8a80; line-height: 1.5; margin: 0; }
         .card-guia .ler { color: var(--cor-destaque); font-weight: 800; font-size: 0.85rem; margin-top: 14px; display: block; }
@@ -429,7 +429,7 @@ TEMPLATE_VITRINE = """
                         <span class="cat">{{ g.categoria }}</span>
                         <h3>{{ g.titulo }}</h3>
                         <p>{{ g.resumo }}</p>
-                        <span class="ler">Ler o guia &rarr;</span>
+                        <span class="ler">Ler o guia</span>
                     </a>
                 </div>
                 {% endfor %}
@@ -478,7 +478,7 @@ TEMPLATE_VITRINE = """
                         <span class="cat">Guia</span>
                         <h3>{{ g.titulo }}</h3>
                         <p>{{ g.resumo }}</p>
-                        <span class="ler">Ler o guia &rarr;</span>
+                        <span class="ler">Ler o guia</span>
                     </a>
                 </div>
                 {% endfor %}
@@ -526,7 +526,7 @@ TEMPLATE_GUIA = """
             <a href="index.html" class="link-simples" style="font-size: 0.85rem;">&larr; Voltar para a home</a>
             <h1 class="mt-3">{{ guia.titulo }}</h1>
             <div class="meta">
-                {{ guia.categoria }} &middot; Publicado em {{ guia.data_br }} &middot; por Elyad &amp; Henrique
+                Publicado em {{ guia.data_br }} por Elyad &amp; Henrique
             </div>
 
             <img src="capas/capa-{{ guia.slug }}.png" alt="{{ guia.titulo }}" width="1200" height="630"
@@ -555,7 +555,7 @@ TEMPLATE_GUIA = """
                 {% endfor %}
             </div>
             <p class="mt-4">
-                <a href="cat-{{ slug_categoria }}.html" class="link-simples">Ver todas as ofertas de {{ guia.categoria }} &rarr;</a>
+                <a href="cat-{{ slug_categoria }}.html" class="link-simples">Ver todas as ofertas de {{ guia.categoria }}</a>
             </p>
             {% endif %}
 
@@ -600,7 +600,7 @@ TEMPLATE_LISTA_GUIAS = """
                     <span class="cat">{{ g.categoria }}</span>
                     <h3>{{ g.titulo }}</h3>
                     <p>{{ g.resumo }}</p>
-                    <span class="ler">Ler o guia &rarr;</span>
+                    <span class="ler">Ler o guia</span>
                 </a>
             </div>
             {% endfor %}
