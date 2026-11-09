@@ -118,21 +118,21 @@ data de revisão no topo.</p>
         "slug": "termos-de-uso",
         "titulo": "Termos de uso",
         "resumo": "As regras e limites de uso do conteúdo do Dicas da Ely.",
-        "atualizado": "2026-09-04",
+        "atualizado": "2026-11-09",
         "conteudo": f"""
 <p>Ao usar o site <strong>Dicas da Ely</strong> (dicasdaely.com.br), você concorda com
 os pontos abaixo. São poucos e diretos.</p>
 
 <h2>O que este site é</h2>
 
-<p>Um site de conteúdo: publicamos guias e opiniões sobre produtos, e listamos ofertas
-que encontramos na Amazon. Não vendemos nada, não processamos pagamento, não entregamos
+<p>Um site de conteúdo: publicamos guias e opiniões sobre produtos, e listamos uma
+seleção curada da Amazon. Não vendemos nada, não processamos pagamento, não entregamos
 produto nem prestamos serviço de intermediação de compra.</p>
 
 <h2>Sobre preços e disponibilidade</h2>
 
-<p>Os preços exibidos aqui são coletados automaticamente do site da Amazon e podem
-estar desatualizados. Preço na Amazon muda a qualquer momento, várias vezes ao dia.</p>
+<p>Este site não exibe preço nem percentual de desconto. O card só leva à página do
+produto na Amazon. O preço de lá muda a qualquer momento, várias vezes ao dia.</p>
 
 <p><strong>O preço que vale é sempre o que aparece na página do produto na Amazon, no
 momento da sua compra.</strong> Não nos responsabilizamos por divergências, produtos
@@ -179,7 +179,7 @@ funcionamento ininterrupto nem ausência de erros.</p>
         "slug": "sobre",
         "titulo": "Sobre o Dicas da Ely",
         "resumo": "Quem somos, por que fizemos este site e como ele se sustenta.",
-        "atualizado": "2026-09-04",
+        "atualizado": "2026-11-09",
         "conteudo": f"""
 <p>Somos <strong>Elyad e Henrique</strong>, pais de uma criança pequena. O site nasceu
 de uma coisa bem simples: a gente passou meses pesquisando o que comprar, comparando
@@ -194,9 +194,10 @@ pesquisa dava pra poupar de quem viesse depois.</p>
 em cada categoria: enxoval, brinquedo, organização de casa. É o que a gente gostaria
 de ter lido antes de gastar.</p>
 
-<p><strong>Garimpamos ofertas.</strong> Um robô que a gente mesmo programou visita a
-Amazon todo dia e traz produtos das categorias que acompanhamos, com preço e desconto
-atualizados. É automático, mas as categorias e os critérios são escolha nossa.</p>
+<p><strong>Separamos uma seleção.</strong> Os cards são uma lista curada, gravada no
+próprio site: produtos das categorias que acompanhamos, com nota 4,3 ou mais na
+Amazon. Não há coleta automática de preço. O valor você vê só na loja, pelo botão
+do card.</p>
 
 <h2>Como o site se sustenta</h2>
 
@@ -212,9 +213,8 @@ sinaliza isso de forma clara em toda página de guia, em vez de esconder no roda
 <p>Não recebemos produto de fabricante em troca de resenha. Não aceitamos pagamento
 para destacar marca. Se um dia isso mudar, estará escrito aqui.</p>
 
-<p>Também não testamos individualmente cada produto da lista de ofertas. São centenas,
-atualizadas diariamente. Os guias são de experiência própria; a lista de ofertas é
-curadoria de categoria, não recomendação individual.</p>
+<p>Também não testamos individualmente cada produto da seleção. Os guias são de
+experiência própria; a lista é curadoria de categoria, não recomendação individual.</p>
 
 <h2>Fale com a gente</h2>
 

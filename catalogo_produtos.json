@@ -1,0 +1,1411 @@
+{
+  "descricao": "Lista curada fixa do Dicas da Ely. O gerador publica só estes produtos e não coleta preço nem raspa a Amazon. O link de cada card é https://www.amazon.com.br/dp/<ASIN>?tag=dicasdaely05-20.",
+  "tag_afiliado": "dicasdaely05-20",
+  "nota_minima": 4.3,
+  "asins_excluidos": [
+    "B0095YYAW6"
+  ],
+  "origem": "Extraído de estoque_ofertas.db em 2026-11-09. Entraram produtos com nota >= 4,3. O ASIN B0095YYAW6 (item de sono infantil bloqueado) não estava mais no banco e permanece na lista de exclusão.",
+  "produtos": [
+    {
+      "asin": "B0BXV6V3JC",
+      "titulo": "Creamy Skincare Calming Cream 40g | Acalma a Pele Sensibilizada, Alívio Rápido em Casos de Vermelhidão, Rápida Absorção | Todos os Tipos de Pele, Especialmente Sensíveis",
+      "imagem": "https://m.media-amazon.com/images/I/41s2PB6tCRL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0D972TKM1",
+      "titulo": "Controle Remoto Universal Wifi IR Infravermelho para Automação com Alexa",
+      "imagem": "https://m.media-amazon.com/images/I/31rhIKVb-LL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0HBZ4F57B",
+      "titulo": "Cesto Cachepot de Palha Redondo Forrado Bege 5 Peças",
+      "imagem": "https://m.media-amazon.com/images/I/71Nfgjwp4XL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0HCKLRRZ9",
+      "titulo": "Vestido magnético,Bonecas de magnético vestir roupas de ímã de boneca de",
+      "imagem": "https://m.media-amazon.com/images/I/71c9HJlGINL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0GSKLWDPX",
+      "titulo": "Cesto de Roupa Infantil com Animais, Feltro, 33x35 cm, Organizador de Brinquedos, Tema Safari com Leão e Elefante (Alce)",
+      "imagem": "https://m.media-amazon.com/images/I/31TI7qpG49L._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0GTN793P5",
+      "titulo": "Suporte de Parede Organizador de Utensílios de Cozinha Premium com 9 Ganchos, Porta Talheres e Acessórios Multiuso com Drenagem, Compacto, Resistente e Economiza Espaço",
+      "imagem": "https://m.media-amazon.com/images/I/71kFs86kMcL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0DXXH5Z4P",
+      "titulo": "Kit Skincare Melu Adolescentes Completo 7 Itens Spa Day Skin Care Beleza Limpeza de Pele Facial Meninas Teen Cuidados Faciais com Necessaire",
+      "imagem": "https://m.media-amazon.com/images/I/81EwZgjkNuL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.3"
+    },
+    {
+      "asin": "B0DY5LCFY7",
+      "titulo": "KIT SKINCARE Limpeza de Pele Adolescente Infantil Ganha Embalagem de Presente",
+      "imagem": "https://m.media-amazon.com/images/I/61KhAnhvoHL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0H9ZT8WCM",
+      "titulo": "Kit 6 Potes Porta Temperos de Vidro Borossilicato 250ml com Tampa de bambu",
+      "imagem": "https://m.media-amazon.com/images/I/61zTPkIzX3L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0FJCBJDBT",
+      "titulo": "Kit 10 Potes Herméticos Organizadores Empilháveis para Mantimentos - Pote Hermético BPA Free - Utensílios para Cozinha, Armário, Alimentos, Porta Mantimentos, Empilhável",
+      "imagem": "https://m.media-amazon.com/images/I/61GO3w53wTL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0CQ7BXQ5N",
+      "titulo": "House Organizer - Mega Kit com 12 Potes Herméticos com Trava de Segurança, Porta Mantimentos Retangular Empilháveis Super Resistente Exclusivo, à Prova de Vazamento",
+      "imagem": "https://m.media-amazon.com/images/I/71WpJgHFqRL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.9"
+    },
+    {
+      "asin": "B0FWD3HJC1",
+      "titulo": "Brinquedo De Madeira Kit Vegetais Com Corte Büp Baby",
+      "imagem": "https://m.media-amazon.com/images/I/51ikgYpzdUL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B08DGY6LZK",
+      "titulo": "Steck, Interruptor Inteligente 4x2”, Touch Wi-Fi Steck Ambiente Conectado, 2 Módulos, Bivolt, Branco",
+      "imagem": "https://m.media-amazon.com/images/I/31AW5Tw3yPL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B07FTKKBM3",
+      "titulo": "Acrimet Organizador Modular de Gavetas Transparente, Kit com 7 Potes",
+      "imagem": "https://m.media-amazon.com/images/I/61W9LN73uGL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0FM4DP46D",
+      "titulo": "Porta Utensílios De Cozinha Escorredor De Talheres Porta Talheres Suporte De Talheres Redondo Prata Inox Organizador De Pia Suporte Escorredor Vazado Para Espátulas Colheres Conchas Multiuso",
+      "imagem": "https://m.media-amazon.com/images/I/61fMUGsVK6L._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0HCKXXF55",
+      "titulo": "Vestido magnético,Bonecas de magnético vestir roupas de ímã de boneca de",
+      "imagem": "https://m.media-amazon.com/images/I/71cC6BorwPL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B06WRXMPV5",
+      "titulo": "Cicatricure Creme Facial Antissinais com Peptídeos e Ácido Hialurônico 30g",
+      "imagem": "https://m.media-amazon.com/images/I/71R14mB8GsL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0H7GHCXRS",
+      "titulo": "Kit 3 Cestos Organizadores de Bambu Multiuso Com Forro",
+      "imagem": "https://m.media-amazon.com/images/I/61QkYZdH5wL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B07WHV8QC9",
+      "titulo": "LYOR - Porta Mantimento de Vídro com Tampa Arena 750ml",
+      "imagem": "https://m.media-amazon.com/images/I/61js09msp+L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0H3CPB4ZH",
+      "titulo": "Fruteira de Mesa 2 Andares de Metal com Alça de Bambu – Cesta Organizadora de Frutas Decorativa para Cozinha e Sala (PRETA COMPACTA)",
+      "imagem": "https://m.media-amazon.com/images/I/71+rePU9d-L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0CKLSS6KL",
+      "titulo": "Ou Organizador de Temperos 2,3L Branco Linha Clear Fresh",
+      "imagem": "https://m.media-amazon.com/images/I/41xldcgATZL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B07Y38NFPS",
+      "titulo": "Bepantol Derma Hidratante Facial Toque Seco, Pele Normal a Seca, 30g",
+      "imagem": "https://m.media-amazon.com/images/I/61U0qdY2LcL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0FWD73964",
+      "titulo": "Brinquedo De Madeira Forno Micro-ondas Rosa Büp Baby",
+      "imagem": "https://m.media-amazon.com/images/I/41dc4oIwX2L._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B07GX7W775",
+      "titulo": "Adorável animal alfinetes de segurança para bebês clipes seguros para prender roupas de bebê guardanapos de fraldas de aço inoxidável 5 cm 30 peças",
+      "imagem": "https://m.media-amazon.com/images/I/81zINRS4BPL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0CNQB6W8R",
+      "titulo": "Short social Pacote com 3 shorts de malha Gerberbebê-unissex",
+      "imagem": "https://m.media-amazon.com/images/I/81thS-HbBzL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0FG2RLYVX",
+      "titulo": "Colares mastigáveis para crianças sensoriais, colar mastigável de silicone para meninos e meninas com autismo, TDAH, SPD, mastigação, terapia motora oral, brinquedos sensoriais",
+      "imagem": "https://m.media-amazon.com/images/I/71UuCOIfHtL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0FWD1QRMM",
+      "titulo": "Brinquedo De Madeira Cadeira De Papá Para Boneca Rosa Büp Baby",
+      "imagem": "https://m.media-amazon.com/images/I/41MQWmLJs6L._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0C2S3VVLW",
+      "titulo": "Echo Spot com Alexa (Geração mais recente) | Despertador inteligente com som vibrante | Cor Branca, com Acesso Antecipado à Alexa+",
+      "imagem": "https://m.media-amazon.com/images/I/71anQJA7UcL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0D9LTMPRX",
+      "titulo": "Filtro de Linha, Tomada Inteligente Wifi, Extensão Tomada, Regua, Regua de Energia, 3 Tomadas, 2 Interfaces USB, 1 Porta USB Tipo-C, Suporte para Controle Por Voz, Controle de celular (Branco)",
+      "imagem": "https://m.media-amazon.com/images/I/51g2gHa-ElL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B07PBFHPZX",
+      "titulo": "Porta Talheres Expansível, Organizador Grande Para Gaveta Ajustável, Cor Cinza Polipropileno, 8 Divisórias, Design Moderno Multiuso Ideal para Cozinha Premium",
+      "imagem": "https://m.media-amazon.com/images/I/716bh9Av04L._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0HBRQ3DWM",
+      "titulo": "Porta utensilios le chef vm",
+      "imagem": "https://m.media-amazon.com/images/I/41WnyGfvv0L._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B079VW5KTT",
+      "titulo": "Mantecorp Epidrat Calm Hidratante",
+      "imagem": "https://m.media-amazon.com/images/I/61lhY-wnuJL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0H4HSZV2P",
+      "titulo": "Bandeja Decorativa com Vidro Rattan Natural para Organização e Lavabo | Perfeita para compor decorações sofisticadas, mantendo objetos sempre acessíveis e bem apresentados.",
+      "imagem": "https://m.media-amazon.com/images/I/71K8oi4GU3L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0F94K21LF",
+      "titulo": "Garnier Uniform & Matte, Kit Skincare Gel de Limpeza e Hidratante com Vitamina C, Ação Antioleosidade e Uniformizadora, para uma Pele Iluminada e Hidratada, 85 e 150g",
+      "imagem": "https://m.media-amazon.com/images/I/61tUtCO2RSL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0GYK71B2G",
+      "titulo": "Cesto Organizador Multiuso Metal com Alça de Madeira Preto 23x17x10cm para Banheiro Cozinha Escritório",
+      "imagem": "https://m.media-amazon.com/images/I/71SZN3hh2DL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0HDV41NS4",
+      "titulo": "Bandeja Organizadora De Bambu Retangular Café Decoração | Organizador Casa, Buffet, Mdf, Madeira, Premium",
+      "imagem": "https://m.media-amazon.com/images/I/71nv7mixM6L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0HC5SYXDP",
+      "titulo": "Carrinho Organizador 3 Prateleiras com Rodinhas Multiuso em Plástico Resistente 37x26,5x78,5cm para Cozinha, Banheiro, Lavanderia, Escritório",
+      "imagem": "https://m.media-amazon.com/images/I/61rk8LJHwkL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0B6Z4YKCF",
+      "titulo": "Macaquinho 3-pack Romper ONESIESMeninas",
+      "imagem": "https://m.media-amazon.com/images/I/81fvhrdX67L._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B00BHL6POG",
+      "titulo": "Bearington Lil' Slugger Snuggler Plush Baseball Lovey - Cobertor de segurança de bebê de veludo macio e cetim de 38 cm para meninos - Lindo animal de pelúcia com tema de beisebol, brinquedo infantil",
+      "imagem": "https://m.media-amazon.com/images/I/71PhoD0GJGL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0GYK95D3L",
+      "titulo": "Bandeja Organizadora Média Rústica em Palha Natural para Café da Manhã Lavabo ou Decoração",
+      "imagem": "https://m.media-amazon.com/images/I/71TT-3KQ+VL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0GRJQC3DT",
+      "titulo": "Dermachem Kit Skincare Completo Espuma de Limpeza Facial Sérum Rosa Mosqueta Sérum Clareador Protetor Solar FPS 60 Rotina Completa de Cuidados com a Pele",
+      "imagem": "https://m.media-amazon.com/images/I/61u1hMGAn8L._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0H862GCLV",
+      "titulo": "Kit Bandejas Decorativas para Sala e Banheiro, Bandeja Organizadora em Formato Orgânico para Perfumes, Joias, Cosméticos e Objetos Decorativos, Decoração Moderna",
+      "imagem": "https://m.media-amazon.com/images/I/61umXrTFnHL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B08X1B72TP",
+      "titulo": "LYOR - Bandeja de Bambu Hire Marrom Natural 28cm - Mesa Posta - Organização - Utensílios de Cozinha - Enxoval - Decoração - Travessa Retangular - Petisqueira - Utilidades Domésticas",
+      "imagem": "https://m.media-amazon.com/images/I/61HSWjR-MQL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0D3TKJ1NX",
+      "titulo": "CREVENT Cobertores de segurança para bebês, pequenos adesivos macios para meninos e meninas, cobertor sensorial de bebê, ótimos presentes para chá de bebê de aniversário 25 x 25 cm (rosa + cinza)",
+      "imagem": "https://m.media-amazon.com/images/I/51B14aMyjAL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0CB73G27G",
+      "titulo": "Smart Controle Remoto Universal Wifi IR Rf315 RF433mhz Alexa Rm6 Pro",
+      "imagem": "https://m.media-amazon.com/images/I/41BF2l79LOL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.3"
+    },
+    {
+      "asin": "B0DHWN1LQV",
+      "titulo": "Filtro de Linha Inteligente Wifi Com 3 Tomadas, 2 USB, 1 USB-C - Extensão e Régua de Energia Com Controle Pelo Celular",
+      "imagem": "https://m.media-amazon.com/images/I/5139QXcM3ZL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0DVBPNBFS",
+      "titulo": "Filtro de Linha Branco Tomada Inteligente Tomada Wifi Extensão Inteligente Wifi Extensão Régua de Energia 3 Tomadas 2 Usb 1 Usb-C Controle pelo Celular",
+      "imagem": "https://m.media-amazon.com/images/I/51Pv4f3cIEL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.9"
+    },
+    {
+      "asin": "B09B8VGCR8",
+      "titulo": "Echo Dot (Geração mais recente) | Smart speaker com Alexa, som vibrante e potente, Wi-Fi e Bluetooth | Cor Preta, com Acesso Antecipado à Alexa+",
+      "imagem": "https://m.media-amazon.com/images/I/71xoR4A6q-L._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0H4J9KXLB",
+      "titulo": "Kit de Skincare Rosa Pink com Tiara Puff, Faixa Macia, Pulseiras Anti-Respingo e Presilha – Ideal para Rotina de Limpeza Facial e Maquiagem",
+      "imagem": "https://m.media-amazon.com/images/I/61izqgRJKhL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0862QR7D3",
+      "titulo": "Océane Oceane Massageador Facial - 3d Facial Roller",
+      "imagem": "https://m.media-amazon.com/images/I/3179NIiHQ3L._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0G45B5W8W",
+      "titulo": "Garnier Sérum de Limpeza Facial Iluminador com Vitamina C, Serumnete 100G | Cuida, Limpa, Demaquila, Uniformiza e Ilumina.",
+      "imagem": "https://m.media-amazon.com/images/I/71PNMbL8vzL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0B7TQGFX4",
+      "titulo": "WOLFF - Cesta Oval de Sisal com Forro em Tecido 28cm x 12cm x 6,5cm",
+      "imagem": "https://m.media-amazon.com/images/I/51RlUB5cgDL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0H661FTZD",
+      "titulo": "Caixa Organizadora para Banheiro Cozinha Lavanderia Closet Escritório Multiuso Vazado com Alças Bambu Reforçável (BRANCO)",
+      "imagem": "https://m.media-amazon.com/images/I/519xGpxvV+L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0H65ZGKQ2",
+      "titulo": "Cesto Organizador Multiuso Vazado com Alças Efeito Madeira 25,5x18x12 cm Organizador para Banheiro Cozinha Lavanderia Closet Escritório Branco Cinza e Preto (CINZA)",
+      "imagem": "https://m.media-amazon.com/images/I/71YIPAYMZoL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B09256LGLP",
+      "titulo": "Gerber Pacote com 2 para bebês meninos, Sleep N Play",
+      "imagem": "https://m.media-amazon.com/images/I/91IuRJmHPNS._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0DBF65JYY",
+      "titulo": "PDRN PINK PEPTIDE SERUM 30ml",
+      "imagem": "https://m.media-amazon.com/images/I/615DOoCI6xL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0GRKBTGFZ",
+      "titulo": "Kit Tratamento Facial Completo 5 em 1 - Vitamina C + Ácido Hialurônico + Protetor Solar - Limpeza Profunda, Clareamento e Hidratação Anti-Idade - Skincare Completo",
+      "imagem": "https://m.media-amazon.com/images/I/71GK2yEGwOL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0FXY29T6G",
+      "titulo": "LYOR - Cesta Oval 24,5cm x 12,5cm x 3cm Plástico",
+      "imagem": "https://m.media-amazon.com/images/I/718YyTl2j0L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0GCTHH9X8",
+      "titulo": "Kit 2 Cestos Organizadores Bambu Retangular Multiuso Cozinha Ovos Banheiro Lavabo Closet",
+      "imagem": "https://m.media-amazon.com/images/I/516J1jw+RgL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0GLHC1Q1C",
+      "titulo": "Suporte Organizador Porta Xícaras e Canecas em Bambu Vertical, 6 Ganchos Base Estável Tipo Árvore para Bancada Cantinho do Café Cozinha e Escritório",
+      "imagem": "https://m.media-amazon.com/images/I/61HB8RLFjhL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0HDM4TVS9",
+      "titulo": "Cesto Organizador Aramado de Metal Com Alça De Madeira Multiuso 25x18cm",
+      "imagem": "https://m.media-amazon.com/images/I/71KKOYx3r4L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0F7FPF97T",
+      "titulo": "Cesto Organizador de Bambu com Forro Removível – Conjunto com 3 Tamanhos P, M e G - Multiuso, Bonito e Elegante. Ideal para Banheiro, Cozinha, Quarto e Armário (Cor Natural)",
+      "imagem": "https://m.media-amazon.com/images/I/51w41wIjo1L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0H379Q3T6",
+      "titulo": "Cestas de Vime Sintético Kit 2 Redondas cm HABITARA HOME | Trançado em PVC resistente, fácil limpeza, ideal para frutas e pães, organização elegante, acabamento sofisticado, uso diário",
+      "imagem": "https://m.media-amazon.com/images/I/61ta4VdzVSL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0GKBZMZW6",
+      "titulo": "Cesto Organizador de Metal com Alças de Madeira para Cozinha, Escritório e Banheiro – Design Vazado, Resistente, Ventilado e Multiuso",
+      "imagem": "https://m.media-amazon.com/images/I/61oSnUQ7vTL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0F2TNLLLX",
+      "titulo": "Pote Organizador de Acrílico com Tampa, 6,5 x 9,3 cm, Kit com 2 Unidades para Cotonetes e Algodão",
+      "imagem": "https://m.media-amazon.com/images/I/61pwpGoxf3L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0H7GX5WSX",
+      "titulo": "Cesto Organizador De Metal 30x20cm Aramado Premium - Alta Durabilidade E Estilo Industrial Para Arrumar Armários, Despensas E Mesas Com Praticidade",
+      "imagem": "https://m.media-amazon.com/images/I/61lTS0e0iyL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0HH68CWNB",
+      "titulo": "Adaptador USB inteligente tuya zigbee, 1-3 Portas | Para casa inteligente, Controle Remoto via App, ideal para Todos, Feito de Plástico, 1-3 (3 Gang)",
+      "imagem": "https://m.media-amazon.com/images/I/41hjsex0HWL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0HH9Y2Q1F",
+      "titulo": "Hub USB C zigbee 3.0 para casa inteligente(USB) | Controle remoto via app, timer agendado, dual porta USB/Type-C, compatível zigbee 3.0",
+      "imagem": "https://m.media-amazon.com/images/I/41cM9gTQ35L._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0HH5YJ57W",
+      "titulo": "Adaptador USB inteligente tuya zigbee, 1-3 Portas | Para casa inteligente, Controle Remoto via App, ideal para Todos, Feito de Plástico, 1-3 (2 Gang)",
+      "imagem": "https://m.media-amazon.com/images/I/41CHmRyz9cL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0HH62K67M",
+      "titulo": "Adaptador USB inteligente tuya zigbee, 1-3 Portas | Para casa inteligente, Controle Remoto via App, ideal para Todos, Feito de Plástico, 1-3 (1 Gang)",
+      "imagem": "https://m.media-amazon.com/images/I/41sAcE-ECML._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0HGBX3SMC",
+      "titulo": "Hub inteligente zigbee 3.0 e para casa | Protocolo zigbee 3.0 e , suporta até 128 dispositivos, integração total casa inteligente",
+      "imagem": "https://m.media-amazon.com/images/I/31eXtKHQpSL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0GVGBV6G7",
+      "titulo": "FTVOGUE Controle Remoto Universal para Casa Inteligente WiFi IR RF Controle Remoto Com Compatibilidade de Gateway Zigbee 3.0 de Aparelho Inteligente Tudo Em um",
+      "imagem": "https://m.media-amazon.com/images/I/51jmpWTanpL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0GYMFBKG3",
+      "titulo": "Porta Talheres Expansível Ajustável para Gaveta – Organizador de Cozinha com Divisórias, Bandeja Extensível em Polipropileno Resistente, Ideal para Talheres e Utensílios",
+      "imagem": "https://m.media-amazon.com/images/I/61SVH5-ylZL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0H2WT31LM",
+      "titulo": "Kit com 3 Suportes para Esponja e Sabonete em Aço Inoxidável, Gancho Adesivo para Pia de Cozinha, Organização Prática e Resistente à Umidade – Qualidade Premium LNMAX®",
+      "imagem": "https://m.media-amazon.com/images/I/61HfdINqk8L._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0B6ZD2QR9",
+      "titulo": "Macaquinho 3-pack Romper ONESIESMeninas",
+      "imagem": "https://m.media-amazon.com/images/I/81fvhrdX67L._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0GFPP96JY",
+      "titulo": "Brinquedo de Banho Lava Roupas - Skip Hop",
+      "imagem": "https://m.media-amazon.com/images/I/71LpS4McL6L._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.3"
+    },
+    {
+      "asin": "B0B6GZFPL6",
+      "titulo": "Luvas sem dedos Conjunto de 8 peças e 9 peças de boné e luvas GerberBebês meninas",
+      "imagem": "https://m.media-amazon.com/images/I/91DyhohyOyL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0GZPVTHNX",
+      "titulo": "Brinquedo Educativo Infantil em Madeira Troca de Roupas - Menino",
+      "imagem": "https://m.media-amazon.com/images/I/71lLKmgBvZL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0CLXZ1BZW",
+      "titulo": "Cobertor de segurança para bebês, cobertor macio de brinquedo adorável para meninos, cobertor de brinquedo aconchegante para recém-nascido, para menino vaca Highland 40,6 cm",
+      "imagem": "https://m.media-amazon.com/images/I/71PrOKHoiqL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.9"
+    },
+    {
+      "asin": "B0CG6QPT1C",
+      "titulo": "Buba Centopeia Atividades Musical",
+      "imagem": "https://m.media-amazon.com/images/I/51OgLdY7kZL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0B6GYH9XB",
+      "titulo": "Gerber Bodies de manga curta para bebês meninos, pacote com 8",
+      "imagem": "https://m.media-amazon.com/images/I/81iZA1HGtXL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0B6GYMDCF",
+      "titulo": "Gerber Pacote com 4 pés para bebês meninas Sleep 'N Play",
+      "imagem": "https://m.media-amazon.com/images/I/811pmgAUqKL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0DP82JTQH",
+      "titulo": "Garnier Hidratante Facial Antiacne Toque Seco com Ácido Salicílico 85g | Uniformiza a Pele, Reduz Imperfeições e Controla a Oleosidade e Brilho por 8 Horas",
+      "imagem": "https://m.media-amazon.com/images/I/51Rq40ss52L._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0H3ZXWH32",
+      "titulo": "Escova Facial Drenagem Linfática, Lifting Facial e Massagem Facial | Auxilia na Redução do Inchaço, Definição do Contorno Facial, Estimula a Circulação e Potencializa o Skincare | Cerdas Ultra Macias",
+      "imagem": "https://m.media-amazon.com/images/I/611WlyrszdL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B097V49XB9",
+      "titulo": "Máscara Facial Pepino Max Love - Hidratante e Limpeza Profunda para Skincare - Refrescante, Reduz Poros, Maciez Imediata",
+      "imagem": "https://m.media-amazon.com/images/I/71lPw0QJNLL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.4"
+    },
+    {
+      "asin": "B0GT73YZJ4",
+      "titulo": "Cesto Organizador Multiuso Quadrado Telado com Alça de Madeira I Cesta Decorativa para Cozinha, Fruteira, Livros, Brinquedos e Organização I Cores Variadas I Three Brothers (Branco)",
+      "imagem": "https://m.media-amazon.com/images/I/61CXOcCYP2L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0DYVNKRN5",
+      "titulo": "Coza - Cesta Pequena 3,4L Linha New Retrô - Cristal",
+      "imagem": "https://m.media-amazon.com/images/I/61M6+yspk7L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0H7CSM1P3",
+      "titulo": "Rápido 35w telefone móvel comprimidos caixa de bateria de carregamento rápido display led funciona diferentes gadgets caso de dispositivo portátil",
+      "imagem": "https://m.media-amazon.com/images/I/61NnDjDKINL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0GW9HPJN6",
+      "titulo": "Azonix Organizador de Cozinha Multiuso para Parede com Porta Facas e Ganchos Preto 60cm Metal",
+      "imagem": "https://m.media-amazon.com/images/I/61MXe7ch22L._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0GYC6VY33",
+      "titulo": "Cesta de armazenamento de talheres de vime, suporte de talheres dividido à mão, suporte de utensílios de vime com alça embutida, organizador de utensílios de cozinha com 4 compartimentos",
+      "imagem": "https://m.media-amazon.com/images/I/71lbpEVoFiL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0D9WWSSY3",
+      "titulo": "Dove Sérum Hidratante Corporal Niacinamida + Uniformizador 180ml",
+      "imagem": "https://m.media-amazon.com/images/I/41dPTsTghiL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0FZD79Y35",
+      "titulo": "Prateleira Multiuso Giratória Em Bambu 2 NíveiS Para Temperos E Condimentos Organizador de Cozinha",
+      "imagem": "https://m.media-amazon.com/images/I/61p09qIzvmL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.9"
+    },
+    {
+      "asin": "B0H6KTLNXD",
+      "titulo": "Cesto Aramado de Metal com Alça de Madeira Multiuso",
+      "imagem": "https://m.media-amazon.com/images/I/71Ax7fUsHUL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0GY9B1RQL",
+      "titulo": "Dove Hidratante Sérum Corporal Glicólico + Reparador de Textura 380ml",
+      "imagem": "https://m.media-amazon.com/images/I/416X564wCuL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0H6TJ347L",
+      "titulo": "Cesto Aramado Organizador Multiuso com Alça de Madeira, Cesta de Metal com Tela Fina para Cozinha, Banheiro e Escritório, Decoração Industrial Farmhouse e Armazenamento Prático (Preto)",
+      "imagem": "https://m.media-amazon.com/images/I/71OGLjlnFAL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0H668X6DX",
+      "titulo": "Caixa Organizadora para Banheiro Cozinha Lavanderia Closet Escritório Multiuso Vazado com Alças Bambu Reforçável (PRETO)",
+      "imagem": "https://m.media-amazon.com/images/I/71rj5O0ATTL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0GKPPDPF8",
+      "titulo": "Bandeja Arco Organizadora Multifuncional, Metal Premium com Design Minimalista, Decoração e Organização de Casa - Geguton (Preta)",
+      "imagem": "https://m.media-amazon.com/images/I/41mn5thsbBL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0H377G2MR",
+      "titulo": "Cestas de Vime Sintético Kit 2 Retangulares 25x20 cm HABITARA HOME | Fibra sintética resistente, fácil limpeza, organiza com elegância, ideal para mesa posta, versátil para diversos ambientes",
+      "imagem": "https://m.media-amazon.com/images/I/61+RWuax83L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0FNQ7HQKW",
+      "titulo": "Bandeja de Bambu, Servir, Decorar, Organizar, Bandeja de Decoração Redonda, Organizador Redondo (Bambu e Palhinha 35cm)",
+      "imagem": "https://m.media-amazon.com/images/I/61Y4gJBjuvL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0FS2CNTMP",
+      "titulo": "Bandeja Decorativa com Espelho e Alça Dourada Ideal para Organização e Decoração",
+      "imagem": "https://m.media-amazon.com/images/I/41GluU6pVJL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0FXFKWY7D",
+      "titulo": "Minolta Moldura inteligente MNDPF101 de 10,1 polegadas, tela IPS Touch HD | Inclui o aplicativo Frameo gratuito para compartilhamento instantâneo de fotos e vídeos via WiFi, com tela sensível ao toque",
+      "imagem": "https://m.media-amazon.com/images/I/8132mKdrZOL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0HFB6HK38",
+      "titulo": "Jiawu Aquecedor de Canecas de café Com Temperatura de 5 Níveis | Aquecedor de Copo Inteligente USB, 1/2/4/8/12 Horas, Tempo de 5 Estágios, Portátil para café, Leite, chá",
+      "imagem": "https://m.media-amazon.com/images/I/51xQYz8Hm3L._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0H9LQQKN4",
+      "titulo": "Aquecedor de caneca de café inteligente para mesa, aquecedor elétrico de copos com 7 configurações de temperatura (45 °C a 75 °C) e visor de LED, temporizador de 1 a 12 h, desligamento automático",
+      "imagem": "https://m.media-amazon.com/images/I/31vIm4-uOrL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0H4T21C7N",
+      "titulo": "Despertador digital ativado por voz com visor espelhado, leitura de temperatura e botão soneca, relógio eletrônico moderno para casa vermelho (amarelo)",
+      "imagem": "https://m.media-amazon.com/images/I/61Yie+JMXDL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0H9LS3JYY",
+      "titulo": "Aquecedor de caneca de café inteligente para mesa, aquecedor elétrico de copos com 7 configurações de temperatura (45 °C a 75 °C) e visor de LED, temporizador de 1 a 12 h, desligamento automático",
+      "imagem": "https://m.media-amazon.com/images/I/71WCsth3BVL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0H4TFXKBQ",
+      "titulo": "Despertador digital ativado por voz com visor espelhado, leitura de temperatura e botão soneca, relógio eletrônico moderno para casa vermelho (vermelho)",
+      "imagem": "https://m.media-amazon.com/images/I/51nhVtB6U7L._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0DR99TNKL",
+      "titulo": "Sensor de Botão de Comutação Com Controle de Toque para Casa, Controle de Grupo de Vários Dispositivos, Botão de Controle Versátil, Alimentado por Bateria, Controle Inteligente",
+      "imagem": "https://m.media-amazon.com/images/I/51mhcpGgaOL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0H7CJTH1Y",
+      "titulo": "Rápido 35w telefone móvel comprimidos caixa de bateria de carregamento rápido display led funciona diferentes gadgets caso de dispositivo portátil",
+      "imagem": "https://m.media-amazon.com/images/I/61UF91uv8iL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B00XPW67ZM",
+      "titulo": "Lutron Caseta Smart Hub | L-Bdg2-Wh | Branco",
+      "imagem": "https://m.media-amazon.com/images/I/51vU5wLPWUL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0HD9GN2TM",
+      "titulo": "Gateway de Casa Inteligente para Zigbee Bluetooth Com Antenas | Material ABS, Funciona Com WiFi 802.11b/g/n, Configuração Plug-and-play para Uso Em Escritório ou Em casa.",
+      "imagem": "https://m.media-amazon.com/images/I/41uL1h4h-qL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0GSC6GWVZ",
+      "titulo": "Porta Utensílios em Metal para Bancada – Organizador de Cozinha",
+      "imagem": "https://m.media-amazon.com/images/I/51mfJbP4J3L._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0GRCS1DNN",
+      "titulo": "Gel Creme Hidratante Facial Toque Seco Hialurônico Garnier, 85g | Preenchedor Toque Seco, com Ácido Hialurônico, Niacinamida e Aloe Vera, Controla a Oleosidade e Uniformiza a Pele",
+      "imagem": "https://m.media-amazon.com/images/I/71AQkwI-BAL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0FHWTLLCJ",
+      "titulo": "Kit Skincare Anti Oleosidade e Acne Sabonete + Esfoliante + Gel Hidratante +Sérum Rosa Mosqueta Clareador de manchas e hidratante 30ml + Mousse Limpeza Facial 150ml - 5 ITENS",
+      "imagem": "https://m.media-amazon.com/images/I/51RATF6NJnL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.9"
+    },
+    {
+      "asin": "B0DK4Y2YP3",
+      "titulo": "celimax Shot Tightening Booster - 15ml",
+      "imagem": "https://m.media-amazon.com/images/I/51zdLqgadJL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.4"
+    },
+    {
+      "asin": "B0FMV4CYH6",
+      "titulo": "NIVEA LUMINOUS630® Skin Glow Sérum 15ml, Pele Uniforme, Glow Instantâneo, Reduz Manchas e Poros, Hidrata, Cuidado Facial Diário",
+      "imagem": "https://m.media-amazon.com/images/I/61Bz-9yvDkL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0H7NGTBSJ",
+      "titulo": "Escova Facial de Limpeza com Cerdas Ultrafinas e Macias | Massageador Facial para Drenagem Linfática, Lifting Natural e Limpeza Profunda dos Poros | Esfoliação Suave para Todos os Tipos de Pele",
+      "imagem": "https://m.media-amazon.com/images/I/716PpHON5UL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0BDP8JVYN",
+      "titulo": "Max Love Mascara Redutora De Poros Sache 8G",
+      "imagem": "https://m.media-amazon.com/images/I/71lhLqu-IyL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0D8RHX3C6",
+      "titulo": "Sérum Hidratante Corporal Para Pele com Tom Irregular 48h de Hidratação Regenerativa Dove Dermo Renovador Niacinamida Redutor de Marcas Escurecidas Clinicamente Comprovado 380mL",
+      "imagem": "https://m.media-amazon.com/images/I/41jEssG9EDL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B09SQ7TQPH",
+      "titulo": "LYOR - Porta Papel Toalha de Bambu 14cm x 26cm",
+      "imagem": "https://m.media-amazon.com/images/I/41+ckXF0aGL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0H7GBG2B5",
+      "titulo": "Bandeja Organizadora plástica com Design Moderno e Elegante para Decoração de Ambientes",
+      "imagem": "https://m.media-amazon.com/images/I/71kQjIqb7fL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0H9PGZ4C5",
+      "titulo": "Kit 3 Bandejas de Bambu Decorativas e Organizadoras, Bandejas Multiuso para Café da Tarde, Petiscos, Lanches e Brunch, Elegantes para Cozinha e Decoração",
+      "imagem": "https://m.media-amazon.com/images/I/618IVy+xK2L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0DKQKK12K",
+      "titulo": "LYOR - Porta Mantimento Redondo de Vidro com Tampa e Colher de Bambu Flora 240ml - Organização de Alimentos",
+      "imagem": "https://m.media-amazon.com/images/I/51Dw7GLiaQL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0H6BZNB36",
+      "titulo": "Conjunto de Cestos Organizadores Redondos de Fibra Natural Trançada Estilo Rústico 3 Peças com Alças (MARROM)",
+      "imagem": "https://m.media-amazon.com/images/I/71lBrN0wPgL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0GW493Y9C",
+      "titulo": "Porta Papel Toalha de Bambu, Organizador de Cozinha, Suporte para Papel Toalha com Design Minimalista, Bambu 100% Ecológico - Casa e Decoração (28,5 x 16cm, Base Redonda Sem Bolinha de Peso)",
+      "imagem": "https://m.media-amazon.com/images/I/51bfAzfTDDL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.9"
+    },
+    {
+      "asin": "B0DWPK2G8B",
+      "titulo": "Conjunto 5 Potes Organizador Hermético Vidro Bambu Silicone Premium (Madeira)",
+      "imagem": "https://m.media-amazon.com/images/I/71zhzfr8DqL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0CVNF7MFZ",
+      "titulo": "Cestos Organizadores De Bambu 3 Unidades Multiuso Com Forro Perfeito Para Banheiros, Armários, Lavanderias. Bonito e Elegante (Natural)",
+      "imagem": "https://m.media-amazon.com/images/I/71aMJk6D+7L._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B09GC9N2D6",
+      "titulo": "Kit Casa Conectada Lite Positivo Casa Inteligente, sua casa mais inteligente, contém 2 itens (1x Smart Controle Universal e 1x Smart Lâmpada Wi Fi), Bivolt – Compatível com Alexa, branca/preta",
+      "imagem": "https://m.media-amazon.com/images/I/51u-+l5SUyL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0FM3R2W2F",
+      "titulo": "Extensao Eletrica Inteligente Wifi, Extensão Tomada, Régua Tomada, Filtro de Linha, 3 Tomadas, 2 Interfaces USB, 1 Porta USB Tipo-C, Controle por Voz, Controle remoto via celular (Branco)",
+      "imagem": "https://m.media-amazon.com/images/I/516SWa6+l2L._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0CKJ6TRWL",
+      "titulo": "EKAZA Controle Remoto Universal Infravermelho Wi-Fi, Compatível com Google Assistente e Alexa - EKNH-T304-M3",
+      "imagem": "https://m.media-amazon.com/images/I/51fS81sX7SL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.4"
+    },
+    {
+      "asin": "B0D9LWDQWS",
+      "titulo": "Filtro de Linha, Tomada Inteligente Wifi, Extensão Tomada, Regua, Regua de Energia, 3 Tomadas, 2 Interfaces USB, 1 Porta USB Tipo-C, Suporte para Controle Por Voz, Controle de celular (Preto)",
+      "imagem": "https://m.media-amazon.com/images/I/51MV8apUu9L._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0CZPDQ37F",
+      "titulo": "Painel Central Inteligente Wi-Fi e Hub Zigbee NovaDigital PCI01-Z C Tuya e Smart Life Comando de Voz Compatível com Alexa e Google Assistente",
+      "imagem": "https://m.media-amazon.com/images/I/61e+52HsWjL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0DPJSL6N9",
+      "titulo": "Câmera Inteligente iM6 com Conector E27 e Sensor Autotracking Intelbras",
+      "imagem": "https://m.media-amazon.com/images/I/41PKOjujzKL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0CLQ1NNJQ",
+      "titulo": "Controle Universal IR Infravermelho Inteligente Para Automação Wi-Fi Novadigital SRW-004 Tuya Smart Life Alexa Compatível Com Tv Ar Condicionado Monitor",
+      "imagem": "https://m.media-amazon.com/images/I/41Mgo2dh1uL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.4"
+    },
+    {
+      "asin": "B094441STL",
+      "titulo": "Controle Remoto Universal Wifi Smart Home Elgin Compatível com os Sistemas Amazon Alexa e Google Home Vermelho",
+      "imagem": "https://m.media-amazon.com/images/I/61X1PE2u76L._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B085W72XZK",
+      "titulo": "EKAZA, Tomada Inteligente 16A, WI-FI, Com medidor de consumo, Compatível com Alexa e Google Assistente – T005",
+      "imagem": "https://m.media-amazon.com/images/I/61uj62cx-bL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0FLYFQL5M",
+      "titulo": "Smart Controle Universal Wi-Fi Positivo Casa Inteligente, Infravermelho, All-in-One, Controle Pelo Celular ou Comando de Voz, Rede 2.4 GHz, Bivolt – Compatível com Alexa",
+      "imagem": "https://m.media-amazon.com/images/I/410xwJzQRAL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.4"
+    },
+    {
+      "asin": "B088C4QZV2",
+      "titulo": "Lâmpada Inteligente Smart Color 10W Elgin RGB Wifi Compatível com Alexa e Google Home",
+      "imagem": "https://m.media-amazon.com/images/I/61i1yPAlVLL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0FQCCDV25",
+      "titulo": "Organizador de gaveta de utensílios grande para cozinha, organizador de talheres expansível, bandeja de talheres, armazenamento com bloco de facas removível (Preto)",
+      "imagem": "https://m.media-amazon.com/images/I/81GD15pcnsL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B08QSMH8CT",
+      "titulo": "Barra Organizadora de Utensílios de Cozinha 36 cm – Suporte com 4 Ganchos em Aço",
+      "imagem": "https://m.media-amazon.com/images/I/71ITWADTc6L._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0GXMZZQ5X",
+      "titulo": "Porta Talheres Expansível, Organizador Grande Para Gaveta Ajustável, Cor Cinza Polipropileno, 8 Divisórias, Design Moderno Multiuso Ideal para Cozinha Premium.",
+      "imagem": "https://m.media-amazon.com/images/I/61luOGHwGhL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.9"
+    },
+    {
+      "asin": "B0G4R5KHWS",
+      "titulo": "EKROTOK Organizador de Cozinha Multifuncional de Parede - Suporte em Aço Carbono Resistente, Prateleira de Armazenamento Profissional, Instalação Sem Furação (30CM)",
+      "imagem": "https://m.media-amazon.com/images/I/61HVfTIOS+L._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0GZJ9WMJC",
+      "titulo": "Organizador Giratório 360° para Facas e Utensílios de Cozinha",
+      "imagem": "https://m.media-amazon.com/images/I/41hQ68yzlqL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0H4NVTZRG",
+      "titulo": "Organizador de Talheres em Bambu com 3 Compartimentos, Porta Talheres de Mesa e Porta Utensílios de Cozinha, Suporte para Garfos, Facas e Colheres, Organizador de Bambu para Gaveta ou Bancada",
+      "imagem": "https://m.media-amazon.com/images/I/71YxM7CYmaL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.9"
+    },
+    {
+      "asin": "B0GSWLLHPR",
+      "titulo": "Organizador de Utensílios de Cozinha com 3 Divisórias Base Preta Formato Redondo Porta Talheres Moderno",
+      "imagem": "https://m.media-amazon.com/images/I/41d0nNuSyeL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0H86XH7ZL",
+      "titulo": "40x20x6cm Organizador de Talheres de Bambu para Gaveta Bandeja Organizadora de Utensílios de Cozinha com 6 Compartimentos Porta Talheres para Facas",
+      "imagem": "https://m.media-amazon.com/images/I/716GjHleZuL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0D3C48PM8",
+      "titulo": "Creamy Skincare Gel de Limpeza 200ml | Limpa Profundamente, Sem Fragrância e Livre de Sulfatos, Remove Impurezas e Regulariza a Oleosidade | Peles Oleosas e/ou Mistas",
+      "imagem": "https://m.media-amazon.com/images/I/611Tkzby7OL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0FH34PXRS",
+      "titulo": "Kit Skincare Vitamina C Sabonete+Esfoliante+Gel Hidratante+Serum Clareador+Mousse Micelar Limpeza Facial anti manchas 150ml",
+      "imagem": "https://m.media-amazon.com/images/I/51weOEQeZ6L._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0DJ1R3QNZ",
+      "titulo": "Kit Skincare Rosa Mosqueta + Mousse Micelar Rosa Rhenuks+Serum Rosa Mosqueta Clareador 100% EFICACIA+Protetor Solar FPS60 Sem Cor",
+      "imagem": "https://m.media-amazon.com/images/I/610lGRc9KHL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0F6KXV9GP",
+      "titulo": "Kit Skincare Vitamina C Anti Idade + Sérum Clareador - 4 Itens 90% de EFICÁCIA COMPROVADA",
+      "imagem": "https://m.media-amazon.com/images/I/51dd8ZKa9iL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.3"
+    },
+    {
+      "asin": "B072MK7BN2",
+      "titulo": "La Roche-Posay Cicaplast Baume B5+ Cuidado Multirreparador Calmante",
+      "imagem": "https://m.media-amazon.com/images/I/41LpbF-1WDL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0CY9X78HY",
+      "titulo": "Nupill - Kit Nupill Limp Fac Sabonete Liq+Locao Tonica+Gel Hidr",
+      "imagem": "https://m.media-amazon.com/images/I/61J1dFBlRWL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0F8D7PCJY",
+      "titulo": "Kit Skincare ROSA MOSQUETA Ultra Hidratante + Sérum Rosa Mosqueta Clareador - 4 Itens 100% de EFICÁCIA COMPROVADA",
+      "imagem": "https://m.media-amazon.com/images/I/61WOu0boR6L._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0DP82WCWS",
+      "titulo": "Garnier Toque Seco Antimanchas - Gel Creme Hidratante Facial 85g",
+      "imagem": "https://m.media-amazon.com/images/I/61jby3y93gL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0FBDLYLSZ",
+      "titulo": "PRINCIPIA, Creme Hidratante Facial 5% Manteiga de Karité + 5% Glicerina + 2% Niacinamida CH-01 com 50g",
+      "imagem": "https://m.media-amazon.com/images/I/61duJU3Ug1L._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B08GB65ZB7",
+      "titulo": "Melano CC® Sérum Essence - Sérum de Vitamina C Pura para Ação Antioxidante Que Clareia A Pele E Controla A Oleosidade 20G",
+      "imagem": "https://m.media-amazon.com/images/I/61V4Ff80ipL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0D7K1ZRJB",
+      "titulo": "Kit Skincare Vitamina C Sabonete+Esfoliante+Gel Hidratante+Serum Clareador Dermachem",
+      "imagem": "https://m.media-amazon.com/images/I/71uKam+wqZL._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0DPB55MCY",
+      "titulo": "Bepantol Derma Rosa Mosqueta Hidratante Multirrestaurador 20g",
+      "imagem": "https://m.media-amazon.com/images/I/61LhOoQWtML._AC_UL320_.jpg",
+      "categoria": "Cuidados Pessoais",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0DBB9JZDD",
+      "titulo": "Mimo Style, Caixa Organizadora Bambu Palhinha",
+      "imagem": "https://m.media-amazon.com/images/I/71Uspe9BZiL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0FSH7XHJ8",
+      "titulo": "Suporte Utensilios de Cozinha Organizador de Talheres Temperos Utensilios Escorredor de Talheres",
+      "imagem": "https://m.media-amazon.com/images/I/51AvYFFDmAL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0FRJVSDWG",
+      "titulo": "Bandeja Decorativa organizadora estilo orgânico (Branca)",
+      "imagem": "https://m.media-amazon.com/images/I/619pNji3aBL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0G3LVBQWM",
+      "titulo": "Bandeja Reta Decorativa MDF 40x30cm Cantinho do Café, Servir e Decoração Organizadora Com Alça Casa(Branca,1)",
+      "imagem": "https://m.media-amazon.com/images/I/41HRN4IwsyL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0G84R1925",
+      "titulo": "Kit com 3 Cestos Organizadores de Bambu Natural com Forro Removível – Multiuso para Banheiro Cozinha Quarto Armário e Lavanderia – Design Elegante e Resistente",
+      "imagem": "https://m.media-amazon.com/images/I/51qdaHQZFgL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0F4ZCLYXX",
+      "titulo": "Kit 6 Cesto Organizador Plástico Design Juta Multiuso Cozinha Banheiro Lavanderia Resistente Compacto Decorativo (Cinza, 5,2 litros)",
+      "imagem": "https://m.media-amazon.com/images/I/71z9vHIP6IL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0CGTK157Y",
+      "titulo": "Porta Talheres Garfos Facas Colheres Organizador de Gavetas Acrilico Cozinha - LOBOY (Sem Tampa)",
+      "imagem": "https://m.media-amazon.com/images/I/51Dwgj2nWEL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0FS1Q4CCK",
+      "titulo": "Bandeja Decorativa e Organizadora Transparente Para Casa Eventos Hotel e Decoração Moderna com Toque de Cristal(20x30x5cm,2)",
+      "imagem": "https://m.media-amazon.com/images/I/31M9+lpM3dL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0D5GKM4CM",
+      "titulo": "Bandeja Decorativa com Espelho Multiuso Oval Espelhada Decoração Sala Mesa Premium",
+      "imagem": "https://m.media-amazon.com/images/I/31P3c4DjryL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.4"
+    },
+    {
+      "asin": "B07QSB5M3X",
+      "titulo": "WOLFF Potiche Decorativo de Cristal Com Pé Louise 11cm x 18cm - Enxoval - Decoração - Organização - Bomboniére - Vasos Decorativos",
+      "imagem": "https://m.media-amazon.com/images/I/61OU1pFJKGL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B08X1P11KS",
+      "titulo": "LYOR - Bandeja de Bambu Hire Marrom Natural 20cm - Mesa Posta - Organização - Utensílios de Cozinha - Enxoval - Decoração - Travessa Retangular - Petisqueira - Utilidades Domésticas",
+      "imagem": "https://m.media-amazon.com/images/I/61IXPSaGdBL._AC_UY218_.jpg",
+      "categoria": "Casa & Decor",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B09KQW32DN",
+      "titulo": "BlueCabi 8x21 Kids Binoculars – Compact, Durable and Lightweight with Magnification up to 8X – with Rubber Coating and Anti-Slip Texture – Includes Neck Strap, Wipe Cloth & Carry Case – Purple/Black",
+      "imagem": "https://m.media-amazon.com/images/I/71Lo0FC0S4L._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B094FWPPPH",
+      "titulo": "YOUBDM Organizador de eletrônicos de viagem, bolsa organizadora de cabos, impermeável, portátil, acessórios eletrônicos para cabo, carregador, cabo, disco rígido, Power Bank, USB",
+      "imagem": "https://m.media-amazon.com/images/I/81K4SIQoDAL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.4"
+    },
+    {
+      "asin": "B08L3B5LFN",
+      "titulo": "SELLYFELLY Organizador de eletrônicos de viagem portátil para armazenamento de acessórios eletrônicos, capa para celular, carregador, pen drive",
+      "imagem": "https://m.media-amazon.com/images/I/918K69zw0QL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0CMT1J22B",
+      "titulo": "ZUYUROU Bolsa organizadora de cabos de viagem, acessórios eletrônicos, bolsa de armazenamento portátil à prova d'água, presente para amantes de gadgets ou passageiros frequentes, presentes de Natal",
+      "imagem": "https://m.media-amazon.com/images/I/51PKNy6v7+L._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B08RMN1Q1Y",
+      "titulo": "Talk Works Suporte de mesa ajustável para celular compatível com iPhone 13/14 Series - Suporte flexível para escritório, casa, mesa (branco)",
+      "imagem": "https://m.media-amazon.com/images/I/51rxnDTdDjL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0FPX9LC3X",
+      "titulo": "ZGUZMCMK Gaiola de telefone para armazenamento de gadgets, caixa de bloqueio de telefone para festas, em família, salas de reunião e casas",
+      "imagem": "https://m.media-amazon.com/images/I/61z+8vCB2ML._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0F3WBZLNH",
+      "titulo": "Estojo Organizador de Cabos e Acessórios Eletrônicos Cor Preto – Portátil e Resistente, Ideal para Viagens, Carregadores e Gadgets",
+      "imagem": "https://m.media-amazon.com/images/I/51e3LqUXoeL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0DPM5C6C8",
+      "titulo": "Alto-falante Bluetooth, Moderno Abajur de Mesa Com Luz Noturna de Roda Gigante Com Efeito de água, Abajur de Cabeceira Recarregável e Regulável, Decoração de Casa",
+      "imagem": "https://m.media-amazon.com/images/I/71wy292qhmL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0DPTPY5PW",
+      "titulo": "Alto-falante Bluetooth, Moderno Abajur de Mesa Com Luz Noturna de Roda Gigante Com Efeito de água, Abajur de Cabeceira Recarregável e Regulável, Decoração de Casa",
+      "imagem": "https://m.media-amazon.com/images/I/7185Whlk1jL._AC_UL320_.jpg",
+      "categoria": "Tecnologia",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0FP9TPPZ9",
+      "titulo": "Porta Talheres Expansível de 33cm a 57cm, Organizador Grande Para Gaveta Bandeja Ajustável, Preto Polipropileno, 8 Divisórias, Design Moderno Multiuso Ideal para Cozinha.",
+      "imagem": "https://m.media-amazon.com/images/I/61NvadQXY5L._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B07QK8DQH7",
+      "titulo": "Ou Organizador Extensível de Talheres Chumbo Linha Logic",
+      "imagem": "https://m.media-amazon.com/images/I/511DjL1Z2nL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0F3QZ4SGW",
+      "titulo": "ORGANIZADOR DE TALHERES COM EXTENSOR | BLACK",
+      "imagem": "https://m.media-amazon.com/images/I/41XEiqnkUFL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0C9FJQFGZ",
+      "titulo": "Organizador de Facas para Gaveta de Armário de Cozinha Com Base de apoio até 9 Facas suporta (CINZA)",
+      "imagem": "https://m.media-amazon.com/images/I/51SdzpjpUaL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B086NR7WW4",
+      "titulo": "Ceraflame Porta Utensílios de Cerâmica Branco -",
+      "imagem": "https://m.media-amazon.com/images/I/41hkvAWburL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0CPTDWTWP",
+      "titulo": "Acrimet Organizador Modular para Gavetas, Bancadas e Armários, Plástico Transparente, Pote Retangular Longo, Kit com 2 Potes, Cristal, 976.0",
+      "imagem": "https://m.media-amazon.com/images/I/61ON2H6CqpL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B07BJK1HCR",
+      "titulo": "Mimo Style Porta Talheres Ecokitchen, Produzido em Bambu de Ótima Qualidade, Resistente, Durável e 100% Ecológico, Possui 5 Compartimentos Para Organizar Seu Ambiente",
+      "imagem": "https://m.media-amazon.com/images/I/51ZGY-MYUjL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0DFDTSS2G",
+      "titulo": "Porta-Utensílios Giratório Tramontina em Aço Inox",
+      "imagem": "https://m.media-amazon.com/images/I/515SMVIXFDL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.9"
+    },
+    {
+      "asin": "B07QKDY8PC",
+      "titulo": "Ou Organizador de Utensílios Branco Linha Logic",
+      "imagem": "https://m.media-amazon.com/images/I/61Vq7ltyqnL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.6"
+    },
+    {
+      "asin": "B0947B49P7",
+      "titulo": "Acrimet Organizador Modular de Gavetas Transparente, Kit com 4 Potes",
+      "imagem": "https://m.media-amazon.com/images/I/51MmU+qS9WL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B07QKM93TD",
+      "titulo": "Ou Organizador de Talheres com Extensor Chumbo Linha Logic",
+      "imagem": "https://m.media-amazon.com/images/I/41Lx6LSsUYL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B07QKBP12F",
+      "titulo": "Ou Organizador de Utensílios Chumbo Linha Logic",
+      "imagem": "https://m.media-amazon.com/images/I/51j-3plcixL._AC_UY218_.jpg",
+      "categoria": "Cozinha",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B0CZRJL1F2",
+      "titulo": "ODASDO Roupa de safári para bebês, meninas, meninos, festa de aniversário, bolo, esmagador, roupa de zookeeper Froest Adventure Explorer",
+      "imagem": "https://m.media-amazon.com/images/I/61BUBqapf+L._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.3"
+    },
+    {
+      "asin": "B0CMBJ3HPL",
+      "titulo": "Vestido casual Conjunto de 2 peças para vestido e capa de fralda GerberMeninas",
+      "imagem": "https://m.media-amazon.com/images/I/819vw3Dy44L._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.9"
+    },
+    {
+      "asin": "B08BTX76JD",
+      "titulo": "Gerber Pacote com 4 pés para bebês meninas Sleep 'N Play",
+      "imagem": "https://m.media-amazon.com/images/I/91w2OabCY-L._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0FNNVHMMP",
+      "titulo": "Macacão de dormir para bebês Pacote com 3 neutros para dormir e brincar Simple Joys by Carter'sbebê-unissex",
+      "imagem": "https://m.media-amazon.com/images/I/81YjCpGivAL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.8"
+    },
+    {
+      "asin": "B091CL4QDQ",
+      "titulo": "Vestido para brincar Soft Zanie Kidsbebê-meninas",
+      "imagem": "https://m.media-amazon.com/images/I/51c9C0IGzRL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.5"
+    },
+    {
+      "asin": "B0FNNLMF6J",
+      "titulo": "Durma e brinque 2-way Zip Thermal Footed Sleep and Play, Pack of 2 Simple Joys by Carter'sbebê-unissex",
+      "imagem": "https://m.media-amazon.com/images/I/81NuhWlWWeL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0D2VTK78W",
+      "titulo": "Cobertor para bonecas Reborn Baby Doll para bebês renascidos de 43 a 56 cm, cobertor de algodão macio para carregar bebês recém-nascidos, bonecas abelhas, acessórios de roupas",
+      "imagem": "https://m.media-amazon.com/images/I/615R-e43cnL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0B6GVSTLM",
+      "titulo": "Gerber Pacote com 2 para bebês meninos, Sleep N Play",
+      "imagem": "https://m.media-amazon.com/images/I/81Qx5dPRcdL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B076X5LQLJ",
+      "titulo": "Roma Jensen Brinquedo para Bebe Coleção Dinos Banho Caixa com 06 Roma 8.5cm",
+      "imagem": "https://m.media-amazon.com/images/I/71mYXmB9vVL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "4.7"
+    },
+    {
+      "asin": "B0DDR7X2GV",
+      "titulo": "Maquina de Lavar Roupas Brinquedo Infantil Menina C/ Portinha Abre Fecha",
+      "imagem": "https://m.media-amazon.com/images/I/61Bs3oMP7uL._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "5.0"
+    },
+    {
+      "asin": "B0FWD1PFQJ",
+      "titulo": "Brinquedo De Madeira Guarda-Roupa De Boneca Com Palha Büp Baby",
+      "imagem": "https://m.media-amazon.com/images/I/51GkkfVeb8L._AC_UL320_.jpg",
+      "categoria": "Mundo do Bebê",
+      "nota": "5.0"
+    }
+  ]
+}

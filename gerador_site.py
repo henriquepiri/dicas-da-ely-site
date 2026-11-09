@@ -1,4 +1,3 @@
-import sqlite3
 import os
 import shutil
 import re
@@ -12,31 +11,23 @@ from paginas import PAGINAS
 
 # --- CONFIGURAÇÕES ---
 PASTA_SAIDA = "docs"  # GitHub Pages só publica da raiz ou de uma pasta chamada "docs"
-NOME_BANCO = "estoque_ofertas.db"
+ARQUIVO_CATALOGO = "catalogo_produtos.json"  # lista curada; o site não raspa a Amazon
 ARQUIVO_LOGO = "logo_dicas.png"
 URL_SITE = "https://dicasdaely.com.br"
 DOMINIO_CUSTOMIZADO = "dicasdaely.com.br"  # vira o arquivo CNAME do GitHub Pages
+TAG_AFILIADO = "dicasdaely05-20"
 PRODUTOS_POR_PAGINA = 24
 GA_MEASUREMENT_ID = "G-JDYT3SLVZJ"  # Propriedade GA4 "Dicas da Ely"
 PRODUTOS_ENTRE_DICAS = 8  # a cada N produtos, intercala uma caixinha de dica no grid
 
-# A home mostrava até 40 produtos fora de "Mundo do Bebê" só por ordem de chegada,
-# sem nenhum critério de qualidade, virava vitrine de feed, não seleção. Agora só
-# entra produto com nota mínima, e o número de itens foi reduzido pra não virar
-# lista infinita.
-NOTA_MINIMA_HOME = 4.3
+# A home não despeja o catálogo inteiro. O recorte é só de vitrine: os primeiros
+# itens de cada grupo, na ordem do arquivo curado.
+LIMITE_BEBE_HOME = 8
 LIMITE_OUTROS_HOME = 16
 
-# Ofertas param de aparecer no site depois deste prazo sem serem revistas pela coleta.
-# Motivo: o banco só cresce, e cada execução do robô revisita apenas parte dos produtos.
-# Sem isso, item coletado há semanas fica no ar com preço antigo, e o visitante clica
-# esperando um valor e encontra outro na Amazon.
-DIAS_VALIDADE_OFERTA = 10
-
-# Proteção: se o filtro acima deixar menos que isto, ele é ignorado e o site mostra tudo.
-# Evita que uma falha na coleta (robô quebrado, Amazon mudando layout) esvazie o site
-# silenciosamente. Melhor preço velho do que página em branco.
-MIN_PRODUTOS_PARA_FILTRAR = 20
+# Item de sono infantil tirado do ar a pedido do Henrique em 2026-09-08.
+# Continua fora mesmo que alguém recoloque o ASIN no catálogo.
+ASINS_EXCLUIDOS = {"B0095YYAW6"}
 
 # --- CONTEÚDO EDITORIAL POR CATEGORIA ---
 # Dicas genéricas de compra (não são resenha de produto específico, é orientação
@@ -106,9 +97,8 @@ CATEGORIA_INFO = {
     },
     "GERAL": {
         "dicas": [
-            "Todos os preços aqui são coletados diretamente da Amazon todos os dias. O valor pode "
-            "mudar entre nossa última atualização e o momento da sua compra, então confira o preço "
-            "final na página do produto.",
+            "O preço não fica fixo neste site. O botão do card abre a página do produto na Amazon, "
+            "e o valor que vale é o de lá, no momento da compra.",
             "Somos participantes do Programa de Associados da Amazon: se você compra por um dos "
             "nossos links, a gente recebe uma pequena comissão, sem custo extra pra você.",
         ],
@@ -288,8 +278,6 @@ HEAD_COMUM = """
             /* 3 linhas no celular: com a coluna estreita, 2 linhas cortam o nome cedo
                demais e o visitante não consegue saber o que é o produto */
             .titulo-prod { font-size: 0.85rem; -webkit-line-clamp: 3; }
-            .preco-atual { font-size: 1.2rem; }
-            .parcelamento { font-size: 0.72rem; margin-bottom: 10px; }
             .categoria-tag { font-size: 0.6rem; }
             .btn-comprar { font-size: 0.8rem; padding: 8px; }
             .card-body { padding: 12px; }
@@ -299,8 +287,6 @@ HEAD_COMUM = """
         .card-produto { position: relative; border: 1px solid var(--cor-card-border); border-radius: 14px; background: white; height: 100%; transition: 0.25s ease; overflow: hidden; display: flex; flex-direction: column; }
         .card-produto:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(140, 94, 74, 0.18); border-color: var(--cor-primaria); }
 
-        .badge-desconto { position: absolute; top: 10px; left: 10px; z-index: 2; background: var(--cor-selo); color: white; font-weight: 800; font-size: 0.75rem; padding: 4px 9px; border-radius: 30px; box-shadow: 0 3px 8px rgba(0,0,0,0.15); }
-
         .img-wrap { height: 200px; width: 100%; display: flex; align-items: center; justify-content: center; padding: 15px; background-color: white; border-bottom: 1px solid #fafafa; }
         .img-wrap img { max-height: 100%; max-width: 100%; object-fit: contain; }
 
@@ -308,9 +294,6 @@ HEAD_COMUM = """
         .categoria-tag { font-size: 0.7rem; background: #f4ece8; color: var(--cor-primaria); padding: 4px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; font-weight: 700; text-transform: uppercase; }
         .titulo-prod { font-size: 1rem; font-weight: 700; color: var(--cor-texto); line-height: 1.3; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .estrelas { color: #f39c12; font-size: 0.8rem; margin-bottom: 12px; }
-        .preco-antigo { text-decoration: line-through; color: #6b5546; font-size: 0.85rem; margin-right: 6px; }
-        .preco-atual { color: var(--cor-destaque); font-weight: 800; font-size: 1.5rem; }
-        .parcelamento { font-size: 0.8rem; color: #888; margin-bottom: 15px; font-weight: 600; }
 
         .btn-comprar { background: var(--cor-primaria); color: white; border: none; border-radius: 50px; padding: 10px; width: 100%; font-weight: 800; margin-top: auto; transition: 0.3s; text-decoration: none; display: block; text-align: center; }
         .btn-comprar:hover { background: var(--cor-destaque); color: white; }
@@ -378,20 +361,20 @@ TEMPLATE_VITRINE = """
         <div class="container">
             <h1 class="display-6 fw-bold mb-3">Dicas e Achadinhos da Ely</h1>
             <p class="text-muted" style="max-width: 620px; margin: auto; font-size: 1.1rem;">
-                Mais do que uma lista de ofertas: aqui a gente testa, compara e dá a dica de como
-                escolher bem em cada categoria, além de garimpar os melhores preços da Amazon
-                pro seu Lar e pro Mundo do Bebê. Curadoria feita com carinho por Elyad & Henrique.
+                Os guias vêm primeiro: o que considerar antes de comprar para o bebê, a casa e a
+                cozinha. Embaixo, uma seleção curada de produtos da Amazon. O preço não fica
+                fixo aqui, você confere na loja. Feito com carinho por Elyad &amp; Henrique.
             </p>
             <div class="row selo-confianca g-3">
                 <div class="col-4 item-selo">
                     <i class="fas fa-magnifying-glass fa-lg mb-2"></i>
                     <div class="titulo-selo">Seleção por qualidade</div>
-                    <div class="desc-selo">Só entra oferta com nota 4,3+ na Amazon</div>
+                    <div class="desc-selo">Catálogo com nota 4,3+ na Amazon</div>
                 </div>
                 <div class="col-4 item-selo">
-                    <i class="fas fa-rotate fa-lg mb-2"></i>
-                    <div class="titulo-selo">Preços atualizados</div>
-                    <div class="desc-selo">Revisados todos os dias</div>
+                    <i class="fas fa-tag fa-lg mb-2"></i>
+                    <div class="titulo-selo">Preço na Amazon</div>
+                    <div class="desc-selo">O valor fica na loja</div>
                 </div>
                 <div class="col-4 item-selo">
                     <i class="fas fa-lightbulb fa-lg mb-2"></i>
@@ -445,8 +428,7 @@ TEMPLATE_VITRINE = """
              </div>
 
              <div class="d-flex align-items-center justify-content-between mb-4 mt-5 pb-2 border-bottom border-2" style="border-color: #f0e6e0 !important;">
-                <h3 class="fw-bold m-0" style="color: var(--cor-texto);">Ofertas de hoje</h3>
-                <span class="text-muted small">Atualizado em {{ data_atual }}</span>
+                <h3 class="fw-bold m-0" style="color: var(--cor-texto);">Seleção de produtos</h3>
              </div>
              {% if destaques_bebe %}
              <div class="row g-4 mb-5">
@@ -502,7 +484,7 @@ TEMPLATE_VITRINE = """
              </nav>
              {% endif %}
              {% else %}
-             <div class="empty-state"><i class="fas fa-box-open fa-2x mb-2"></i><p>Nenhuma oferta encontrada nesta categoria no momento.</p></div>
+             <div class="empty-state"><i class="fas fa-box-open fa-2x mb-2"></i><p>Nenhum produto nesta categoria no momento.</p></div>
              {% endif %}
         {% endif %}
     </div>
@@ -548,14 +530,14 @@ TEMPLATE_GUIA = """
             </div>
 
             {% if produtos_relacionados %}
-            <h2 class="mt-5 mb-4" style="color: var(--cor-primaria);">Ofertas de {{ guia.categoria }}</h2>
+            <h2 class="mt-5 mb-4" style="color: var(--cor-primaria);">Seleção de {{ guia.categoria }}</h2>
             <div class="row g-4">
                 {% for p in produtos_relacionados %}
                     {{ render_card(p) }}
                 {% endfor %}
             </div>
             <p class="mt-4">
-                <a href="cat-{{ slug_categoria }}.html" class="link-simples">Ver todas as ofertas de {{ guia.categoria }}</a>
+                <a href="cat-{{ slug_categoria }}.html" class="link-simples">Ver a seleção de {{ guia.categoria }}</a>
             </p>
             {% endif %}
 
@@ -673,9 +655,9 @@ RODAPE = """
             <p class="mb-1 fw-bold text-muted">© 2026 Dicas da Ely</p>
             <small class="text-muted d-block" style="max-width: 520px; margin: 0 auto; line-height: 1.5;">
                 Participante do Programa de Associados da Amazon. Recebemos comissão por compras
-                qualificadas, sem custo extra para você. Preços podem mudar, confira sempre na Amazon.
+                qualificadas, sem custo extra para você. O preço é o da Amazon no momento da compra.
             </small>
-            <p class="mt-2 text-muted" style="font-size: 0.75rem">Ofertas atualizadas em {{ data_atual }}</p>
+            <p class="mt-2 text-muted" style="font-size: 0.75rem">Página gerada em {{ data_atual }}</p>
         </div>
     </footer>
 """
@@ -684,9 +666,6 @@ MACRO_CARD = """
 {% macro render_card(p) %}
 <div class="col-6 col-md-4 col-lg-3">
     <div class="card card-produto">
-        {% if p.desconto_pct > 0 %}
-        <span class="badge-desconto">-{{ p.desconto_pct }}%</span>
-        {% endif %}
         <div class="img-wrap">
             <img src="{{ p.imagem }}" loading="lazy" alt="{{ p.titulo }}">
         </div>
@@ -699,31 +678,10 @@ MACRO_CARD = """
                 <span class="text-muted ms-1 small">({{ p.nota }})</span>
             </div>
 
-            <div class="mt-auto">
-                {% if p.preco_original_float > p.preco_atual_float %}
-                    <span class="preco-antigo">R$ {{ p.preco_original }}</span>
-                {% endif %}
-
-                <div class="preco-atual">R$ {{ p.preco_atual }}</div>
-
-                {% if p.parcelas > 1 %}
-                    <div class="parcelamento">Em até {{ p.parcelas }}x sem juros</div>
-                {% else %}
-                    <div class="parcelamento">À vista</div>
-                {% endif %}
-
-                {% if p.preco_original_float > p.preco_atual_float %}
-                <a href="{{ p.link }}" target="_blank" rel="nofollow sponsored noopener" class="btn btn-comprar"
-                   aria-label="Ver oferta de {{ p.titulo }} na Amazon (abre em nova aba)">
-                    Ver Oferta na Amazon
-                </a>
-                {% else %}
-                <a href="{{ p.link }}" target="_blank" rel="nofollow sponsored noopener" class="btn btn-comprar"
-                   aria-label="Ver {{ p.titulo }} na Amazon (abre em nova aba)">
-                    Ver na Amazon
-                </a>
-                {% endif %}
-            </div>
+            <a href="{{ p.link }}" target="_blank" rel="nofollow sponsored noopener" class="btn btn-comprar"
+               aria-label="Ver preço de {{ p.titulo }} na Amazon (abre em nova aba)">
+                Ver preço na Amazon
+            </a>
         </div>
     </div>
 </div>
@@ -748,66 +706,45 @@ def criar_slug(texto):
     s = re.sub(r'[^a-z0-9]+', '-', texto.lower()).strip('-')
     return s if s else "geral"
 
-def formatar_moeda(valor):
-    try: return f"{float(valor):.2f}".replace('.', ',')
-    except: return valor
+def link_afiliado(asin):
+    """Formato canônico do Programa de Associados. A tag não vem do arquivo de dados,
+    para um ASIN recolocado no catálogo não herdar link antigo."""
+    return f"https://www.amazon.com.br/dp/{asin}?tag={TAG_AFILIADO}"
 
-def processar_produto(row):
-    try:
-        preco_atual_f = float(row[1])
-        preco_original_f = float(row[2])
-        desconto_pct = 0
-        if preco_original_f > preco_atual_f > 0:
-            desconto_pct = round((1 - (preco_atual_f / preco_original_f)) * 100)
+def carregar_catalogo():
+    """Lê a lista curada do repositório. Não consulta banco nem aplica prazo de validade:
+    o arquivo é a seleção, e esvaziar o site por 'oferta velha' não faz mais sentido
+    porque preço nenhum é exibido."""
+    with open(ARQUIVO_CATALOGO, encoding="utf-8") as f:
+        dados = json.load(f)
 
-        p = {
-            'titulo': row[0],
-            'preco_atual': formatar_moeda(row[1]),
-            'preco_atual_float': preco_atual_f,
-            'preco_original': formatar_moeda(row[2]),
-            'preco_original_float': preco_original_f,
-            'imagem': row[3],
-            'link': row[4],
-            'categoria': row[5],
-            'nota': row[6],
-            'parcelas': row[7],
-            'desconto_pct': desconto_pct,
-        }
-        try: p['estrelas_int'] = int(float(row[6]))
-        except: p['estrelas_int'] = 5
-        return p
-    except Exception as e:
-        print(f"Erro ao processar linha: {e}")
-        return None
-
-def definir_filtro_frescor(cursor):
-    """Decide se o corte por idade deve ser aplicado e devolve o trecho SQL.
-
-    Devolve string vazia (sem filtro) quando aplicá-lo deixaria o site quase vazio,
-    situação típica de coleta quebrada, em que sumir com tudo seria pior do que mostrar
-    ofertas antigas."""
-    cursor.execute("SELECT COUNT(*) FROM produtos")
-    total = cursor.fetchone()[0]
-
-    cursor.execute(
-        "SELECT COUNT(*) FROM produtos WHERE julianday('now') - julianday(data_atualizacao) <= ?",
-        (DIAS_VALIDADE_OFERTA,)
-    )
-    frescos = cursor.fetchone()[0]
-
-    if frescos < MIN_PRODUTOS_PARA_FILTRAR:
-        print(f"⚠️  Só {frescos} de {total} ofertas foram revistas nos últimos "
-              f"{DIAS_VALIDADE_OFERTA} dias.")
-        print("    O filtro de validade foi IGNORADO para o site não ficar vazio.")
-        print("    Verifique se o robo_coletor.py está rodando (veja o coleta.log).")
-        return ""
-
-    if frescos < total:
-        print(f"🕒 {total - frescos} ofertas antigas ocultadas "
-              f"(sem revisão há mais de {DIAS_VALIDADE_OFERTA} dias). "
-              f"{frescos} no ar.")
-
-    return f" AND julianday('now') - julianday(data_atualizacao) <= {DIAS_VALIDADE_OFERTA}"
+    produtos = []
+    for item in dados.get("produtos", []):
+        asin = str(item.get("asin", "")).strip()
+        if not asin or asin in ASINS_EXCLUIDOS:
+            continue
+        titulo = str(item.get("titulo", "")).strip()
+        imagem = str(item.get("imagem", "")).strip()
+        categoria = str(item.get("categoria", "")).strip()
+        if not titulo or not imagem or not categoria:
+            print(f"⚠️  Produto {asin or '(sem ASIN)'} ignorado: falta título, imagem ou categoria.")
+            continue
+        nota_txt = str(item.get("nota", "")).strip().replace(",", ".")
+        try:
+            estrelas = int(float(nota_txt))
+        except ValueError:
+            nota_txt = ""
+            estrelas = 0
+        produtos.append({
+            "asin": asin,
+            "titulo": titulo,
+            "imagem": imagem,
+            "link": link_afiliado(asin),
+            "categoria": categoria,
+            "nota": nota_txt,
+            "estrelas_int": estrelas,
+        })
+    return produtos
 
 PASTA_FONTES = "fonts"
 CAPA_LARGURA, CAPA_ALTURA = 1200, 630  # tamanho padrão de og:image
@@ -1005,13 +942,6 @@ def gerar_json_ld(produtos, nome_pagina, url_pagina):
                     "ratingValue": p['nota'],
                     "bestRating": "5",
                     "reviewCount": "1"
-                },
-                "offers": {
-                    "@type": "Offer",
-                    "priceCurrency": "BRL",
-                    "price": f"{p['preco_atual_float']:.2f}",
-                    "availability": "https://schema.org/InStock",
-                    "url": p['link']
                 }
             }
         })
@@ -1030,16 +960,16 @@ def gerar_sitemap(categorias, paginas_por_categoria, guias=None):
 
     O lastmod de cada URL usa a data real daquele conteúdo (campo "data" do guia,
     "atualizado" da página institucional) em vez da data de hoje pra tudo. Home e
-    categoria usam a data de hoje porque elas realmente mudam a cada coleta diária;
-    um lastmod idêntico em toda URL do site é um sinal que o Google associa a
-    sitemap gerado sem cuidado."""
+    categoria usam a data da geração porque o HTML delas é reescrito junto com o
+    catálogo; um lastmod idêntico em toda URL do site é um sinal que o Google
+    associa a sitemap gerado sem cuidado."""
     print("🗺️  Gerando Sitemap...")
     data_hoje = datetime.now().strftime('%Y-%m-%d')
 
     urls = [
-        (f"{URL_SITE}/", data_hoje, "daily", "1.0"),
-        (f"{URL_SITE}/index.html", data_hoje, "daily", "0.8"),
-        (f"{URL_SITE}/guias.html", data_hoje, "daily", "0.8"),
+        (f"{URL_SITE}/", data_hoje, "weekly", "1.0"),
+        (f"{URL_SITE}/index.html", data_hoje, "weekly", "0.8"),
+        (f"{URL_SITE}/guias.html", data_hoje, "weekly", "0.8"),
     ]
     # Guias têm prioridade alta: é o conteúdo original do site
     for g in (guias or []):
@@ -1098,16 +1028,17 @@ def main():
     os.makedirs(os.path.join(PASTA_SAIDA, "capas"))
     if os.path.exists(ARQUIVO_LOGO): shutil.copy(ARQUIVO_LOGO, os.path.join(PASTA_SAIDA, ARQUIVO_LOGO))
 
-    conn = sqlite3.connect(NOME_BANCO)
-    cursor = conn.cursor()
+    produtos = carregar_catalogo()
+    if not produtos:
+        raise SystemExit("Catálogo vazio. O site não foi gerado para não publicar páginas em branco.")
 
-    # 1b. Decidir o corte por idade das ofertas
-    filtro_frescor = definir_filtro_frescor(cursor)
-
-    # 2. Pegar categorias
-    cursor.execute("SELECT DISTINCT categoria FROM produtos WHERE categoria IS NOT NULL")
-    cats_db = sorted([r[0] for r in cursor.fetchall() if r[0]])
-    menu_categorias = [{'nome': c, 'slug': criar_slug(c)} for c in cats_db]
+    # 2. Categorias presentes na lista curada, em ordem estável
+    cats_catalogo = []
+    for p in produtos:
+        if p["categoria"] not in cats_catalogo:
+            cats_catalogo.append(p["categoria"])
+    cats_catalogo.sort()
+    menu_categorias = [{'nome': c, 'slug': criar_slug(c)} for c in cats_catalogo]
 
     # 3. Preparar templates
     full_template_str = MACRO_CARD + TEMPLATE_VITRINE.replace("{{ head }}", HEAD_COMUM)
@@ -1123,13 +1054,10 @@ def main():
     todos_guias, guia_destaque, outros_guias = preparar_guias()
 
     # 4. GERAÇÃO DA HOME (index.html)
-    cursor.execute(f"SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria = 'Mundo do Bebê' AND CAST(nota AS REAL) >= {NOTA_MINIMA_HOME}{filtro_frescor} ORDER BY id DESC LIMIT 8")
-    destaques_bebe = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
+    destaques_bebe = [p for p in produtos if p["categoria"] == "Mundo do Bebê"][:LIMITE_BEBE_HOME]
+    outros_produtos = [p for p in produtos if p["categoria"] != "Mundo do Bebê"][:LIMITE_OUTROS_HOME]
 
-    cursor.execute(f"SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria != 'Mundo do Bebê' AND CAST(nota AS REAL) >= {NOTA_MINIMA_HOME}{filtro_frescor} ORDER BY id DESC LIMIT {LIMITE_OUTROS_HOME}")
-    outros_produtos = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
-
-    json_ld_home = gerar_json_ld(destaques_bebe + outros_produtos, "Dicas da Ely - Ofertas em Destaque", f"{URL_SITE}/")
+    json_ld_home = gerar_json_ld(destaques_bebe + outros_produtos, "Dicas da Ely - Seleção de produtos", f"{URL_SITE}/")
 
     html_home = tpl.render(
         navbar=navbar_html,
@@ -1138,7 +1066,7 @@ def main():
         json_ld=json_ld_home,
         ga_id=GA_MEASUREMENT_ID,
         titulo_seo="Dicas da Ely | Guias e Achadinhos para Bebê, Casa e Cozinha",
-        descricao_seo="Guias práticos escritos por quem testou: enxoval de bebê, brinquedo seguro, organização de cozinha. Mais ofertas selecionadas da Amazon, atualizadas todo dia.",
+        descricao_seo="Guias práticos escritos por quem testou: enxoval de bebê, brinquedo seguro, organização de cozinha. Seleção de produtos da Amazon com nota 4,3 ou mais. O preço você confere na loja.",
         imagem_og=f"{URL_SITE}/{ARQUIVO_LOGO}",
         url_atual=f"{URL_SITE}/",
         titulo_pag="Início",
@@ -1153,8 +1081,7 @@ def main():
     # 5. GERAÇÃO DAS CATEGORIAS (com paginação)
     paginas_por_categoria = {}
     for cat in menu_categorias:
-        cursor.execute(f"SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas FROM produtos WHERE categoria = ?{filtro_frescor} ORDER BY id DESC", (cat['nome'],))
-        prods_cat = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
+        prods_cat = [p for p in produtos if p["categoria"] == cat["nome"]]
 
         slug = cat['slug']
         total_paginas = max(1, math.ceil(len(prods_cat) / PRODUTOS_POR_PAGINA))
@@ -1169,9 +1096,9 @@ def main():
             nome_arquivo = f"cat-{slug}{sufixo_arquivo}.html"
             url_pagina = f"{URL_SITE}/{nome_arquivo}"
 
-            json_ld_cat = gerar_json_ld(prods_pagina, f"Ofertas de {cat['nome']}", url_pagina)
+            json_ld_cat = gerar_json_ld(prods_pagina, f"Seleção de {cat['nome']}", url_pagina)
 
-            titulo_seo_pag = f"Ofertas de {cat['nome']}" + (f" - Página {pagina}" if pagina > 1 else "") + " | Dicas da Ely"
+            titulo_seo_pag = f"{cat['nome']}" + (f" - Página {pagina}" if pagina > 1 else "") + " | Dicas da Ely"
 
             html_cat = tpl.render(
                 navbar=navbar_html,
@@ -1180,7 +1107,7 @@ def main():
                 json_ld=json_ld_cat,
                 ga_id=GA_MEASUREMENT_ID,
                 titulo_seo=titulo_seo_pag,
-                descricao_seo=f"Encontre as melhores promoções de {cat['nome']} selecionadas a dedo na Amazon.",
+                descricao_seo=f"Seleção de {cat['nome']} na Amazon, com nota 4,3 ou mais. O preço você confere na loja.",
                 imagem_og=f"{URL_SITE}/{ARQUIVO_LOGO}",
                 url_atual=url_pagina,
                 titulo_secao=cat['nome'],
@@ -1200,14 +1127,9 @@ def main():
         url_pagina = f"{URL_SITE}/{nome_arquivo}"
         slug_cat = criar_slug(guia['categoria'])
 
-        # Puxa alguns produtos da mesma categoria do guia, pra fechar o ciclo
-        # entre o conteúdo e a oferta
-        cursor.execute(
-            "SELECT titulo, preco_atual, preco_original, imagem_url, link_afiliado, categoria, nota, parcelas "
-            f"FROM produtos WHERE categoria = ?{filtro_frescor} ORDER BY id DESC LIMIT 4",
-            (guia['categoria'],)
-        )
-        relacionados = [p for p in [processar_produto(r) for r in cursor.fetchall()] if p]
+        # Alguns produtos da mesma categoria do guia, pra fechar o ciclo
+        # entre o texto e a seleção. O corpo do guia vem intacto de guias.py.
+        relacionados = [p for p in produtos if p["categoria"] == guia["categoria"]][:4]
 
         gerar_capa_guia(guia['titulo'], guia['categoria'], guia['slug'], f"{PASTA_SAIDA}/capas/capa-{guia['slug']}.png")
 
@@ -1275,9 +1197,9 @@ def main():
     gerar_robots_txt()
     gerar_arquivos_github_pages()
 
-    conn.close()
     print("✅ SITE GERADO COM SUCESSO!")
     print(f"   - Pasta de saída: {PASTA_SAIDA}/")
+    print(f"   - {len(produtos)} produtos no catálogo curado")
     print(f"   - {len(todos_guias)} páginas de guia criadas")
     print(f"   - {len(PAGINAS)} páginas institucionais criadas")
     print("   - index.html criado")

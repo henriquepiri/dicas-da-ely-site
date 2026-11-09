@@ -1,3 +1,6 @@
+# Fora do fluxo de publicação desde 2026-11-09. O site é gerado só de
+# catalogo_produtos.json (python gerador_site.py). Não rode este script
+# para atualizar o site: ele raspa a Amazon e grava preço no banco.
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
