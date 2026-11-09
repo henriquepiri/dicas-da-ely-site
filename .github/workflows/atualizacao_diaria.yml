@@ -4,7 +4,7 @@ on:
   schedule:
     # Roda todo dia as 11:00 UTC (08:00 Brasilia)
     - cron: '0 11 * * *'
-  
+
   # Botão para rodar manual se você quiser testar
   workflow_dispatch:
 
@@ -14,27 +14,27 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Baixar codigo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configurar Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.11'
 
+      # Só o que o gerador precisa. Sem Selenium e sem segredo: o catálogo
+      # curado já está no repositório (catalogo_produtos.json).
       - name: Instalar dependencias
-        run: |
-          pip install jinja2
+        run: pip install jinja2 pillow
 
-      - name: Rodar o Gerador
+      - name: Gerar o site a partir do catalogo curado
         run: python gerador_site.py
 
-      - name: Salvar e Publicar
+      - name: Publicar docs
         run: |
-          git config --global user.name 'Robo Dicas da Ely'
+          git config --global user.name 'Dicas da Ely'
           git config --global user.email 'actions@github.com'
           git add docs/
-          # Só commita se houver mudança (novos preços ou data)
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Atualização automática diária" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Atualiza o site a partir do catalogo curado" && git push)
